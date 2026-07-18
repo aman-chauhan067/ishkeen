@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FINAL DESIGN SYSTEM: Luxury Skincare Identity */
+    
+    /* Strict 10-Color Palette */
+    --color-deep-ocean: 37 58 74;   /* #253A4A */
+    --color-ocean-blue: 92 126 154; /* #5C7E9A */
+    --color-soft-sage: 168 181 162; /* #A8B5A2 */
+    --color-lavender: 200 196 216;  /* #C8C4D8 */
+    --color-peach: 244 211 196;     /* #F4D3C4 */
+    --color-coral: 232 155 135;     /* #E89B87 */
+    --color-rose: 216 165 168;      /* #D8A5A8 */
+    --color-mist-blue: 215 229 236; /* #D7E5EC */
+    --color-ivory: 248 245 241;     /* #F8F5F1 */
+    --color-paper-white: 252 251 248; /* #FCFBF8 */
+
+    /* Backgrounds */
+    --bg: var(--color-paper-white);
+    --card: var(--color-ivory);
+    
+    /* Text Hierarchy */
+    --foreground: var(--color-deep-ocean);      /* Primary Text */
+    --muted-foreground: var(--color-ocean-blue);/* Secondary Text */
+    --soft-foreground: var(--color-soft-sage);  /* Muted Text */
+    --caption-foreground: var(--color-lavender);/* Captions */
+    
+    /* Accents & States */
+    --accent: var(--color-coral);
+    --border: var(--color-mist-blue); 
+    --ring: var(--color-deep-ocean);
+
+    --success: var(--color-soft-sage);
+    --warning: var(--color-peach);
+    --danger: var(--color-coral);
+
+    /* Radii */
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+    --radius-full: 9999px;
+  }
+}

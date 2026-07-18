@@ -1,0 +1,65 @@
+# Node modules
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Environments
+.env
+.env.local
+
+# Build directories
+dist/
+build/
+*.egg-info/
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# Docker
+.docker/
+
+# Gemini Agents
+.agents/
+
+# Development Artifacts & User Media
+backend/uploads/
+backend/private_uploads/
+backend/*.db
+backend/*.sqlite3
+backend/*.db-shm
+backend/*.db-wal
+frontend/screenshots/
+frontend/playwright-report/
+frontend/test-results/
+
+# Temporary exports and database backups
+*.sql
+*.bak
+*.dump
+export_*.json
+ishkeen_dataset_*.json

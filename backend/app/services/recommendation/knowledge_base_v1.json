@@ -1,0 +1,63 @@
+{
+  "version": "v2026.07.11",
+  "mappings": [
+    {
+      "concern": "breakouts",
+      "candidate_categories": ["bha_salicylic_acid", "benzoyl_peroxide", "retinoid_type", "azelaic_acid"]
+    },
+    {
+      "concern": "clogged_pores",
+      "candidate_categories": ["bha_salicylic_acid", "retinoid_type"]
+    },
+    {
+      "concern": "post_acne_marks",
+      "candidate_categories": ["azelaic_acid", "vitamin_c", "niacinamide", "aha_glycolic_lactic_acid"]
+    },
+    {
+      "concern": "uneven_tone",
+      "candidate_categories": ["vitamin_c", "aha_glycolic_lactic_acid", "pigment_targeting_active"]
+    },
+    {
+      "concern": "visible_pigmentation",
+      "candidate_categories": ["pigment_targeting_active", "vitamin_c", "retinoid_type"]
+    },
+    {
+      "concern": "redness",
+      "candidate_categories": ["azelaic_acid", "niacinamide"]
+    },
+    {
+      "concern": "sensitivity",
+      "candidate_categories": []
+    },
+    {
+      "concern": "dryness_or_dehydration",
+      "candidate_categories": []
+    },
+    {
+      "concern": "excess_oiliness",
+      "candidate_categories": ["niacinamide", "bha_salicylic_acid"]
+    },
+    {
+      "concern": "visible_texture",
+      "candidate_categories": ["aha_glycolic_lactic_acid", "retinoid_type"]
+    },
+    {
+      "concern": "fine_lines",
+      "candidate_categories": ["retinoid_type", "vitamin_c"]
+    },
+    {
+      "concern": "dullness",
+      "candidate_categories": ["aha_glycolic_lactic_acid", "vitamin_c"]
+    }
+  ],
+  "category_metadata": {
+    "bha_salicylic_acid": { "photosensitizing": false, "irritation_potential": "moderate", "conflicts": ["retinoid_type", "benzoyl_peroxide", "aha_glycolic_lactic_acid"] },
+    "benzoyl_peroxide": { "photosensitizing": false, "irritation_potential": "high", "conflicts": ["retinoid_type", "bha_salicylic_acid", "aha_glycolic_lactic_acid", "vitamin_c"] },
+    "retinoid_type": { "photosensitizing": true, "irritation_potential": "high", "conflicts": ["bha_salicylic_acid", "benzoyl_peroxide", "aha_glycolic_lactic_acid", "vitamin_c"] },
+    "azelaic_acid": { "photosensitizing": false, "irritation_potential": "low", "conflicts": [] },
+    "vitamin_c": { "photosensitizing": false, "irritation_potential": "moderate", "conflicts": ["retinoid_type", "benzoyl_peroxide"] },
+    "niacinamide": { "photosensitizing": false, "irritation_potential": "low", "conflicts": [] },
+    "aha_glycolic_lactic_acid": { "photosensitizing": true, "irritation_potential": "moderate", "conflicts": ["retinoid_type", "benzoyl_peroxide", "bha_salicylic_acid"] },
+    "pigment_targeting_active": { "photosensitizing": true, "irritation_potential": "moderate", "conflicts": [] }
+  }
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import './styles/tokens.css';
+@import './styles/utilities.css';
+@import './styles/animations.css';
+
+@font-face {
+  font-family: 'Helvetica Local';
+  src: url('./components/fonts/helvetica-light-587ebe5a59211.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Local';
+  src: url('./components/fonts/Helvetica.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Local';
+  src: url('./components/fonts/Helvetica-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Local';
+  src: url('./components/fonts/Helvetica-Bold.ttf') format('truetype'); /* Mapping 900 to Bold since Black isn't available */
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  :root {
+    --font-display: 'Helvetica Local', 'Helvetica Neue', Helvetica, Arial, system-ui;
+    --font-body: 'Helvetica Local', 'Helvetica Neue', Helvetica, Arial, system-ui;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground selection:bg-accent/30 min-h-screen relative z-0;
+    font-family: var(--font-body);
+  }
+
+  /* Editorial Headings (Massive, Tight, Bold) */
+  h1, h2, h3, h4, h5, h6, .heading-display {
+    font-family: var(--font-display);
+    @apply font-black text-foreground;
+    font-weight: 900;
+    letter-spacing: -0.07em;
+    line-height: 0.84;
+  }
+
+  h1 { font-size: clamp(4rem, 15vw, 180px); /* 35-45% of viewport */ }
+  h2 { font-size: clamp(3.5rem, 12vw, 160px); }
+  h3 { font-size: clamp(3rem, 10vw, 140px); }
+  h4 { font-size: clamp(2.5rem, 8vw, 120px); }
+  h5 { font-size: clamp(2rem, 5vw, 80px); }
+  h6 { font-size: clamp(1.5rem, 3vw, 48px); }
+
+  /* Secondary Editorial Accents (Instrument Serif) */
+  .font-editorial {
+    font-family: "Instrument Serif", serif;
+    letter-spacing: normal;
+    line-height: 1.1;
+  }
+
+  /* Global Premium Animation Easing */
+  * {
+    --luxury-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }

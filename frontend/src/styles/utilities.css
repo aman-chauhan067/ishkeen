@@ -1,0 +1,43 @@
+@layer utilities {
+  /* Film Grain Overlay */
+  .bg-noise {
+    background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    background-repeat: repeat;
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  /* Tactile Paper Overlay for highlighted cards */
+  .bg-tactile-paper {
+    background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    background-repeat: repeat;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  /* Gradient Utilities */
+  .gradient-hero-glow {
+    background: radial-gradient(circle at center, rgb(var(--color-ocean-light) / 0.8) 0%, rgb(var(--color-ocean-dark) / 0.95) 100%);
+  }
+  
+  .gradient-upload-aura {
+    background: radial-gradient(circle at top right, rgb(var(--color-sky) / 0.15) 0%, rgb(var(--color-lavender) / 0.1) 50%, rgb(var(--color-ocean-dark) / 0) 100%);
+  }
+
+  .gradient-recommendation-light {
+    background: radial-gradient(circle at bottom left, rgb(var(--color-sage) / 0.15) 0%, rgb(var(--color-sky) / 0.1) 40%, rgb(var(--color-ocean-dark) / 0) 80%);
+  }
+
+  .gradient-depth {
+    background: radial-gradient(circle at center, rgb(var(--color-ocean-light)) 0%, rgb(var(--color-ocean-dark)) 100%);
+  }
+
+  /* Glass Utilities */
+  .glass-subtle {
+    @apply backdrop-blur-xl bg-white/40 border border-white/60 shadow-[0_4px_20px_-4px_rgba(28,40,65,0.05)];
+  }
+  
+  .glass-deep {
+    @apply backdrop-blur-2xl bg-white/60 border border-white/80 shadow-[0_8px_32px_-8px_rgba(28,40,65,0.08)];
+  }
+}

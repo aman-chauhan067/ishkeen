@@ -63,7 +63,10 @@ class RecommendationEngine:
         answers = submission.answers if isinstance(submission.answers, dict) else {}
         ctx = RecommendationContext(**answers)
         
-        ordered_evidence = sorted(ctx.current_concerns)
+        # 2. Extract Evidence
+        # The ML structured image analysis is the ONLY source of clinical evidence.
+        # The questionnaire is used strictly as a contextual modifier.
+        ordered_evidence = []
         
         # 2. Merge pre-validated canonical concerns from ML adapter
         if additional_concerns:
@@ -72,6 +75,12 @@ class RecommendationEngine:
                     ordered_evidence.append(concern)
                     self._trace(trace_builder, "add_event", "ml_adapter", "EVIDENCE_AUGMENTED", "info", f"CANONICAL_CONCERN:{concern}", 1)
             ordered_evidence = sorted(ordered_evidence)
+            
+        # 2b. Use definitive ML evidence to override self-reported skin type
+        if "oily_skin" in ordered_evidence:
+            ctx.skin_type = "oily"
+        elif "dryness" in ordered_evidence or "dehydration" in ordered_evidence:
+            ctx.skin_type = "dry"
         
         # 3. Generate Initial Candidates (deterministic sort)
         raw_candidates = []

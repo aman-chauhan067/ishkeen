@@ -54,5 +54,5 @@ class AuthService:
     def authenticate_user(self, email: str, plain_password: str) -> Optional[User]:
         return self.password_provider.authenticate(self.db, email, plain_password)
         
-    def authenticate_google(self, code: str) -> Optional[User]:
-        return self.google_provider.authenticate(self.db, code)
+    def authenticate_google(self, code: str, redirect_uri: Optional[str] = None) -> Optional[User]:
+        return self.google_provider.authenticate(self.db, code, redirect_uri=redirect_uri)

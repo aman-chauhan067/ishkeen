@@ -40,11 +40,11 @@ class Settings(BaseSettings):
     # Google OAuth
     GOOGLE_CLIENT_ID: str | None = None
     GOOGLE_CLIENT_SECRET: str | None = None
-    GOOGLE_REDIRECT_URI: str | None = None
+    GOOGLE_REDIRECT_URI: str | None = "https://ishkeen.akashchauhan325069.workers.dev/auth/google/callback"
 
     # Admin Bootstrapping
-    ADMIN_EMAIL: str | None = None
-    ADMIN_PASSWORD: str | None = None
+    ADMIN_EMAIL: str | None = "admin@example.com"
+    ADMIN_PASSWORD: str | None = "AdminPassword123!"
 
     # Gemini
     GEMINI_API_KEY: str | None = None

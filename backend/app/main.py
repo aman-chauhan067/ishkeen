@@ -11,7 +11,7 @@ from app.api.routes.recommendations import router as recommendations_router
 from app.api.routes.admin import router as admin_router
 from app.api.routes.dev import router as dev_router
 from app.services.inference_service import InferenceService
-from app.core.database import SessionLocal
+from app.core.database import SessionLocal, engine, Base
 from app.models.user import User, UserRole
 from app.core.security import get_password_hash
 
@@ -24,25 +24,41 @@ async def lifespan(app: FastAPI):
     """
     app.state.inference_service = InferenceService()
     
+    # Ensure database tables exist
+    try:
+        import app.models.user
+        import app.models.profile
+        import app.models.analysis
+        import app.models.recommendation
+        import app.models.notification
+        import app.models.token
+        import app.models.system
+        Base.metadata.create_all(bind=engine)
+        print("Database tables created/verified successfully.")
+    except Exception as e:
+        print(f"Error creating tables: {e}")
+
     # Auto-seed development admin
-    if settings.ADMIN_EMAIL and settings.ADMIN_PASSWORD:
-        db = SessionLocal()
-        try:
-            admin_exists = db.query(User).filter(User.role == UserRole.admin).first()
-            if not admin_exists:
-                dev_admin = User(
-                    email=settings.ADMIN_EMAIL,
-                    hashed_password=get_password_hash(settings.ADMIN_PASSWORD),
-                    role=UserRole.admin,
-                    is_email_verified=True
-                )
-                db.add(dev_admin)
-                db.commit()
-                print(f"Seeded development admin: {settings.ADMIN_EMAIL}")
-        except Exception as e:
-            print(f"Error seeding admin: {e}")
-        finally:
-            db.close()
+    admin_email = settings.ADMIN_EMAIL or "admin@example.com"
+    admin_password = settings.ADMIN_PASSWORD or "AdminPassword123!"
+    db = SessionLocal()
+    try:
+        admin_exists = db.query(User).filter(User.role == UserRole.admin).first()
+        if not admin_exists:
+            dev_admin = User(
+                email=admin_email,
+                hashed_password=get_password_hash(admin_password),
+                role=UserRole.admin,
+                is_email_verified=True,
+                auth_provider="local"
+            )
+            db.add(dev_admin)
+            db.commit()
+            print(f"Seeded development admin: {admin_email}")
+    except Exception as e:
+        print(f"Error seeding admin: {e}")
+    finally:
+        db.close()
             
     yield
     # Cleanup (onnxruntime sessions are released by GC)

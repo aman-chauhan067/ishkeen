@@ -21,6 +21,7 @@ class GoogleUrlResponse(BaseModel):
 class GoogleLoginRequest(BaseModel):
     code: str
     state: str
+    redirect_uri: str | None = None
 
 router = APIRouter(dependencies=[Depends(verify_csrf_origin)])
 
@@ -395,7 +396,7 @@ def revoke_other_sessions(request: Request, db: Session = Depends(get_db), curre
     return {"message": "Other sessions revoked"}
 
 @router.get("/google/url", response_model=GoogleUrlResponse)
-def get_google_url(response: Response):
+def get_google_url(request: Request, response: Response):
     state = secrets.token_urlsafe(32)
     # Store state securely in a short-lived cookie for validation
     response.set_cookie(
@@ -408,10 +409,25 @@ def get_google_url(response: Response):
         path="/"
     )
     
+    # Dynamically determine callback URI based on Origin or Referer header
+    origin = request.headers.get("origin") or request.headers.get("referer")
+    if origin and any(domain in origin for domain in [".workers.dev", ".pages.dev", "localhost", "ishkeen"]):
+        from urllib.parse import urlparse
+        parsed = urlparse(origin)
+        redirect_uri = f"{parsed.scheme}://{parsed.netloc}/auth/google/callback"
+    else:
+        redirect_uri = settings.GOOGLE_REDIRECT_URI or "https://ishkeen.akashchauhan325069.workers.dev/auth/google/callback"
+
+    if not settings.GOOGLE_CLIENT_ID or settings.GOOGLE_CLIENT_ID == "None":
+        raise HTTPException(
+            status_code=400,
+            detail="Google OAuth is not configured on the server. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in Render Environment Variables."
+        )
+
     base_url = "https://accounts.google.com/o/oauth2/v2/auth"
     params = {
         "client_id": settings.GOOGLE_CLIENT_ID,
-        "redirect_uri": settings.GOOGLE_REDIRECT_URI,
+        "redirect_uri": redirect_uri,
         "response_type": "code",
         "scope": "openid email profile",
         "state": state,
@@ -432,7 +448,7 @@ def google_login(request: Request, payload: GoogleLoginRequest, response: Respon
 
     auth_service = AuthService(db)
     try:
-        user = auth_service.authenticate_google(payload.code)
+        user = auth_service.authenticate_google(payload.code, payload.redirect_uri)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
         

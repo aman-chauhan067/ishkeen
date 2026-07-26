@@ -36,7 +36,11 @@ export const GoogleCallbackPage: React.FC = () => {
 
     const processGoogleLogin = async () => {
       try {
-        const user = await api.post<User>('/auth/google/login', { code, state });
+        const user = await api.post<User>('/auth/google/login', { 
+          code, 
+          state, 
+          redirect_uri: window.location.origin + '/auth/google/callback' 
+        });
         login(user);
         
         // Handle First Login Experience (redirect to Questionnaire if incomplete)

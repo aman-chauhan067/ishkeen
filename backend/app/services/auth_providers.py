@@ -43,14 +43,14 @@ class PasswordProvider:
         return user
 
 class GoogleOAuthProvider:
-    def authenticate(self, db: Session, code: str) -> Optional[User]:
+    def authenticate(self, db: Session, code: str, redirect_uri: Optional[str] = None) -> Optional[User]:
         # Exchange authorization code for ID token
         token_endpoint = "https://oauth2.googleapis.com/token"
         payload = {
             "code": code,
             "client_id": settings.GOOGLE_CLIENT_ID,
             "client_secret": settings.GOOGLE_CLIENT_SECRET,
-            "redirect_uri": settings.GOOGLE_REDIRECT_URI,
+            "redirect_uri": redirect_uri or settings.GOOGLE_REDIRECT_URI,
             "grant_type": "authorization_code",
         }
         resp = requests.post(token_endpoint, data=payload)

@@ -23,12 +23,57 @@ class CVMetrics:
 class CVAnalyzer:
     def __init__(self):
         # Static mode allows it to run on single images
-        self.face_mesh = mp_face_mesh.FaceMesh(
-            static_image_mode=True,
-            max_num_faces=1,
-            refine_landmarks=True,
-            min_detection_confidence=0.5
-        )
+        try:
+            self.face_mesh = mp_face_mesh.FaceMesh(
+                static_image_mode=True,
+                max_num_faces=1,
+                refine_landmarks=True,
+                min_detection_confidence=0.5
+            )
+        except Exception as e:
+            logger.warning(f"MediaPipe FaceMesh init failed ({e}); fallback to central facial colorimetry will be used.")
+            self.face_mesh = None
+
+    def _analyze_fallback_crop(self, img_bgr, h, w) -> dict:
+        """
+        Calculates objective Laplacian and colorimetric metrics on the central facial region
+        when MediaPipe landmark detection is unavailable on headless Linux.
+        """
+        import base64
+        y1, y2 = int(h * 0.15), int(h * 0.85)
+        x1, x2 = int(w * 0.15), int(w * 0.85)
+        crop = img_bgr[y1:y2, x1:x2]
+        if crop.size == 0:
+            crop = img_bgr
+
+        # 1. Texture (Laplacian Variance)
+        gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+        lap = cv2.Laplacian(gray, cv2.CV_64F)
+        texture_val = np.var(lap)
+
+        # 2. Oiliness (Specular ratio)
+        gray_norm = cv2.normalize(gray, None, 0, 255, cv2.NORM_MINMAX)
+        _, thresh = cv2.threshold(gray_norm, 230, 255, cv2.THRESH_BINARY)
+        oiliness_val = (np.sum(thresh == 255) / (crop.shape[0] * crop.shape[1] + 1e-5)) * 100
+
+        # 3. Redness (a* LAB shift)
+        lab = cv2.cvtColor(crop, cv2.COLOR_BGR2LAB)
+        _, a, _ = cv2.split(lab)
+        redness_val = max(0, float(np.mean(a)) - 128)
+
+        dev_img = img_bgr.copy()
+        cv2.rectangle(dev_img, (x1, y1), (x2, y2), (0, 255, 255), 2)
+        _, buffer = cv2.imencode('.jpg', dev_img)
+        dev_img_b64 = base64.b64encode(buffer).decode('utf-8')
+
+        return {
+            "metrics": {
+                "texture_laplacian_variance": float(texture_val),
+                "oiliness_specular_ratio": float(oiliness_val),
+                "redness_a_channel_shift": float(redness_val)
+            },
+            "dev_visualization_b64": dev_img_b64
+        }
 
     def process_image(self, img_bytes: bytes) -> dict:
         """
@@ -43,16 +88,21 @@ class CVAnalyzer:
         if img_bgr is None:
             raise ValueError("Failed to decode image bytes")
             
-        img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
-        h, w, _ = img_rgb.shape
+        h, w, _ = img_bgr.shape
 
-        # 2. Run Face Mesh
-        results = self.face_mesh.process(img_rgb)
-        
-        if not results.multi_face_landmarks:
-            raise ValueError("No face detected by MediaPipe")
+        # 2. Run Face Mesh or Fallback Crop
+        landmarks = None
+        if self.face_mesh:
+            try:
+                img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+                results = self.face_mesh.process(img_rgb)
+                if results and results.multi_face_landmarks:
+                    landmarks = results.multi_face_landmarks[0]
+            except Exception as e:
+                logger.warning(f"MediaPipe processing error ({e}); using central facial colorimetry fallback.")
 
-        landmarks = results.multi_face_landmarks[0]
+        if landmarks is None:
+            return self._analyze_fallback_crop(img_bgr, h, w)
 
         # Function to extract ROI from landmark indices
         def get_roi_mask(indices):

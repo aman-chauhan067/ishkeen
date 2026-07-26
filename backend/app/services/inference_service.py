@@ -31,11 +31,16 @@ class InferenceService:
         
         try:
             self.cv_analyzer = CVAnalyzer()
-            self.gemini_vision = GeminiVisionService()
-            logger.info("Hybrid Inference Pipeline initialized successfully.")
+            logger.info("CVAnalyzer initialized successfully.")
         except Exception as e:
-            logger.error(f"Failed to initialize Hybrid Inference Pipeline: {e}")
-            self.cv_analyzer = None
+            logger.error(f"CVAnalyzer init warning ({e}); initializing fallback instance.")
+            self.cv_analyzer = CVAnalyzer()
+
+        try:
+            self.gemini_vision = GeminiVisionService()
+            logger.info("GeminiVisionService initialized successfully.")
+        except Exception as e:
+            logger.error(f"GeminiVisionService init error: {e}")
             self.gemini_vision = None
 
     @property

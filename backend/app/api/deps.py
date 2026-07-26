@@ -58,20 +58,21 @@ def verify_csrf_origin(request: Request):
     """
     if request.method not in ["GET", "HEAD", "OPTIONS", "TRACE"]:
         origin = request.headers.get("origin")
+        def is_allowed(o: str) -> bool:
+            if o in settings.BACKEND_CORS_ORIGINS:
+                return True
+            if any(domain in o for domain in [".pages.dev", ".workers.dev", ".onrender.com", "localhost"]):
+                return True
+            return False
+
         if origin:
-            if origin not in settings.BACKEND_CORS_ORIGINS:
+            if not is_allowed(origin):
                 raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Origin")
         else:
-            # If Origin is missing, fall back to Referer
             referer = request.headers.get("referer")
             if referer:
-                # Basic check: does referer start with any allowed origin?
-                if not any(referer.startswith(o) for o in settings.BACKEND_CORS_ORIGINS):
+                if not is_allowed(referer):
                     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Referer")
-            # If both missing, we allow it (trusting SameSite=Lax for same-site omission),
-            # or we could strictly reject. The prompt says "without breaking legitimate same-site requests unnecessarily".
-            # Modern browsers send Origin or Referer for cross-origin POSTs. 
-            pass
 
 def get_inference_service(request: Request) -> InferenceService:
     """

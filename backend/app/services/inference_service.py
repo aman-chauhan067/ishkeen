@@ -40,86 +40,37 @@ class InferenceService:
 
     @property
     def is_available(self) -> bool:
-        return self.cv_analyzer is not None and self.gemini_vision is not None and self.gemini_vision.is_configured
+        return self.cv_analyzer is not None
 
     @property
     def model_version(self) -> str:
         return self._model_version
 
-    def _get_fallback_evidence(self, status_msg: str) -> Dict[str, Any]:
-        return {
-            "acne_detected": True,
-            "acne_confidence": 0.85,
-            "status": status_msg,
-            "model_version": self._model_version,
-            "concerns": [
-                {
-                    "name": "Mild Inflammatory Acne & Congestion",
-                    "severity": "Mild",
-                    "confidence": 85,
-                    "explanation": "Detected localized follicular inflammation and mild sebum congestion across T-zone and cheek areas."
-                },
-                {
-                    "name": "Uneven Skin Tone & Erythema",
-                    "severity": "Mild",
-                    "confidence": 78,
-                    "explanation": "Subtle post-inflammatory erythema associated with healing blemishes."
-                }
-            ],
-            "observations": [
-                {
-                    "observation": "Localized sebum imbalance and micro-comedones",
-                    "reason": "Lipid barrier fluctuation and epidermal cell turnover slowdown",
-                    "implication": "May lead to recurring blemishes without targeted exfoliation and soothing care",
-                    "expected_improvement": "Visible reduction in redness and congestion within 14-21 days of daily protocol"
-                }
-            ],
-            "ingredients": {
-                "Morning": [
-                    {
-                        "name": "Niacinamide 5%",
-                        "benefit": "Barrier restoration & oil regulation",
-                        "why": "Helps balance sebum production while calming localized redness.",
-                        "time": "AM",
-                        "compatibility": "High"
-                    }
-                ],
-                "Night": [
-                    {
-                        "name": "Salicylic Acid 2% (BHA)",
-                        "benefit": "Pore decongestion & anti-inflammatory",
-                        "why": "Penetrates lipid barrier to dissolve sebum build-up and refine skin texture.",
-                        "time": "PM",
-                        "compatibility": "High"
-                    }
-                ]
-            }
-        }
-
     def predict(self, img_bytes: bytes) -> Dict[str, Any]:
         """
         Main entrypoint for the inference pipeline.
+        Always extracts objective OpenCV + MediaPipe computer vision metrics from the image.
+        If Gemini Vision API is configured and reachable, fuses both CV metrics and Gemini semantics.
+        If Gemini Vision API is unavailable, synthesizes clinical evidence directly from the CV metrics.
         """
-        if not self.is_available:
-            return self._get_fallback_evidence("model_not_loaded_using_clinical_fallback")
-            
-        try:
-            # 1. MediaPipe & OpenCV
-            cv_results = self.cv_analyzer.process_image(img_bytes)
-            metrics = cv_results["metrics"]
-            
-            # 2. Gemini Semantic Observation
-            gemini_json = self.gemini_vision.analyze(img_bytes, metrics)
-            
-            # 3. Fusion to Canonical Evidence
-            final_graph = EvidenceFusionService.fuse(metrics, gemini_json)
-            
-            return final_graph
-            
-        except Exception as e:
-            logger.error(f"Hybrid Inference error: {e}")
-            # Fallback gracefully with rich clinical evidence
-            return self._get_fallback_evidence(f"fallback: {str(e)}")
+        if self.cv_analyzer is None:
+            raise ValueError("CVAnalyzer is not initialized.")
+
+        # 1. Always calculate objective MediaPipe & OpenCV computer vision metrics from the real image
+        cv_results = self.cv_analyzer.process_image(img_bytes)
+        metrics = cv_results["metrics"]
+
+        # 2. Try Gemini Semantic Observation if configured
+        gemini_json = {}
+        if self.gemini_vision and self.gemini_vision.is_configured:
+            try:
+                gemini_json = self.gemini_vision.analyze(img_bytes, metrics)
+            except Exception as e:
+                logger.warning(f"Gemini Vision API unreachable or error ({e}); using objective CV algorithmic metrics.")
+
+        # 3. Fuse to Canonical Evidence Graph (never static/fake!)
+        final_graph = EvidenceFusionService.fuse(metrics, gemini_json)
+        return final_graph
 
     def dev_debug(self, img_bytes: bytes) -> Dict[str, Any]:
         """

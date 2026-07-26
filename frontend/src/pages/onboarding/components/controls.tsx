@@ -8,8 +8,8 @@ import type { OptionConfig } from '../../../config/questionnaire-options';
 export const SelectionIndicator: React.FC<{ selected: boolean; type: 'radio' | 'checkbox' }> = ({ selected, type }) => (
   <div className={cn(
     "flex-shrink-0 flex items-center justify-center transition-all duration-500",
-    type === 'radio' ? "w-5 h-5 rounded-full border border-[#253A4A]/20" : "w-5 h-5 rounded border border-[#253A4A]/20",
-    selected ? "bg-[#253A4A] border-[#253A4A] text-[#FCFBF8]" : "bg-[#F8F5F1]"
+    type === 'radio' ? "w-5 h-5 rounded-full border border-[#26384B]/20" : "w-5 h-5 rounded border border-[#26384B]/20",
+    selected ? "bg-[#26384B] border-[#26384B] text-[#F6F4EF]" : "bg-[#FBFAF7]"
   )}>
     {selected && <Check className="w-3 h-3" strokeWidth={3} />}
   </div>
@@ -57,9 +57,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ selected, className,
       className={cn(
         "w-full h-full p-6 rounded-3xl border text-left transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
         selected 
-          ? "bg-[#FCFBF8] border-[#253A4A]/30 shadow-[0_8px_30px_rgba(37,58,74,0.08)]" 
-          : "bg-[#F8F5F1]/80 border-[#253A4A]/5 hover:bg-[#FCFBF8] shadow-[0_4px_14px_rgba(37,58,74,0.03)]",
-        disabled && !selected && "opacity-50 cursor-not-allowed hover:bg-[#F8F5F1]/80",
+          ? "bg-[#F6F4EF] border-[#26384B]/30 shadow-[0_8px_30px_rgba(37,58,74,0.08)]" 
+          : "bg-[#FBFAF7]/80 border-[#26384B]/5 hover:bg-[#F6F4EF] shadow-[0_4px_14px_rgba(37,58,74,0.03)]",
+        disabled && !selected && "opacity-50 cursor-not-allowed hover:bg-[#FBFAF7]/80",
         className
       )}
       {...props}

@@ -39,18 +39,18 @@ export const VerifyEmailPage: React.FC = () => {
           {/* In-card header */}
           <div className="mb-7 relative">
             <Link to="/" className="inline-block mb-4 relative z-10">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#4C6072]">ISHKEEN</span>
             </Link>
-            <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
               Email Verification
             </h2>
-            <Doodle type="circle" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+            <Doodle type="circle" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
           </div>
 
           {status === 'loading' && (
             <div className="flex flex-col items-center gap-4 py-4">
-              <div className="animate-spin border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full w-8 h-8" />
-              <Typography variant="body" className="text-sm text-[#5C7E9A]">
+              <div className="animate-spin border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full w-8 h-8" />
+              <Typography variant="body" className="text-sm text-[#4C6072]">
                 Verifying your email...
               </Typography>
             </div>

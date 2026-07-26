@@ -9,6 +9,7 @@ from app.api.routes.profile import router as profile_router
 from app.api.routes.analyses import router as analyses_router
 from app.api.routes.recommendations import router as recommendations_router
 from app.api.routes.admin import router as admin_router
+from app.api.routes.dev import router as dev_router
 from app.services.inference_service import InferenceService
 from app.core.database import SessionLocal
 from app.models.user import User, UserRole
@@ -78,6 +79,7 @@ app.include_router(profile_router, prefix="/api", tags=["profile"])
 app.include_router(analyses_router, prefix="/api", tags=["analyses"])
 app.include_router(recommendations_router, prefix="/api", tags=["recommendations"])
 app.include_router(admin_router, prefix="/api/admin", tags=["admin"])
+app.include_router(dev_router, prefix="/api/v1", tags=["dev"])
 
 from fastapi.staticfiles import StaticFiles
 import os

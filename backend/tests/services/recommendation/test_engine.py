@@ -18,17 +18,17 @@ def test_engine_empty_actives_success(kb):
     submission = QuestionnaireSubmission(id=uuid.uuid4(), answers=answers)
     
     engine = RecommendationEngine(kb)
-    result = engine.generate(submission)
+    result = engine.generate(submission, additional_concerns=["breakouts"])
     
     assert len(result.ingredient_guidance) == 0
     assert len(result.deferred_guidance) > 0
     
     # Assert routine still exists without a treatment slot
-    steps = [slot.step for slot in result.routine_slots]
-    assert "cleanser" in steps
-    assert "moisturizer" in steps
-    assert "sunscreen" in steps
-    assert "treatment" not in steps
+    categories = [slot.category for slot in result.morning_routine]
+    assert any("cleanser" in c for c in categories)
+    assert any("moisturizer" in c for c in categories)
+    assert any("spf" in c for c in categories)
+    assert not any("treatment" in c for c in categories)
 
 def test_engine_deterministic_output(kb):
     answers = {
@@ -40,8 +40,8 @@ def test_engine_deterministic_output(kb):
     submission = QuestionnaireSubmission(id=uuid.uuid4(), answers=answers)
     engine = RecommendationEngine(kb)
     
-    result1 = engine.generate(submission)
-    result2 = engine.generate(submission)
+    result1 = engine.generate(submission, additional_concerns=["dullness", "breakouts"])
+    result2 = engine.generate(submission, additional_concerns=["dullness", "breakouts"])
     
     assert result1.model_dump() == result2.model_dump()
     
@@ -55,8 +55,8 @@ def test_engine_deterministic_output(kb):
     cats = [g.category for g in result1.ingredient_guidance]
     assert cats == ["bha_salicylic_acid", "benzoyl_peroxide", "retinoid_type"]
     
-    # Treatment slot should just have the first one
-    treatment = next(s for s in result1.routine_slots if s.step == "treatment")
+    # Treatment slot should just have the first one (bha is in night routine)
+    treatment = next(s for s in result1.night_routine if "treatment" in s.step_name.lower() or "treatment" in s.category.lower())
     assert treatment.category == "bha_salicylic_acid"
 
 def test_no_hidden_model_provenance(kb):

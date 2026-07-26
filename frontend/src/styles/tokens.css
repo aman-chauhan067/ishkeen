@@ -4,38 +4,43 @@
 
 @layer base {
   :root {
-    /* FINAL DESIGN SYSTEM: Luxury Skincare Identity */
+    /* SWISS CLINICAL EDITORIAL DESIGN SYSTEM V1.0 */
     
-    /* Strict 10-Color Palette */
-    --color-deep-ocean: 37 58 74;   /* #253A4A */
-    --color-ocean-blue: 92 126 154; /* #5C7E9A */
-    --color-soft-sage: 168 181 162; /* #A8B5A2 */
-    --color-lavender: 200 196 216;  /* #C8C4D8 */
-    --color-peach: 244 211 196;     /* #F4D3C4 */
-    --color-coral: 232 155 135;     /* #E89B87 */
-    --color-rose: 216 165 168;      /* #D8A5A8 */
-    --color-mist-blue: 215 229 236; /* #D7E5EC */
-    --color-ivory: 248 245 241;     /* #F8F5F1 */
-    --color-paper-white: 252 251 248; /* #FCFBF8 */
+    /* Strict Color Palette (RGB format for Tailwind opacity support) */
+    --color-primary-bg: 246 244 239;     /* #F6F4EF Warm Ivory */
+    --color-secondary-bg: 241 238 231;   /* #F1EEE7 Alternating Sections */
+    --color-surface: 251 250 247;        /* #FBFAF7 Cards, Panels, Dialogs */
+    
+    --color-primary-text: 38 56 75;      /* #26384B Headings, Buttons, Navigation */
+    --color-secondary-text: 76 96 114;   /* #4C6072 Descriptions, Subtitles, Metadata */
+    --color-muted-text: 136 147 161;     /* #8893A1 Hints, Placeholders, Disabled */
+    
+    --color-primary-border: 229 224 216; /* #E5E0D8 Primary Border */
+    --color-hover-border: 214 208 199;   /* #D6D0C7 Hover Border */
+    
+    /* BRAND ACCENT (Golden Rule: Must stay below 5% of UI! Never on headlines/buttons/cards) */
+    --color-primary-accent: 198 124 90;  /* #C67C5A Copper Accent */
+    --color-soft-accent: 215 154 124;    /* #D79A7C Soft Accent */
+    --color-light-accent: 231 200 182;   /* #E7C8B6 Light Accent */
 
     /* Backgrounds */
-    --bg: var(--color-paper-white);
-    --card: var(--color-ivory);
+    --bg: var(--color-primary-bg);
+    --card: var(--color-surface);
     
     /* Text Hierarchy */
-    --foreground: var(--color-deep-ocean);      /* Primary Text */
-    --muted-foreground: var(--color-ocean-blue);/* Secondary Text */
-    --soft-foreground: var(--color-soft-sage);  /* Muted Text */
-    --caption-foreground: var(--color-lavender);/* Captions */
+    --foreground: var(--color-primary-text);
+    --muted-foreground: var(--color-secondary-text);
+    --soft-foreground: var(--color-muted-text);
+    --caption-foreground: var(--color-muted-text);
     
     /* Accents & States */
-    --accent: var(--color-coral);
-    --border: var(--color-mist-blue); 
-    --ring: var(--color-deep-ocean);
+    --accent: var(--color-primary-accent);
+    --border: var(--color-primary-border); 
+    --ring: var(--color-primary-text);
 
-    --success: var(--color-soft-sage);
-    --warning: var(--color-peach);
-    --danger: var(--color-coral);
+    --success: 63 125 88;                /* #3F7D58 */
+    --warning: var(--color-primary-accent);
+    --danger: 177 77 77;                 /* #B14D4D */
 
     /* Radii */
     --radius: 1rem;

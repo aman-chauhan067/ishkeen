@@ -15,15 +15,15 @@ interface SystemHealthResponse {
 }
 
 const ResourceGauge = ({ label, percentage, icon: Icon }: any) => (
-  <div className="bg-[#FCFBF8] p-6 rounded-2xl border border-[#253A4A]/5">
+  <div className="bg-[#F6F4EF] p-6 rounded-2xl border border-[#26384B]/5">
     <div className="flex justify-between items-center mb-6">
-      <div className="flex items-center gap-2 text-[#5C7E9A]">
+      <div className="flex items-center gap-2 text-[#4C6072]">
         <Icon className="w-4 h-4" />
         <span className="font-sans text-xs font-bold uppercase tracking-widest">{label}</span>
       </div>
-      <div className="font-serif text-2xl text-[#253A4A]">{percentage.toFixed(1)}%</div>
+      <div className="font-serif text-2xl text-[#26384B]">{percentage.toFixed(1)}%</div>
     </div>
-    <div className="w-full h-2 bg-[#253A4A]/5 rounded-full overflow-hidden">
+    <div className="w-full h-2 bg-[#26384B]/5 rounded-full overflow-hidden">
       <div 
         className={`h-full rounded-full transition-all duration-1000 ${
           percentage > 90 ? 'bg-red-500' : percentage > 70 ? 'bg-amber-500' : 'bg-emerald-500'
@@ -38,16 +38,16 @@ const ServiceStatus = ({ label, status, icon: Icon }: any) => {
   const isHealthy = status.toLowerCase() === 'healthy' || status.toLowerCase() === 'connected';
   
   return (
-    <div className="flex items-center justify-between p-4 bg-[#FCFBF8] rounded-xl border border-[#253A4A]/5 hover:border-[#253A4A]/20 transition-colors">
+    <div className="flex items-center justify-between p-4 bg-[#F6F4EF] rounded-xl border border-[#26384B]/5 hover:border-[#26384B]/20 transition-colors">
       <div className="flex items-center gap-4">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isHealthy ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
           <Icon className="w-5 h-5" />
         </div>
-        <div className="font-sans font-medium text-[#253A4A]">{label}</div>
+        <div className="font-sans font-medium text-[#26384B]">{label}</div>
       </div>
       <div className="flex items-center gap-2">
         <div className={`w-2 h-2 rounded-full ${isHealthy ? 'bg-emerald-500' : 'bg-red-500'}`} />
-        <span className="font-sans text-xs uppercase tracking-widest text-[#5C7E9A]">{status}</span>
+        <span className="font-sans text-xs uppercase tracking-widest text-[#4C6072]">{status}</span>
       </div>
     </div>
   );
@@ -77,7 +77,7 @@ export const AdminHealth = () => {
   if (loading && !data) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
       </div>
     );
   }
@@ -89,8 +89,8 @@ export const AdminHealth = () => {
       <BlurReveal>
         <div className="flex justify-between items-end mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#253A4A] tracking-tight mb-4">System Health</h1>
-            <p className="font-sans text-[#5C7E9A] leading-relaxed">
+            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">System Health</h1>
+            <p className="font-sans text-[#4C6072] leading-relaxed">
               Real-time infrastructure monitoring. Tracks service availability, resource utilization, and active sessions.
             </p>
           </div>
@@ -116,21 +116,21 @@ export const AdminHealth = () => {
             <ResourceGauge label="Disk Storage" percentage={data.disk_usage_percent} icon={HardDrive} />
           </Fade>
           <Fade delay={0.4}>
-            <div className="bg-[#FCFBF8] p-6 rounded-2xl border border-[#253A4A]/5">
+            <div className="bg-[#F6F4EF] p-6 rounded-2xl border border-[#26384B]/5">
               <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center gap-2 text-[#5C7E9A]">
+                <div className="flex items-center gap-2 text-[#4C6072]">
                   <Activity className="w-4 h-4" />
                   <span className="font-sans text-xs font-bold uppercase tracking-widest">Active Sessions</span>
                 </div>
               </div>
-              <div className="font-serif text-5xl text-[#253A4A]">{data.active_sessions}</div>
-              <div className="font-sans text-xs text-[#5C7E9A] mt-2">Currently authenticated users</div>
+              <div className="font-serif text-5xl text-[#26384B]">{data.active_sessions}</div>
+              <div className="font-sans text-xs text-[#4C6072] mt-2">Currently authenticated users</div>
             </div>
           </Fade>
         </div>
 
         <Fade delay={0.5} className="flex flex-col gap-4">
-          <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-[#253A4A] mb-2 px-2">Services</h3>
+          <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-[#26384B] mb-2 px-2">Services</h3>
           <ServiceStatus label="Core API Cluster" status={data.backend_status} icon={Network} />
           <ServiceStatus label="Primary Database" status={data.database_status} icon={Database} />
           <ServiceStatus label="Inference Engine" status={data.ml_service_status} icon={Cpu} />

@@ -16,7 +16,7 @@ const typographyVariants = cva(
         h2: "heading-display text-[clamp(1.75rem,4vw,4rem)] text-foreground",
         h3: "heading-display text-[clamp(1.5rem,3vw,3rem)] text-foreground",
         h4: "heading-display text-[clamp(1.25rem,2vw,2.25rem)] text-foreground",
-        body: "font-sans text-base leading-relaxed text-[#253A4A]",
+        body: "font-sans text-base leading-relaxed text-[#26384B]",
         caption: "font-sans text-sm font-medium tracking-wide uppercase text-[#C8C4D8]",
         overline: "font-sans text-xs uppercase tracking-widest text-muted-foreground font-semibold",
         quote: "font-serif text-xl md:text-2xl italic text-muted-foreground border-l-2 border-border pl-4",

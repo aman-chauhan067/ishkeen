@@ -192,10 +192,10 @@ class TestAdapterEngineIntegration:
         # No additional concerns (adapter abstained or no analysis)
         result = engine.generate(submission, additional_concerns=[])
         
-        steps = [s.step for s in result.routine_slots]
-        assert "cleanser" in steps
-        assert "moisturizer" in steps
-        assert "sunscreen" in steps
+        steps = [s.category for s in result.morning_routine]
+        assert any("cleanser" in c for c in steps)
+        assert any("moisturizer" in c for c in steps)
+        assert any("spf" in c for c in steps)
         assert result.provenance_refs.skin_analysis_id is None
 
     def test_engine_with_additional_concerns_from_adapter(self):
@@ -240,5 +240,5 @@ class TestAdapterEngineIntegration:
         result_both = engine.generate(submission, additional_concerns=["acne_breakouts"])
         
         # Determinism: same canonical input → same output
-        assert result_user_only.routine_slots == result_both.routine_slots
+        assert result_user_only.morning_routine == result_both.morning_routine
         assert result_user_only.ingredient_guidance == result_both.ingredient_guidance

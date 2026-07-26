@@ -46,42 +46,42 @@ export const AdminUsers = () => {
     <div className="space-y-8">
       <BlurReveal>
         <div className="max-w-2xl">
-          <h1 className="font-serif text-4xl text-[#253A4A] tracking-tight mb-4">User Management</h1>
-          <p className="font-sans text-[#5C7E9A] leading-relaxed">
+          <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">User Management</h1>
+          <p className="font-sans text-[#4C6072] leading-relaxed">
             Monitor and manage Ishkeen user accounts, onboarding progress, and activity.
           </p>
         </div>
       </BlurReveal>
 
       <Fade delay={0.1}>
-        <div className="flex justify-between items-center bg-[#FCFBF8] p-4 rounded-2xl border border-[#253A4A]/5">
+        <div className="flex justify-between items-center bg-[#F6F4EF] p-4 rounded-2xl border border-[#26384B]/5">
           <div className="w-96 relative">
-            <Search className="w-4 h-4 text-[#5C7E9A] absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#4C6072] absolute left-4 top-1/2 -translate-y-1/2" />
             <input 
               type="text" 
               placeholder="Search by email..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-[#F7F7F5] border-none rounded-xl font-sans text-sm text-[#253A4A] placeholder:text-[#5C7E9A]/50 focus:outline-none focus:ring-1 focus:ring-[#253A4A]/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 bg-[#F7F7F5] border-none rounded-xl font-sans text-sm text-[#26384B] placeholder:text-[#4C6072]/50 focus:outline-none focus:ring-1 focus:ring-[#26384B]/20 transition-all"
             />
           </div>
-          <div className="text-[#5C7E9A] font-sans text-xs font-medium tracking-widest uppercase">
+          <div className="text-[#4C6072] font-sans text-xs font-medium tracking-widest uppercase">
             {users.length} Users Found
           </div>
         </div>
       </Fade>
 
       <Fade delay={0.2}>
-        <div className="bg-[#FCFBF8] rounded-2xl border border-[#253A4A]/5 overflow-hidden">
+        <div className="bg-[#F6F4EF] rounded-2xl border border-[#26384B]/5 overflow-hidden">
           {loading ? (
             <div className="h-64 flex items-center justify-center">
-              <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left font-sans">
                 <thead>
-                  <tr className="border-b border-[#253A4A]/5 text-[#5C7E9A] text-[10px] uppercase tracking-widest bg-[#F7F7F5]/50">
+                  <tr className="border-b border-[#26384B]/5 text-[#4C6072] text-[10px] uppercase tracking-widest bg-[#F7F7F5]/50">
                     <th className="px-6 py-4 font-medium">User</th>
                     <th className="px-6 py-4 font-medium">Status</th>
                     <th className="px-6 py-4 font-medium">Analyses</th>
@@ -90,7 +90,7 @@ export const AdminUsers = () => {
                     <th className="px-6 py-4 font-medium text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#253A4A]/5">
+                <tbody className="divide-y divide-[#26384B]/5">
                   {users.map((user) => (
                     <tr 
                       key={user.id} 
@@ -99,12 +99,12 @@ export const AdminUsers = () => {
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-[#253A4A]/5 flex items-center justify-center">
-                            <UserIcon className="w-4 h-4 text-[#253A4A]" />
+                          <div className="w-8 h-8 rounded-full bg-[#26384B]/5 flex items-center justify-center">
+                            <UserIcon className="w-4 h-4 text-[#26384B]" />
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-[#253A4A]">{user.email}</div>
-                            <div className="text-[10px] text-[#5C7E9A] uppercase tracking-wider">{user.role}</div>
+                            <div className="text-sm font-medium text-[#26384B]">{user.email}</div>
+                            <div className="text-[10px] text-[#4C6072] uppercase tracking-wider">{user.role}</div>
                           </div>
                         </div>
                       </td>
@@ -119,21 +119,21 @@ export const AdminUsers = () => {
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-sm text-[#253A4A]">{user.analysis_count}</td>
-                      <td className="px-6 py-4 text-xs text-[#5C7E9A]">
+                      <td className="px-6 py-4 text-sm text-[#26384B]">{user.analysis_count}</td>
+                      <td className="px-6 py-4 text-xs text-[#4C6072]">
                         {user.last_activity ? format(new Date(user.last_activity), 'MMM d, yyyy HH:mm') : 'Never'}
                       </td>
-                      <td className="px-6 py-4 text-xs text-[#5C7E9A]">
+                      <td className="px-6 py-4 text-xs text-[#4C6072]">
                         {format(new Date(user.created_at), 'MMM d, yyyy')}
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <ChevronRight className="w-4 h-4 text-[#5C7E9A] group-hover:text-[#253A4A] transition-colors inline-block" />
+                        <ChevronRight className="w-4 h-4 text-[#4C6072] group-hover:text-[#26384B] transition-colors inline-block" />
                       </td>
                     </tr>
                   ))}
                   {users.length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-6 py-12 text-center text-[#5C7E9A] font-sans text-sm">
+                      <td colSpan={6} className="px-6 py-12 text-center text-[#4C6072] font-sans text-sm">
                         No users found.
                       </td>
                     </tr>

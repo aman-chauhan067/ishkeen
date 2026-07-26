@@ -9,18 +9,31 @@ import uuid
 import io
 from datetime import datetime, timezone
 
-client = TestClient(app)
+client = TestClient(app, raise_server_exceptions=True)
 
-# Override InferenceService for all analyses tests
 from app.api.deps import get_inference_service
-app.dependency_overrides[get_inference_service] = lambda: MagicMock()
+from app.core.database import get_db
+import pytest
+
+@pytest.fixture(autouse=True)
+def setup_overrides():
+    def get_mock_db():
+        db = MagicMock()
+        db.query.return_value.filter.return_value.count.return_value = 0
+        return db
+    app.dependency_overrides[get_db] = get_mock_db
+    app.dependency_overrides[get_inference_service] = lambda: MagicMock()
+    yield
+    # No need to clear here as conftest.py does it
 
 def get_mock_user():
     return User(
         id=uuid.uuid4(),
         email="test@example.com",
         role=UserRole.user,
-        is_active=True
+        is_active=True,
+        is_email_verified=True,
+        daily_analysis_limit=3
     )
 
 def get_mock_submission(user_id):
@@ -67,7 +80,7 @@ def test_create_analysis_success(mock_analysis_service, mock_session_service):
     
     response = client.post("/api/analyses", files=files, headers={"Origin": "http://localhost:5173"})
     
-    assert response.status_code == 201
+    assert response.status_code == 201, response.text
     assert response.json()["status"] == "uploaded"
 
 @patch("app.api.deps.SessionService")

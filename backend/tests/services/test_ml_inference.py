@@ -67,10 +67,15 @@ class TestMLPreprocessor:
         assert any("overexposed" in issue.lower() for issue in result.issues)
 
 
+from unittest.mock import patch
+
 class TestInferenceService:
-    def test_no_model_returns_not_loaded(self):
-        """When model file doesn't exist, predict returns model_not_loaded."""
-        service = InferenceService(model_path="/nonexistent/model.onnx")
+    @patch("app.services.inference_service.GeminiVisionService")
+    @patch("app.services.inference_service.CVAnalyzer")
+    def test_no_model_returns_not_loaded(self, mock_cv, mock_gemini):
+        """When API key doesn't exist, predict returns model_not_loaded."""
+        mock_gemini.return_value.is_configured = False
+        service = InferenceService()
         assert not service.is_available
         
         img_bytes = _create_test_image()
@@ -81,13 +86,19 @@ class TestInferenceService:
         assert result["acne_confidence"] == 0.0
         assert "model_version" in result
 
-    def test_model_version_always_present(self):
-        service = InferenceService(model_path="/nonexistent/model.onnx")
+    @patch("app.services.inference_service.GeminiVisionService")
+    @patch("app.services.inference_service.CVAnalyzer")
+    def test_model_version_always_present(self, mock_cv, mock_gemini):
+        mock_gemini.return_value.is_configured = False
+        service = InferenceService()
         result = service.predict(_create_test_image())
         assert "model_version" in result
 
-    def test_is_available_property(self):
-        service = InferenceService(model_path="/nonexistent/model.onnx")
+    @patch("app.services.inference_service.GeminiVisionService")
+    @patch("app.services.inference_service.CVAnalyzer")
+    def test_is_available_property(self, mock_cv, mock_gemini):
+        mock_gemini.return_value.is_configured = False
+        service = InferenceService()
         assert service.is_available == False
 
 

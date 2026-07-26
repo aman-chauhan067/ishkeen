@@ -30,11 +30,13 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
             response = await call_next(request)
             status_code = response.status_code
         except Exception as exc:
+            from fastapi import HTTPException
+            from starlette.exceptions import HTTPException as StarletteHTTPException
+            if isinstance(exc, (HTTPException, StarletteHTTPException)):
+                status_code = exc.status_code
+                raise exc
             exception_msg = traceback.format_exc()
-            response = JSONResponse(
-                status_code=500,
-                content={"detail": "Internal Server Error", "request_id": request_id}
-            )
+            raise exc
         finally:
             duration_ms = int((time.time() - start_time) * 1000)
             

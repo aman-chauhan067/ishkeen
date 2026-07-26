@@ -84,7 +84,7 @@ export const AdminNotifications = ({
       {/* Backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-[#253A4A]/20 backdrop-blur-sm z-40 transition-opacity"
+          className="fixed inset-0 bg-[#26384B]/20 backdrop-blur-sm z-40 transition-opacity"
           onClick={onClose}
         />
       )}
@@ -95,17 +95,17 @@ export const AdminNotifications = ({
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex h-full flex-col bg-[#FCFBF8] border-l border-[#253A4A]/10 shadow-2xl">
+        <div className="flex h-full flex-col bg-[#F6F4EF] border-l border-[#26384B]/10 shadow-2xl">
           
           {/* Header */}
-          <div className="px-6 py-8 border-b border-[#253A4A]/10">
+          <div className="px-6 py-8 border-b border-[#26384B]/10">
             <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl text-[#253A4A] flex items-center gap-3">
+              <h2 className="font-serif text-2xl text-[#26384B] flex items-center gap-3">
                 <Bell className="w-5 h-5" /> Notifications
               </h2>
               <button
                 type="button"
-                className="rounded-full p-2 text-[#5C7E9A] hover:bg-[#253A4A]/5 hover:text-[#253A4A] transition-colors outline-none"
+                className="rounded-full p-2 text-[#4C6072] hover:bg-[#26384B]/5 hover:text-[#26384B] transition-colors outline-none"
                 onClick={onClose}
               >
                 <span className="sr-only">Close panel</span>
@@ -113,12 +113,12 @@ export const AdminNotifications = ({
               </button>
             </div>
             <div className="mt-4 flex justify-between items-center">
-              <span className="font-sans text-xs text-[#5C7E9A]">
+              <span className="font-sans text-xs text-[#4C6072]">
                 {notifications.filter(n => !n.read).length} unread
               </span>
               <button 
                 onClick={markAllAsRead}
-                className="font-sans text-[10px] uppercase tracking-widest text-[#253A4A] hover:text-[#5C7E9A] font-bold transition-colors"
+                className="font-sans text-[10px] uppercase tracking-widest text-[#26384B] hover:text-[#4C6072] font-bold transition-colors"
               >
                 Mark all as read
               </button>
@@ -129,7 +129,7 @@ export const AdminNotifications = ({
           <div className="flex-1 overflow-y-auto px-6 py-6">
             {loading ? (
               <div className="flex justify-center items-center h-full">
-                <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+                <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
               </div>
             ) : (
               <div className="space-y-4">
@@ -137,10 +137,10 @@ export const AdminNotifications = ({
                   <div 
                     key={notification.id} 
                     onClick={() => markAsReadAndNavigate(notification)}
-                    className={`p-4 rounded-2xl border transition-all ${notification.link ? 'cursor-pointer hover:border-[#253A4A]/20' : ''} ${
+                    className={`p-4 rounded-2xl border transition-all ${notification.link ? 'cursor-pointer hover:border-[#26384B]/20' : ''} ${
                       notification.read 
                         ? 'bg-[#F7F7F5] border-transparent opacity-60' 
-                        : 'bg-white border-[#253A4A]/10 shadow-sm'
+                        : 'bg-white border-[#26384B]/10 shadow-sm'
                     }`}
                   >
                     <div className="flex gap-4">
@@ -151,23 +151,23 @@ export const AdminNotifications = ({
                       </div>
                       <div className="flex-1">
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className={`font-sans text-sm font-medium ${notification.read ? 'text-[#5C7E9A]' : 'text-[#253A4A]'}`}>
+                          <h4 className={`font-sans text-sm font-medium ${notification.read ? 'text-[#4C6072]' : 'text-[#26384B]'}`}>
                             {notification.title}
                           </h4>
                           <div className="flex items-center gap-2">
-                            <span className="font-sans text-[10px] text-[#5C7E9A] whitespace-nowrap">
+                            <span className="font-sans text-[10px] text-[#4C6072] whitespace-nowrap">
                               {format(new Date(notification.created_at), 'MMM d, HH:mm')}
                             </span>
                             <button
                               onClick={(e) => deleteNotification(e, notification.id)}
-                              className="text-[#5C7E9A] hover:text-red-500 transition-colors focus:outline-none"
+                              className="text-[#4C6072] hover:text-red-500 transition-colors focus:outline-none"
                               aria-label="Delete notification"
                             >
                               <X className="w-3 h-3" />
                             </button>
                           </div>
                         </div>
-                        <p className="font-sans text-xs text-[#5C7E9A] leading-relaxed">
+                        <p className="font-sans text-xs text-[#4C6072] leading-relaxed">
                           {notification.message}
                         </p>
                       </div>
@@ -175,7 +175,7 @@ export const AdminNotifications = ({
                   </div>
                 ))}
                 {notifications.length === 0 && (
-                  <div className="text-center text-[#5C7E9A] font-sans text-sm mt-12">
+                  <div className="text-center text-[#4C6072] font-sans text-sm mt-12">
                     No notifications right now.
                   </div>
                 )}

@@ -12,16 +12,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-[#253A4A] text-[#FCFBF8] border border-transparent",
+          "bg-[#26384B] text-[#F6F4EF] border border-transparent",
         secondary:
-          "bg-[#FCFBF8] text-[#253A4A] border border-[#253A4A]",
+          "bg-[#F6F4EF] text-[#26384B] border border-[#26384B]",
         accent:
-          "bg-[#E89B87] text-[#253A4A]",
+          "bg-[#C67C5A] text-[#26384B]",
         outline:
           "border border-foreground/20 bg-transparent text-foreground",
         ghost: "hover:bg-foreground/5 text-foreground",
         danger:
-          "bg-[#E89B87] text-[#253A4A]",
+          "bg-[#C67C5A] text-[#26384B]",
         text: "text-foreground hover:opacity-70 underline-offset-4 hover:underline",
       },
       size: {

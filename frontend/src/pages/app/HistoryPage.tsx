@@ -23,7 +23,7 @@ export const HistoryPage: React.FC = () => {
     return (
       <PageTransition>
         <Container className="py-12">
-          <h2 className="mb-12 text-center text-[#253A4A]">Consultation History.</h2>
+          <h2 className="mb-12 text-center text-[#26384B]">Consultation History.</h2>
           <div className="space-y-4">
             {[1, 2, 3].map((n) => (
               <div key={n} className="bg-white/5 border border-white/10 rounded-2xl h-32 animate-pulse" />
@@ -56,11 +56,11 @@ export const HistoryPage: React.FC = () => {
     <PageTransition>
       <Container className="max-w-4xl pt-44 pb-32">
         <Stagger amount={0.1}>
-          <Section className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 border-b border-[#253A4A]/10 pb-12">
+          <Section className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 border-b border-[#26384B]/10 pb-12">
             <StaggerItem>
               <BlurReveal>
-                <h2 className="text-left text-[#253A4A]">Your Skin Journey.</h2>
-                <Typography variant="caption" className="opacity-80 mt-6 tracking-wide text-[#5C7E9A]">
+                <h2 className="text-left text-[#26384B]">Your Skin Journey.</h2>
+                <Typography variant="caption" className="opacity-80 mt-6 tracking-wide text-[#4C6072]">
                   {total === 0 ? 'No journey records found.' : `${total} journey milestone${total === 1 ? '' : 's'}`}
                 </Typography>
               </BlurReveal>
@@ -79,14 +79,14 @@ export const HistoryPage: React.FC = () => {
           <Section>
             {items.length === 0 ? (
               <StaggerItem>
-                <Fade className="py-32 text-center flex flex-col items-center gap-8 relative overflow-hidden rounded-[32px] bg-white/50 border border-[#253A4A]/5">
+                <Fade className="py-32 text-center flex flex-col items-center gap-8 relative overflow-hidden rounded-[32px] bg-white/50 border border-[#26384B]/5">
                   <div className="absolute inset-0 z-0">
-                    <Doodle type="blob" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 text-[#5C7E9A] opacity-5" delay={0.2} />
-                    <Doodle type="sparkles" className="absolute top-[20%] right-[30%] w-10 h-10 text-[#5C7E9A] opacity-20" delay={0.4} />
-                    <Doodle type="stars" className="absolute bottom-[20%] left-[30%] w-8 h-8 text-[#5C7E9A] opacity-20" delay={0.6} />
+                    <Doodle type="blob" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 text-[#4C6072] opacity-5" delay={0.2} />
+                    <Doodle type="sparkles" className="absolute top-[20%] right-[30%] w-10 h-10 text-[#4C6072] opacity-20" delay={0.4} />
+                    <Doodle type="stars" className="absolute bottom-[20%] left-[30%] w-8 h-8 text-[#4C6072] opacity-20" delay={0.6} />
                   </div>
                   <div className="relative z-10 flex flex-col items-center">
-                    <Typography variant="h3" className="text-[#253A4A] mb-4">
+                    <Typography variant="h3" className="text-[#26384B] mb-4">
                       No Clinical Records Found
                     </Typography>
                     <Typography variant="body" className="opacity-80 max-w-md">
@@ -105,13 +105,13 @@ export const HistoryPage: React.FC = () => {
               <StaggerItem>
                 <div className="relative">
                   {/* Timeline vertical line */}
-                  <div className="absolute left-6 md:left-[50px] top-10 bottom-10 w-[2px] bg-[#253A4A]/10" />
+                  <div className="absolute left-6 md:left-[50px] top-10 bottom-10 w-[2px] bg-[#26384B]/10" />
                   
                   <ul className="space-y-24 relative" aria-label="Analysis history">
                     {items.map((analysis) => (
                       <li key={analysis.id} className="relative">
                         {/* Timeline dot */}
-                        <div className="absolute left-6 md:left-[50px] top-16 w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-[4px] border-[#253A4A]" />
+                        <div className="absolute left-6 md:left-[50px] top-16 w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-[4px] border-[#26384B]" />
                         
                         <div className="pl-16 md:pl-32">
                           <Link to={`/app/results/${analysis.id}`} className="block focus:outline-none">

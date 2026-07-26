@@ -38,11 +38,11 @@ function AppContent() {
   return (
     <>
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-[0.03]">
-        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#253A4A]" />
-        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#253A4A]" />
-        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#253A4A]" />
-        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#253A4A]" />
-        <Doodle type="face" className="absolute top-[5%] right-[25%] w-20 h-20 text-[#253A4A]" />
+        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#26384B]" />
+        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#26384B]" />
+        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#26384B]" />
+        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#26384B]" />
+        <Doodle type="face" className="absolute top-[5%] right-[25%] w-20 h-20 text-[#26384B]" />
       </div>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

@@ -12,6 +12,7 @@ import { PageTransition } from '../../components/motion';
 import { AmbientGlow } from '../../components/motion/AmbientGlow';
 import { ProfileDrawer } from '../../components/ui/ProfileDrawer';
 import { Doodle } from '../../components/illustrations/Doodle';
+import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 
 const NavItem = ({ to, children, end = false }: { to: string, children: React.ReactNode, end?: boolean }) => (
   <NavLink
@@ -19,7 +20,7 @@ const NavItem = ({ to, children, end = false }: { to: string, children: React.Re
     end={end}
     className={({ isActive }) =>
       `group relative flex items-center justify-center px-4 py-2 text-sm font-bold tracking-widest uppercase transition-colors duration-[600ms] ease-[var(--luxury-ease)] focus:outline-none ${
-        isActive ? 'text-[#253A4A]' : 'text-[#5C7E9A] hover:text-[#253A4A]'
+        isActive ? 'text-[#26384B]' : 'text-[#4C6072] hover:text-[#26384B]'
       }`
     }
   >
@@ -78,10 +79,10 @@ export const AppShell: React.FC = () => {
       )}
       {/* Global Background Doodles */}
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-5">
-        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#5C7E9A]" />
-        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#5C7E9A]" />
-        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#5C7E9A]" />
-        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#5C7E9A]" />
+        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#4C6072]" />
+        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#4C6072]" />
+        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#4C6072]" />
+        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#4C6072]" />
       </div>
 
       {/* Floating Header / Nav */}
@@ -92,10 +93,10 @@ export const AppShell: React.FC = () => {
             <NavLink
               to="/app"
               end
-              className="text-2xl font-bold tracking-widest uppercase text-[#253A4A] focus:outline-none"
+              className="focus:outline-none"
               aria-label="Ishkeen home"
             >
-              ISHKEEN
+              <DragonflyLogo size="sm" showSubtitle={false} />
             </NavLink>
           </div>
 
@@ -117,7 +118,7 @@ export const AppShell: React.FC = () => {
               {user?.avatar_url ? (
                 <img src={user.avatar_url} alt="Profile" className="w-full h-full object-cover relative z-10" />
               ) : (
-                <span className="text-[#253A4A] font-editorial text-xl leading-none pt-[2px] relative z-10">{initial}</span>
+                <span className="text-[#26384B] font-editorial text-xl leading-none pt-[2px] relative z-10">{initial}</span>
               )}
             </button>
           </div>

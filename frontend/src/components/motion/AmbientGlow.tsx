@@ -40,8 +40,8 @@ export const AmbientGlow: React.FC<AmbientGlowProps> = ({
         className
       )}
       style={{
-        // A soft, painterly mix of Ocean Blue (#5C7E9A), Soft Sage (#A8B5A2), and Peach (#F4D3C4)
-        background: 'radial-gradient(ellipse at 50% 50%, #5C7E9A 0%, #A8B5A2 50%, #F4D3C4 100%)',
+        // A soft, painterly mix of Ocean Blue (#4C6072), Soft Sage (#A8B5A2), and Peach (#F4D3C4)
+        background: 'radial-gradient(ellipse at 50% 50%, #4C6072 0%, #A8B5A2 50%, #F4D3C4 100%)',
         // Expand the glow area enormously outside the boundary
         margin: '-60px',
       }}

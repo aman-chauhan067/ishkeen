@@ -92,8 +92,8 @@ const InnerUniverse = () => {
 
   return (
     <>
-      <ambientLight intensity={2} color="#FCFBF8" />
-      <directionalLight position={[10, 10, 10]} intensity={1.5} color="#FCFBF8" />
+      <ambientLight intensity={2} color="#F6F4EF" />
+      <directionalLight position={[10, 10, 10]} intensity={1.5} color="#F6F4EF" />
 
       {/* Layer 1: Massive Watercolors (45% pigment coverage) */}
       <group ref={pigmentRef} position={[0, 0, -8]}>
@@ -105,12 +105,12 @@ const InnerUniverse = () => {
         {/* Ocean Blue / Deep Ocean */}
         <mesh position={[5, -5, -2]} userData={{ baseOpacity: 0.9, speedX: 0.12, speedY: 0.11 }}>
           <planeGeometry args={[18, 18]} />
-          <meshPhysicalMaterial color="#253A4A" transparent opacity={0.9} roughness={1} />
+          <meshPhysicalMaterial color="#26384B" transparent opacity={0.9} roughness={1} />
         </mesh>
         {/* Peach & Coral */}
         <mesh position={[-4, -6, 1]} userData={{ baseOpacity: 0.75, speedX: 0.08, speedY: 0.14 }}>
           <planeGeometry args={[12, 12]} />
-          <meshPhysicalMaterial color="#E89B87" transparent opacity={0.75} roughness={1} />
+          <meshPhysicalMaterial color="#C67C5A" transparent opacity={0.75} roughness={1} />
         </mesh>
         {/* Lavender */}
         <mesh position={[7, 5, -1]} userData={{ baseOpacity: 0.85, speedX: 0.09, speedY: 0.1 }}>
@@ -129,7 +129,7 @@ const InnerUniverse = () => {
         <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
           <mesh>
             <torusKnotGeometry args={[3, 0.8, 128, 32]} />
-            <meshPhysicalMaterial color="#E89B87" wireframe transparent opacity={0} roughness={0.2} transmission={0.9} />
+            <meshPhysicalMaterial color="#C67C5A" wireframe transparent opacity={0} roughness={0.2} transmission={0.9} />
           </mesh>
         </Float>
       </group>
@@ -154,32 +154,32 @@ const InnerUniverse = () => {
       <group ref={poresRef} position={[0, 0, -6]}>
         <mesh position={[1, 2, 0]}>
           <ringGeometry args={[0.5, 0.6, 32]} />
-          <meshBasicMaterial color="#E89B87" transparent opacity={0} />
+          <meshBasicMaterial color="#C67C5A" transparent opacity={0} />
         </mesh>
         <mesh position={[-2, -1, 1]}>
           <ringGeometry args={[0.8, 0.9, 32]} />
-          <meshBasicMaterial color="#5C7E9A" transparent opacity={0} />
+          <meshBasicMaterial color="#4C6072" transparent opacity={0} />
         </mesh>
       </group>
 
       {/* Layer 5: Skin Layers Typography */}
       <group ref={layersRef} position={[0, -5, -4]}>
-        <Text fontSize={1.2} color="#253A4A" font="/fonts/Helvetica-Bold.ttf" anchorX="center" letterSpacing={-0.05}>
+        <Text fontSize={1.2} color="#26384B" font="/fonts/Helvetica-Bold.ttf" anchorX="center" letterSpacing={-0.05}>
           EPIDERMIS
         </Text>
-        <Text position={[0, -1.5, 0]} fontSize={0.4} color="#5C7E9A" letterSpacing={0.1}>
+        <Text position={[0, -1.5, 0]} fontSize={0.4} color="#4C6072" letterSpacing={0.1}>
           0.1mm - 1.5mm
         </Text>
       </group>
 
       {/* Layer 6: Clinical / AI */}
       <group ref={clinicalRef} position={[0, 0, -6]}>
-        <Text fontSize={0.8} color="#253A4A" font="/fonts/Helvetica-Bold.ttf">
+        <Text fontSize={0.8} color="#26384B" font="/fonts/Helvetica-Bold.ttf">
           AI CLINICAL ANALYSIS
         </Text>
         <mesh position={[0, -2, 0]}>
           <planeGeometry args={[8, 4]} />
-          <meshBasicMaterial color="#5C7E9A" wireframe transparent opacity={0} />
+          <meshBasicMaterial color="#4C6072" wireframe transparent opacity={0} />
         </mesh>
       </group>
     </>
@@ -262,7 +262,7 @@ const LensPipeline = () => {
           clearcoat={1}
           clearcoatRoughness={0.1}
           attenuationDistance={5}
-          attenuationColor="#FCFBF8"
+          attenuationColor="#F6F4EF"
           color="#ffffff"
         />
         <MeshTransmissionMaterial
@@ -273,7 +273,7 @@ const LensPipeline = () => {
           ior={1.45}
           chromaticAberration={0.08}
           anisotropy={0.3}
-          color="#FCFBF8"
+          color="#F6F4EF"
           clearcoat={1}
           clearcoatRoughness={0.1}
         />

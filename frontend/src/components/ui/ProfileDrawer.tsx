@@ -67,11 +67,11 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
   const DrawerItem = ({ label, onClick }: { label: string, onClick?: () => void }) => (
     <button 
       onClick={onClick}
-      className="group relative flex items-center justify-between w-full p-5 text-left bg-[#FCFBF8] border-b border-[#253A4A]/5 hover:bg-[#F8F5F1] transition-colors duration-[600ms] ease-[var(--luxury-ease)] focus:outline-none"
+      className="group relative flex items-center justify-between w-full p-5 text-left bg-[#F6F4EF] border-b border-[#26384B]/5 hover:bg-[#FBFAF7] transition-colors duration-[600ms] ease-[var(--luxury-ease)] focus:outline-none"
     >
       <AmbientGlow trigger="group-hover" blur="blur-[40px]" />
-      <span className="text-[#253A4A] font-medium tracking-wide text-sm">{label}</span>
-      <span className="text-[#5C7E9A] opacity-50">&rsaquo;</span>
+      <span className="text-[#26384B] font-medium tracking-wide text-sm">{label}</span>
+      <span className="text-[#4C6072] opacity-50">&rsaquo;</span>
     </button>
   );
 
@@ -86,7 +86,7 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 z-50 bg-[#253A4A]/10 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-[#26384B]/10 backdrop-blur-sm"
               onClick={onClose}
             />
             
@@ -95,21 +95,21 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[400px] bg-[#FCFBF8] shadow-[-20px_0_80px_rgba(37,58,74,0.05)] overflow-y-auto flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[400px] bg-[#F6F4EF] shadow-[-20px_0_80px_rgba(37,58,74,0.05)] overflow-y-auto flex flex-col"
             >
-              <div className="p-12 pb-6 flex flex-col items-center border-b border-[#253A4A]/5">
+              <div className="p-12 pb-6 flex flex-col items-center border-b border-[#26384B]/5">
                 
                 <button 
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isUploading}
-                  className="relative group w-32 h-32 rounded-full bg-[#F8F5F1] border border-[#253A4A]/10 flex items-center justify-center mb-6 shadow-[0_10px_40px_rgba(37,58,74,0.03)] overflow-hidden transition-transform hover:scale-105"
+                  className="relative group w-32 h-32 rounded-full bg-[#FBFAF7] border border-[#26384B]/10 flex items-center justify-center mb-6 shadow-[0_10px_40px_rgba(37,58,74,0.03)] overflow-hidden transition-transform hover:scale-105"
                   title="Update profile image"
                 >
                   <AmbientGlow trigger="group-hover" blur="blur-[60px]" opacity="opacity-[0.08]" />
                   {user?.avatar_url ? (
                     <img src={user.avatar_url} alt="Avatar" className="w-full h-full object-cover relative z-10" />
                   ) : (
-                    <span className="text-[#253A4A] text-4xl font-editorial relative z-10">{initial}</span>
+                    <span className="text-[#26384B] text-4xl font-editorial relative z-10">{initial}</span>
                   )}
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
                     <span className="text-white text-xs tracking-widest uppercase">Upload</span>
@@ -122,10 +122,10 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
                       type="text" 
                       value={nameInput}
                       onChange={e => setNameInput(e.target.value)}
-                      className="w-full px-3 py-1 bg-white border border-[#253A4A]/20 rounded text-center font-editorial text-lg text-[#253A4A] focus:outline-none"
+                      className="w-full px-3 py-1 bg-white border border-[#26384B]/20 rounded text-center font-editorial text-lg text-[#26384B] focus:outline-none"
                       autoFocus
                     />
-                    <button onClick={handleSaveName} className="text-xs uppercase tracking-widest text-[#253A4A] font-bold">Save</button>
+                    <button onClick={handleSaveName} className="text-xs uppercase tracking-widest text-[#26384B] font-bold">Save</button>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 mb-1 group cursor-pointer" onClick={() => setIsEditingName(true)} title="Edit name">
@@ -135,7 +135,7 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
                   </div>
                 )}
                 
-                <Typography variant="caption" className="text-[#5C7E9A] tracking-wider uppercase mb-2">
+                <Typography variant="caption" className="text-[#4C6072] tracking-wider uppercase mb-2">
                   {user?.email}
                 </Typography>
                 <Typography variant="caption" className="text-[#A8B5A2] mb-8">

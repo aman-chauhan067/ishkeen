@@ -7,8 +7,8 @@ export const AdminGuard = ({ children }: { children: React.ReactNode }) => {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-[#FCFBF8] flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+      <div className="min-h-screen bg-[#F6F4EF] flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
       </div>
     );
   }

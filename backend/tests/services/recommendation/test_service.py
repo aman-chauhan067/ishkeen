@@ -28,7 +28,7 @@ def test_generate_recommendation_success():
     assert run.user_id == user_id
     assert run.questionnaire_submission_id == submission.id
     assert run.status == "generated"
-    assert db.add.call_count > 1 # 1 run + multiple items
+    assert db.add.call_count == 1 # Only 1 run object, items are JSON encoded in it
     assert db.commit.call_count == 1
 
 def test_generate_recommendation_no_questionnaire():

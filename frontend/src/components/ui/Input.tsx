@@ -47,7 +47,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProp
     const Component = isTextarea ? 'textarea' : 'input';
 
     const baseStyles = cn(
-      "relative z-10 flex w-full rounded-[24px] border border-[#253A4A]/[0.02] bg-[#FCFBF8] shadow-[0_20px_40px_rgba(37,58,74,0.02)] px-6 py-4 text-base text-[#253A4A] transition-all duration-[600ms] ease-[var(--luxury-ease)] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#A8B5A2] focus-visible:outline-none focus-visible:-translate-y-[2px] disabled:cursor-not-allowed disabled:opacity-50",
+      "relative z-10 flex w-full rounded-[24px] border border-[#26384B]/[0.02] bg-[#F6F4EF] shadow-[0_20px_40px_rgba(37,58,74,0.02)] px-6 py-4 text-base text-[#26384B] transition-all duration-[600ms] ease-[var(--luxury-ease)] file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#A8B5A2] focus-visible:outline-none focus-visible:-translate-y-[2px] disabled:cursor-not-allowed disabled:opacity-50",
       isTextarea ? "min-h-[100px]" : "h-12",
       leftIcon && "pl-10",
       (rightIcon || isPassword || isLoading) && "pr-10",
@@ -60,7 +60,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProp
       <div className="w-full space-y-2">
         {(label || hint) && (
           <div className="flex items-center justify-between mb-2">
-            {label && <label htmlFor={inputId} className="text-sm font-bold tracking-wide text-[#253A4A] uppercase peer-disabled:cursor-not-allowed peer-disabled:opacity-70">{label}</label>}
+            {label && <label htmlFor={inputId} className="text-sm font-bold tracking-wide text-[#26384B] uppercase peer-disabled:cursor-not-allowed peer-disabled:opacity-70">{label}</label>}
             {hint && <span className="text-xs text-[#A8B5A2]">{hint}</span>}
           </div>
         )}

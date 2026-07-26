@@ -59,12 +59,12 @@ export const ResetPasswordPage: React.FC = () => {
           <Glass variant="deep" className="py-10 px-8 sm:px-10 rounded-[32px]">
             <div className="mb-7 relative">
               <Link to="/" className="inline-block mb-4 relative z-10">
-                <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+                <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#4C6072]">ISHKEEN</span>
               </Link>
-              <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+              <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
                 Set New Password.
               </h2>
-              <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+              <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
             </div>
             <div className="space-y-5">
               <Alert variant="error" message="Invalid reset link. Please request a new password reset." />
@@ -89,12 +89,12 @@ export const ResetPasswordPage: React.FC = () => {
           {/* In-card header */}
           <div className="mb-7 relative">
             <Link to="/" className="inline-block mb-4 relative z-10">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#4C6072]">ISHKEEN</span>
             </Link>
-            <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
               Set New Password.
             </h2>
-            <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+            <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
           </div>
 
           {status === 'success' ? (
@@ -138,7 +138,7 @@ export const ResetPasswordPage: React.FC = () => {
                         />
                       ))}
                     </div>
-                    <p className="text-[10px] text-[#5C7E9A] uppercase tracking-wider text-right">
+                    <p className="text-[10px] text-[#4C6072] uppercase tracking-wider text-right">
                       {strength <= 2 ? 'Weak' : strength <= 4 ? 'Good' : 'Strong'}
                     </p>
                   </div>
@@ -165,7 +165,7 @@ export const ResetPasswordPage: React.FC = () => {
           <div className="mt-5 text-center">
             <Link
               to="/login"
-              className="text-[10px] font-bold text-[#5C7E9A] hover:text-[#253A4A] tracking-widest uppercase transition-colors"
+              className="text-[10px] font-bold text-[#4C6072] hover:text-[#26384B] tracking-widest uppercase transition-colors"
             >
               Back to Login
             </Link>

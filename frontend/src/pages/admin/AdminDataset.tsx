@@ -15,13 +15,13 @@ interface DatasetResponse {
   latest_import: string;
 }
 
-const StatBox = ({ label, value, icon: Icon, colorClass = "text-[#253A4A]" }: any) => (
-  <div className="bg-[#F7F7F5] p-5 rounded-xl border border-[#253A4A]/5 flex items-center gap-4">
+const StatBox = ({ label, value, icon: Icon, colorClass = "text-[#26384B]" }: any) => (
+  <div className="bg-[#F7F7F5] p-5 rounded-xl border border-[#26384B]/5 flex items-center gap-4">
     <div className={`p-3 bg-white rounded-lg shadow-sm ${colorClass}`}>
       <Icon className="w-5 h-5" />
     </div>
     <div>
-      <div className="font-sans text-xs text-[#5C7E9A] uppercase tracking-widest mb-0.5">{label}</div>
+      <div className="font-sans text-xs text-[#4C6072] uppercase tracking-widest mb-0.5">{label}</div>
       <div className={`font-serif text-2xl ${colorClass}`}>{value}</div>
     </div>
   </div>
@@ -48,7 +48,7 @@ export const AdminDataset = () => {
   if (loading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
       </div>
     );
   }
@@ -60,13 +60,13 @@ export const AdminDataset = () => {
       <BlurReveal>
         <div className="flex justify-between items-end mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#253A4A] tracking-tight mb-4">Dataset Explorer</h1>
-            <p className="font-sans text-[#5C7E9A] leading-relaxed">
+            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">Dataset Explorer</h1>
+            <p className="font-sans text-[#4C6072] leading-relaxed">
               Manage the master computer vision dataset. Review splits, annotation coverage, and export readiness.
             </p>
           </div>
           <div className="flex gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#253A4A]/5 hover:bg-[#253A4A]/10 text-[#253A4A] transition-colors font-sans text-xs font-medium tracking-wide">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#26384B]/5 hover:bg-[#26384B]/10 text-[#26384B] transition-colors font-sans text-xs font-medium tracking-wide">
               <RefreshCw className="w-4 h-4" /> Sync
             </button>
             <button 
@@ -87,7 +87,7 @@ export const AdminDataset = () => {
                   alert('Export failed');
                 }
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#253A4A] text-[#FCFBF8] hover:bg-[#1A2A36] transition-colors font-sans text-xs font-medium tracking-wide"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#26384B] text-[#F6F4EF] hover:bg-[#1A2A36] transition-colors font-sans text-xs font-medium tracking-wide"
             >
               <Download className="w-4 h-4" /> Export V2
             </button>
@@ -116,21 +116,21 @@ export const AdminDataset = () => {
       </div>
 
       <Fade delay={0.5}>
-        <div className="bg-[#FCFBF8] p-8 rounded-3xl border border-[#253A4A]/5 mt-8">
-          <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-[#253A4A] mb-8">Current Active Version</h3>
+        <div className="bg-[#F6F4EF] p-8 rounded-3xl border border-[#26384B]/5 mt-8">
+          <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-[#26384B] mb-8">Current Active Version</h3>
           
-          <div className="flex items-center gap-8 border-b border-[#253A4A]/5 pb-8 mb-8">
-            <div className="text-6xl text-[#253A4A] font-serif tracking-tighter">
+          <div className="flex items-center gap-8 border-b border-[#26384B]/5 pb-8 mb-8">
+            <div className="text-6xl text-[#26384B] font-serif tracking-tighter">
               {data.version}
             </div>
             <div className="flex-1 space-y-4">
               <div>
-                <div className="flex justify-between text-xs font-sans text-[#5C7E9A] mb-2 uppercase tracking-widest">
+                <div className="flex justify-between text-xs font-sans text-[#4C6072] mb-2 uppercase tracking-widest">
                   <span>Annotation Progress</span>
-                  <span className="font-medium text-[#253A4A]">{data.annotation_status}</span>
+                  <span className="font-medium text-[#26384B]">{data.annotation_status}</span>
                 </div>
-                <div className="w-full h-2 bg-[#253A4A]/5 rounded-full overflow-hidden">
-                  <div className="h-full bg-[#253A4A] rounded-full" style={{ width: '98%' }} />
+                <div className="w-full h-2 bg-[#26384B]/5 rounded-full overflow-hidden">
+                  <div className="h-full bg-[#26384B] rounded-full" style={{ width: '98%' }} />
                 </div>
               </div>
             </div>
@@ -138,19 +138,19 @@ export const AdminDataset = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="text-xs font-sans text-[#5C7E9A] uppercase tracking-widest mb-1">Dataset Health</div>
+              <div className="text-xs font-sans text-[#4C6072] uppercase tracking-widest mb-1">Dataset Health</div>
               <div className="text-sm font-sans font-medium text-emerald-600 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-500" />
                 {data.dataset_health}
               </div>
             </div>
             <div>
-              <div className="text-xs font-sans text-[#5C7E9A] uppercase tracking-widest mb-1">Missing Metadata</div>
-              <div className="text-sm font-sans font-medium text-[#253A4A]">{data.missing_metadata} files</div>
+              <div className="text-xs font-sans text-[#4C6072] uppercase tracking-widest mb-1">Missing Metadata</div>
+              <div className="text-sm font-sans font-medium text-[#26384B]">{data.missing_metadata} files</div>
             </div>
             <div>
-              <div className="text-xs font-sans text-[#5C7E9A] uppercase tracking-widest mb-1">Last Import</div>
-              <div className="text-sm font-sans font-medium text-[#253A4A]">
+              <div className="text-xs font-sans text-[#4C6072] uppercase tracking-widest mb-1">Last Import</div>
+              <div className="text-sm font-sans font-medium text-[#26384B]">
                 {new Date(data.latest_import).toLocaleDateString()}
               </div>
             </div>

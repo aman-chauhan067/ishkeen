@@ -62,7 +62,7 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="arrow" className="absolute -top-6 -right-6 w-12 h-12 text-[#5C7E9A] opacity-20" delay={0.2} />
+          <Doodle type="arrow" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Important context</QuestionTitle>
           <QuestionDescription>Final details to ensure our guidance is perfectly tailored and safe for you.</QuestionDescription>
         </div>
@@ -75,7 +75,7 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Are you currently using prescription skin treatments or under a clinician's care?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Are you currently using prescription skin treatments or under a clinician's care?</p>
           </div>
           <QuestionGroup
             name="clinician_directed_treatment"
@@ -90,7 +90,7 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Have you had known negative reactions to specific ingredients?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Have you had known negative reactions to specific ingredients?</p>
           </div>
           <QuestionGroup
             name="known_reaction_categories"
@@ -122,7 +122,7 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Are there ingredients you personally prefer to avoid?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Are there ingredients you personally prefer to avoid?</p>
           </div>
           <QuestionGroup
             name="preference_avoid_categories"
@@ -137,7 +137,7 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
 
         <div>
           <div className="flex justify-between items-baseline mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">How would you describe your climate?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">How would you describe your climate?</p>
             <QuestionHint>Optional</QuestionHint>
           </div>
           <QuestionGroup

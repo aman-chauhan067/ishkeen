@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Body
 from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.api.deps import get_verified_user, get_current_user
@@ -58,7 +58,7 @@ from fastapi import Header
 
 @router.post("/generate", response_model=RecommendationResponse, response_model_by_alias=True, response_model_exclude_none=True)
 def generate_recommendation(
-    payload: ConsultationPayload,
+    payload: ConsultationPayload = Body(default_factory=ConsultationPayload),
     current_user: User = Depends(get_verified_user),
     db: Session = Depends(get_db),
     x_ishkeen_debug: Optional[str] = Header(None)

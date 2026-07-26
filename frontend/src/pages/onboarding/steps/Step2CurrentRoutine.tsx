@@ -54,7 +54,7 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="leaf" className="absolute -top-6 -right-6 w-12 h-12 text-[#5C7E9A] opacity-20" delay={0.2} />
+          <Doodle type="leaf" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Your current routine</QuestionTitle>
           <QuestionDescription>Tell us what you're using today to help us understand your starting point.</QuestionDescription>
         </div>
@@ -67,7 +67,7 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Which types of products are currently part of your routine?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Which types of products are currently part of your routine?</p>
           </div>
           <QuestionGroup
             name="routine_product_categories"
@@ -82,7 +82,7 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Are you currently using any active ingredients?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Are you currently using any active ingredients?</p>
           </div>
           <QuestionGroup
             name="active_ingredient_categories"
@@ -97,7 +97,7 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">How often do you apply sunscreen?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">How often do you apply sunscreen?</p>
           </div>
           <QuestionGroup
             name="sunscreen_frequency"
@@ -112,7 +112,7 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">How familiar are you with skincare ingredients?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">How familiar are you with skincare ingredients?</p>
           </div>
           <QuestionGroup
             name="routine_experience"

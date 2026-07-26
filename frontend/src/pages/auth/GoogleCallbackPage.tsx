@@ -63,16 +63,16 @@ export const GoogleCallbackPage: React.FC = () => {
       <BlurReveal duration={0.8} className="w-full max-w-[460px]">
         <Glass variant="deep" className="py-10 px-8 sm:px-10 rounded-[32px] text-center">
           <div className="mb-7">
-            <h2 className="text-[#253A4A] leading-tight font-black text-2xl mb-4">
+            <h2 className="text-[#26384B] leading-tight font-black text-2xl mb-4">
               {error ? 'Authentication Failed' : 'Authenticating...'}
             </h2>
             {error ? (
               <Fade>
                 <Alert variant="error" message={error} />
-                <p className="mt-4 text-sm text-[#5C7E9A]">Redirecting back to login...</p>
+                <p className="mt-4 text-sm text-[#4C6072]">Redirecting back to login...</p>
               </Fade>
             ) : (
-              <p className="text-[#5C7E9A]">Please wait while we complete your Google sign in.</p>
+              <p className="text-[#4C6072]">Please wait while we complete your Google sign in.</p>
             )}
           </div>
         </Glass>

@@ -33,12 +33,12 @@ export const ForgotPasswordPage: React.FC = () => {
           {/* In-card header */}
           <div className="mb-7 relative">
             <Link to="/" className="inline-block mb-4 relative z-10">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#4C6072]">ISHKEEN</span>
             </Link>
-            <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
               Reset Password.
             </h2>
-            <Doodle type="arrow" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+            <Doodle type="arrow" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
           </div>
 
           {status === 'success' ? (
@@ -54,7 +54,7 @@ export const ForgotPasswordPage: React.FC = () => {
             </Fade>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <p className="text-[#5C7E9A] text-sm">
+              <p className="text-[#4C6072] text-sm">
                 Enter your email address and we'll send you a link to reset your password.
               </p>
               <Input
@@ -84,7 +84,7 @@ export const ForgotPasswordPage: React.FC = () => {
           <div className="mt-5 text-center">
             <Link
               to="/login"
-              className="text-[10px] font-bold text-[#5C7E9A] hover:text-[#253A4A] tracking-widest uppercase transition-colors"
+              className="text-[10px] font-bold text-[#4C6072] hover:text-[#26384B] tracking-widest uppercase transition-colors"
             >
               Back to Login
             </Link>

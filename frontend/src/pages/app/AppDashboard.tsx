@@ -19,7 +19,7 @@ export const SkinJournal: React.FC = () => {
           </StaggerItem>
           <StaggerItem>
             <Fade>
-              <p className="mt-12 text-[#5C7E9A] text-lg lg:text-xl font-medium tracking-wide max-w-lg text-left">
+              <p className="mt-12 text-[#4C6072] text-lg lg:text-xl font-medium tracking-wide max-w-lg text-left">
                 Your personal clinical archive. Document, analyze, and preserve the evolution of your physiology.
               </p>
             </Fade>
@@ -35,11 +35,11 @@ export const SkinJournal: React.FC = () => {
               <Card variant="interactive" className="p-16 h-[500px] flex flex-col justify-end relative overflow-hidden group">
                 <AmbientGlow blur="blur-[140px]" />
                 <div className="relative z-10 max-w-md text-left">
-                  <h3 className="text-[#253A4A] mb-6">New Entry</h3>
-                  <p className="text-[#5C7E9A] text-lg mb-12 font-medium">
+                  <h3 className="text-[#26384B] mb-6">New Entry</h3>
+                  <p className="text-[#4C6072] text-lg mb-12 font-medium">
                     Begin a clinical analysis by capturing your current state.
                   </p>
-                  <Button variant="secondary" className="group-hover:border-[#253A4A]/20 pointer-events-none">
+                  <Button variant="secondary" className="group-hover:border-[#26384B]/20 pointer-events-none">
                     Capture Image
                   </Button>
                 </div>
@@ -50,14 +50,14 @@ export const SkinJournal: React.FC = () => {
           {/* Secondary Action - History */}
           <StaggerItem className="w-full lg:w-2/5 lg:mt-32">
             <Link to="/app/history" className="block focus:outline-none group">
-              <div className="relative flex flex-col justify-end p-8 border-l border-[#253A4A]/10 transition-colors duration-[600ms] group-hover:border-[#253A4A]/30">
+              <div className="relative flex flex-col justify-end p-8 border-l border-[#26384B]/10 transition-colors duration-[600ms] group-hover:border-[#26384B]/30">
                 <AmbientGlow blur="blur-[100px]" opacity="opacity-0 group-hover:opacity-[0.08]" />
                 <div className="relative z-10 text-left pl-8">
-                  <h4 className="text-[#253A4A] mb-6">The Archives</h4>
-                  <p className="text-[#5C7E9A] mb-12 font-medium text-lg">
+                  <h4 className="text-[#26384B] mb-6">The Archives</h4>
+                  <p className="text-[#4C6072] mb-12 font-medium text-lg">
                     Review past consultations and track your progression over time.
                   </p>
-                  <span className="text-sm font-bold tracking-widest uppercase text-[#253A4A] group-hover:text-[#E89B87] transition-colors duration-[600ms]">Open Archive &rarr;</span>
+                  <span className="text-sm font-bold tracking-widest uppercase text-[#26384B] group-hover:text-[#C67C5A] transition-colors duration-[600ms]">Open Archive &rarr;</span>
                 </div>
               </div>
             </Link>

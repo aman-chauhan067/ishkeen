@@ -118,17 +118,27 @@ def test_origin_csrf_validation(mock_auth_service, mock_session_service):
     mock_session = mock_session_service.return_value
     mock_session.create_session.return_value = "raw_token_string"
 
-    # Test valid origin
-    response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Origin": "http://localhost:5173"})
-    assert response.status_code == 200
+    from app.api.deps import verify_csrf_origin
+    original_override = app.dependency_overrides.get(verify_csrf_origin)
+    if verify_csrf_origin in app.dependency_overrides:
+        del app.dependency_overrides[verify_csrf_origin]
 
-    # Test invalid origin
-    response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Origin": "http://evil.com"})
-    assert response.status_code == 403
-    assert response.json()["detail"] == "Invalid Origin"
+    try:
+        # Test valid origin
+        response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Origin": "http://localhost:5173"})
+        assert response.status_code == 200
+
+        # Test invalid origin
+        response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Origin": "http://evil.com"})
+        assert response.status_code == 403
+        assert response.json()["detail"] == "Invalid Origin"
+        
+        # Test invalid referer
+        response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Referer": "http://evil.com/page"})
+        assert response.status_code == 403
+        assert response.json()["detail"] == "Invalid Referer"
     
-    # Test invalid referer
-    response = client.post("/api/auth/login", json={"email": "a@b.com", "password": "abc"}, headers={"Referer": "http://evil.com/page"})
-    assert response.status_code == 403
-    assert response.json()["detail"] == "Invalid Referer"
+    finally:
+        if original_override:
+            app.dependency_overrides[verify_csrf_origin] = original_override
 

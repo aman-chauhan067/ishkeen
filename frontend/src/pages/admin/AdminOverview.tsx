@@ -27,10 +27,10 @@ interface OverviewStats {
 }
 
 const StatCard = ({ title, value, icon: Icon, subtitle, isHealthy = true }: any) => (
-  <div className="bg-[#FCFBF8] p-6 rounded-2xl border border-[#253A4A]/5 flex flex-col justify-between h-40 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] group">
+  <div className="bg-[#F6F4EF] p-6 rounded-2xl border border-[#26384B]/5 flex flex-col justify-between h-40 transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] group">
     <div className="flex justify-between items-start">
-      <div className="p-3 bg-[#F7F7F5] rounded-xl group-hover:bg-[#253A4A]/5 transition-colors">
-        <Icon className="w-5 h-5 text-[#253A4A]" strokeWidth={1.5} />
+      <div className="p-3 bg-[#F7F7F5] rounded-xl group-hover:bg-[#26384B]/5 transition-colors">
+        <Icon className="w-5 h-5 text-[#26384B]" strokeWidth={1.5} />
       </div>
       {!isHealthy && (
         <span className="flex h-3 w-3">
@@ -40,10 +40,10 @@ const StatCard = ({ title, value, icon: Icon, subtitle, isHealthy = true }: any)
       )}
     </div>
     <div>
-      <h3 className="font-sans font-medium text-[#5C7E9A] text-xs uppercase tracking-widest mb-1">{title}</h3>
+      <h3 className="font-sans font-medium text-[#4C6072] text-xs uppercase tracking-widest mb-1">{title}</h3>
       <div className="flex items-baseline gap-2">
-        <span className="font-serif text-3xl text-[#253A4A]">{value}</span>
-        {subtitle && <span className="font-sans text-xs text-[#5C7E9A]">{subtitle}</span>}
+        <span className="font-serif text-3xl text-[#26384B]">{value}</span>
+        {subtitle && <span className="font-sans text-xs text-[#4C6072]">{subtitle}</span>}
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@ export const AdminOverview = () => {
   if (loading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
       </div>
     );
   }
@@ -82,8 +82,8 @@ export const AdminOverview = () => {
       <BlurReveal>
         <div className="flex justify-between items-start mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#253A4A] tracking-tight mb-4">Operations Overview</h1>
-            <p className="font-sans text-[#5C7E9A] leading-relaxed">
+            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">Operations Overview</h1>
+            <p className="font-sans text-[#4C6072] leading-relaxed">
               Real-time telemetry for the Ishkeen platform. Monitor user acquisition, AI inference health, and system status.
             </p>
           </div>
@@ -108,7 +108,7 @@ export const AdminOverview = () => {
                 alert("Failed to export database");
               }
             }}
-            className="flex items-center gap-2 px-6 py-3 bg-[#253A4A] text-white rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:bg-[#1A2A36] shadow-lg hover:shadow-xl"
+            className="flex items-center gap-2 px-6 py-3 bg-[#26384B] text-white rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:bg-[#1A2A36] shadow-lg hover:shadow-xl"
           >
             <Database className="w-4 h-4" />
             Export DB V2

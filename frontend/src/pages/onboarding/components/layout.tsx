@@ -13,7 +13,7 @@ export const QuestionSection: React.FC<{ children: React.ReactNode; className?: 
 export const QuestionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <BlurReveal>
     <p
-      className="font-black text-[#253A4A] mb-3"
+      className="font-black text-[#26384B] mb-3"
       style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', letterSpacing: '-0.04em', lineHeight: 1.1 }}
     >
       {children}

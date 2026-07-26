@@ -78,7 +78,7 @@ export const ResultsPage: React.FC = () => {
       <PageTransition>
         <Container className="pt-44 pb-32">
           <div className="flex flex-col items-center justify-center">
-            <div className="w-8 h-8 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin mb-8" />
+            <div className="w-8 h-8 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin mb-8" />
             <Typography variant="body" className="opacity-60 uppercase tracking-widest text-xs">Retrieving Clinical Data</Typography>
           </div>
         </Container>
@@ -90,7 +90,7 @@ export const ResultsPage: React.FC = () => {
     return (
       <PageTransition>
         <Container className="pt-44 pb-32 text-center">
-          <Typography variant="h3" className="text-[#253A4A] mb-4">Unavailable</Typography>
+          <Typography variant="h3" className="text-[#26384B] mb-4">Unavailable</Typography>
           <Typography variant="body" className="opacity-60 mb-8">{error || "Analysis not found."}</Typography>
           <Link to="/app/history">
             <Button variant="secondary" className="rounded-full px-8">Return to Archives</Button>
@@ -113,7 +113,7 @@ export const ResultsPage: React.FC = () => {
             <div className="flex items-center justify-between mb-8">
               <Link
                 to="/app/history"
-                className="flex items-center gap-2 text-[#5C7E9A] hover:text-[#253A4A] transition-colors"
+                className="flex items-center gap-2 text-[#4C6072] hover:text-[#26384B] transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span className="text-xs font-bold tracking-widest uppercase">Back</span>
@@ -131,14 +131,14 @@ export const ResultsPage: React.FC = () => {
 
             {/* Page title */}
             <BlurReveal className="relative inline-block">
-              <p className="font-editorial text-5xl lg:text-7xl text-[#253A4A] font-black mb-8 relative z-10">
+              <p className="font-editorial text-5xl lg:text-7xl text-[#26384B] font-black mb-8 relative z-10">
                 Clinical Protocol.
               </p>
-              <Doodle type="sparkles" className="w-16 h-16 absolute -top-8 -right-10 text-[#5C7E9A] opacity-30 z-0" delay={0.5} />
+              <Doodle type="sparkles" className="w-16 h-16 absolute -top-8 -right-10 text-[#4C6072] opacity-30 z-0" delay={0.5} />
             </BlurReveal>
 
             {/* Separator */}
-            <div className="border-b border-[#253A4A]/10 pb-8 mb-12" />
+            <div className="border-b border-[#26384B]/10 pb-8 mb-12" />
           </StaggerItem>
 
           {/* ── Section 2: Two-Column Split ─────────────────────────────────── */}
@@ -148,7 +148,7 @@ export const ResultsPage: React.FC = () => {
             <StaggerItem className="w-full lg:w-1/3">
               <div className="sticky top-28">
                 {/* Patient image */}
-                <div className="rounded-[32px] overflow-hidden border border-[#253A4A]/10 shadow-[0_20px_60px_-15px_rgba(37,58,74,0.1)] relative aspect-[3/4] mb-6">
+                <div className="rounded-[32px] overflow-hidden border border-[#26384B]/10 shadow-[0_20px_60px_-15px_rgba(37,58,74,0.1)] relative aspect-[3/4] mb-6">
                   <AmbientGlow blur="blur-[60px]" opacity="opacity-30" />
                   <AnalysisImage
                     analysisId={analysis.id}
@@ -161,20 +161,20 @@ export const ResultsPage: React.FC = () => {
                 {ml && (
                   <div className="flex gap-3">
                     {ml.concerns && ml.concerns.length > 0 && (
-                      <div className="flex-1 p-4 rounded-2xl bg-[#F7F7F5] border border-[#253A4A]/5 text-center">
-                        <p className="text-xl font-bold text-[#253A4A]">{ml.concerns.length}</p>
-                        <p className="text-[10px] uppercase tracking-widest text-[#5C7E9A] font-bold mt-0.5">Concerns</p>
+                      <div className="flex-1 p-4 rounded-2xl bg-[#F7F7F5] border border-[#26384B]/5 text-center">
+                        <p className="text-xl font-bold text-[#26384B]">{ml.concerns.length}</p>
+                        <p className="text-[10px] uppercase tracking-widest text-[#4C6072] font-bold mt-0.5">Concerns</p>
                       </div>
                     )}
                     {ml.concerns && ml.concerns.length > 0 && (
-                      <div className="flex-1 p-4 rounded-2xl bg-[#F7F7F5] border border-[#253A4A]/5 text-center">
-                        <p className="text-xl font-bold text-[#253A4A]">
+                      <div className="flex-1 p-4 rounded-2xl bg-[#F7F7F5] border border-[#26384B]/5 text-center">
+                        <p className="text-xl font-bold text-[#26384B]">
                           {Math.round(
                             ml.concerns.reduce((acc, c) => acc + (c.confidence ?? 0), 0) /
                               ml.concerns.length
                           )}%
                         </p>
-                        <p className="text-[10px] uppercase tracking-widest text-[#5C7E9A] font-bold mt-0.5">Confidence</p>
+                        <p className="text-[10px] uppercase tracking-widest text-[#4C6072] font-bold mt-0.5">Confidence</p>
                       </div>
                     )}
                   </div>
@@ -190,26 +190,26 @@ export const ResultsPage: React.FC = () => {
                   {/* Detected Skin Concerns */}
                   {ml.concerns && ml.concerns.length > 0 && (
                     <section>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5C7E9A] mb-6 flex items-center gap-4">
-                        <span className="w-8 h-[1px] bg-[#5C7E9A]/20"></span>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4C6072] mb-6 flex items-center gap-4">
+                        <span className="w-8 h-[1px] bg-[#4C6072]/20"></span>
                         Detected Concerns
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         {ml.concerns.map((concern, idx) => (
-                          <Fade key={idx} delay={idx * 0.1} className="p-6 border border-[#253A4A]/5 rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1">
+                          <Fade key={idx} delay={idx * 0.1} className="p-6 border border-[#26384B]/5 rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1">
                             <div className="flex justify-between items-start mb-4">
-                              <p className="font-serif font-medium text-[#253A4A] text-xl">{concern.name}</p>
+                              <p className="font-serif font-medium text-[#26384B] text-xl">{concern.name}</p>
                               <div className="text-right">
-                                <span className="block text-xs font-bold text-[#5C7E9A] mb-1">Confidence</span>
-                                <span className="text-xs font-bold bg-[#F7F7F5] px-2 py-1 rounded border border-[#253A4A]/5 text-[#253A4A]">
+                                <span className="block text-xs font-bold text-[#4C6072] mb-1">Confidence</span>
+                                <span className="text-xs font-bold bg-[#F7F7F5] px-2 py-1 rounded border border-[#26384B]/5 text-[#26384B]">
                                   {concern.confidence}%
                                 </span>
                               </div>
                             </div>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#E89B87] mb-3">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#C67C5A] mb-3">
                               {concern.severity} Severity
                             </p>
-                            <p className="text-sm leading-relaxed opacity-70 text-[#253A4A]">{concern.explanation}</p>
+                            <p className="text-sm leading-relaxed opacity-70 text-[#26384B]">{concern.explanation}</p>
                           </Fade>
                         ))}
                       </div>
@@ -219,26 +219,26 @@ export const ResultsPage: React.FC = () => {
                   {/* Clinical Observations */}
                   {ml.observations && ml.observations.length > 0 && (
                     <section className="pt-8">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5C7E9A] mb-6 flex items-center gap-4">
-                        <span className="w-8 h-[1px] bg-[#5C7E9A]/20"></span>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4C6072] mb-6 flex items-center gap-4">
+                        <span className="w-8 h-[1px] bg-[#4C6072]/20"></span>
                         Clinical Observations
                       </p>
                       <div className="space-y-4">
                         {ml.observations.map((obs, idx) => (
-                          <div key={idx} className="p-6 border-l-2 border-[#253A4A]/20 pl-6 rounded-r-3xl bg-gradient-to-r from-[#F7F7F5] to-transparent">
-                            <p className="font-serif font-medium text-[#253A4A] text-lg mb-3">{obs.observation}</p>
+                          <div key={idx} className="p-6 border-l-2 border-[#26384B]/20 pl-6 rounded-r-3xl bg-gradient-to-r from-[#F7F7F5] to-transparent">
+                            <p className="font-serif font-medium text-[#26384B] text-lg mb-3">{obs.observation}</p>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm opacity-80">
                               <div>
-                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#5C7E9A] mb-1">Reason</span>
-                                <span className="text-[#253A4A]">{obs.reason}</span>
+                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#4C6072] mb-1">Reason</span>
+                                <span className="text-[#26384B]">{obs.reason}</span>
                               </div>
                               <div>
-                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#5C7E9A] mb-1">Implication</span>
-                                <span className="text-[#253A4A]">{obs.implication}</span>
+                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#4C6072] mb-1">Implication</span>
+                                <span className="text-[#26384B]">{obs.implication}</span>
                               </div>
                               <div>
-                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#5C7E9A] mb-1">Expected Outcome</span>
-                                <span className="text-[#253A4A]">{obs.expected_improvement}</span>
+                                <span className="block text-[10px] uppercase tracking-widest font-bold text-[#4C6072] mb-1">Expected Outcome</span>
+                                <span className="text-[#26384B]">{obs.expected_improvement}</span>
                               </div>
                             </div>
                           </div>
@@ -250,8 +250,8 @@ export const ResultsPage: React.FC = () => {
                   {/* Ingredient Protocol */}
                   {ml.ingredients && (
                     <section className="pt-8">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5C7E9A] mb-6 flex items-center gap-4">
-                        <span className="w-8 h-[1px] bg-[#5C7E9A]/20"></span>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4C6072] mb-6 flex items-center gap-4">
+                        <span className="w-8 h-[1px] bg-[#4C6072]/20"></span>
                         Ingredient Protocol
                       </p>
                       <div className="space-y-8">
@@ -259,26 +259,26 @@ export const ResultsPage: React.FC = () => {
                           if (!items || items.length === 0) return null;
                           return (
                             <div key={category}>
-                              <p className="text-[10px] font-bold uppercase tracking-widest text-[#253A4A] border-b border-[#253A4A]/10 pb-3 mb-4 flex items-center justify-between">
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-[#26384B] border-b border-[#26384B]/10 pb-3 mb-4 flex items-center justify-between">
                                 <span>{category} Actives</span>
-                                <span className="text-[#5C7E9A] font-normal">{items.length} Ingredients</span>
+                                <span className="text-[#4C6072] font-normal">{items.length} Ingredients</span>
                               </p>
                               <div className="grid grid-cols-1 gap-4">
                                 {items.map((ing, idx) => (
                                   <div
                                     key={idx}
-                                    className="p-6 bg-[#FCFBF8] border border-[#253A4A]/5 rounded-3xl flex flex-col sm:flex-row gap-6 justify-between items-start transition-colors hover:bg-white"
+                                    className="p-6 bg-[#F6F4EF] border border-[#26384B]/5 rounded-3xl flex flex-col sm:flex-row gap-6 justify-between items-start transition-colors hover:bg-white"
                                   >
                                     <div className="flex-1">
-                                      <p className="font-serif font-medium text-[#253A4A] text-xl mb-2">{ing.name}</p>
-                                      <p className="text-sm leading-relaxed opacity-70 text-[#253A4A] mb-3">{ing.why}</p>
-                                      <p className="text-[10px] uppercase tracking-widest font-bold text-[#E89B87]">Benefit: {ing.benefit}</p>
+                                      <p className="font-serif font-medium text-[#26384B] text-xl mb-2">{ing.name}</p>
+                                      <p className="text-sm leading-relaxed opacity-70 text-[#26384B] mb-3">{ing.why}</p>
+                                      <p className="text-[10px] uppercase tracking-widest font-bold text-[#C67C5A]">Benefit: {ing.benefit}</p>
                                     </div>
                                     <div className="text-left sm:text-right shrink-0 flex flex-row sm:flex-col gap-2">
-                                      <span className="inline-block text-[10px] uppercase tracking-[0.2em] font-bold bg-white shadow-sm border border-[#253A4A]/5 px-3 py-1.5 rounded-full text-[#253A4A]">
+                                      <span className="inline-block text-[10px] uppercase tracking-[0.2em] font-bold bg-white shadow-sm border border-[#26384B]/5 px-3 py-1.5 rounded-full text-[#26384B]">
                                         {ing.time}
                                       </span>
-                                      <span className="inline-block text-[10px] uppercase tracking-widest font-bold text-[#5C7E9A] px-3 py-1.5">
+                                      <span className="inline-block text-[10px] uppercase tracking-widest font-bold text-[#4C6072] px-3 py-1.5">
                                         {ing.compatibility}
                                       </span>
                                     </div>
@@ -294,8 +294,8 @@ export const ResultsPage: React.FC = () => {
 
                 </div>
               ) : (
-                <div className="p-6 border border-[#253A4A]/10 rounded-2xl bg-white/50 backdrop-blur-sm">
-                  <div className="flex items-center gap-4 text-[#5C7E9A]">
+                <div className="p-6 border border-[#26384B]/10 rounded-2xl bg-white/50 backdrop-blur-sm">
+                  <div className="flex items-center gap-4 text-[#4C6072]">
                     <Info className="w-5 h-5" />
                     <p className="text-sm font-medium tracking-wide">Analysis data is still processing.</p>
                   </div>
@@ -307,36 +307,36 @@ export const ResultsPage: React.FC = () => {
           {/* ── Section 3: Full-Width Routine (only if showRoutine) ─────────── */}
           {showRoutine && recommendation && (
             <StaggerItem>
-              <div className="border-t border-[#253A4A]/10 pt-12 mt-8 space-y-12">
+              <div className="border-t border-[#26384B]/10 pt-12 mt-8 space-y-12">
 
                 {/* Morning Protocol */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#5C7E9A] mb-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#4C6072] mb-4">
                     Morning Protocol
                   </p>
                   <div className="space-y-4">
                     {recommendation.morning_routine.map((item, i) => (
-                      <div key={`am-${i}`} className="p-6 border border-[#253A4A]/10 rounded-2xl bg-white">
+                      <div key={`am-${i}`} className="p-6 border border-[#26384B]/10 rounded-2xl bg-white">
                         <div className="flex flex-col md:flex-row gap-5">
-                          <div className="w-11 h-11 shrink-0 rounded-full bg-[#FCFBF8] border border-[#253A4A]/10 flex items-center justify-center text-xl">
+                          <div className="w-11 h-11 shrink-0 rounded-full bg-[#F6F4EF] border border-[#26384B]/10 flex items-center justify-center text-xl">
                             ☀️
                           </div>
                           <div className="flex-1">
-                            <p className="text-xs font-bold uppercase tracking-widest text-[#5C7E9A] mb-2">
+                            <p className="text-xs font-bold uppercase tracking-widest text-[#4C6072] mb-2">
                               {item.step_name} · {item.product_type}
                             </p>
-                            <p className="font-bold text-[#253A4A] text-lg mb-2 capitalize">
+                            <p className="font-bold text-[#26384B] text-lg mb-2 capitalize">
                               {item.category.replace(/_/g, ' ')}
                             </p>
                             {item.recommended_product && (
-                              <div className="mb-3 px-3 py-1.5 bg-[#F7F7F5] rounded-lg border border-[#253A4A]/5 inline-block">
-                                <span className="text-xs font-bold text-[#253A4A]">
+                              <div className="mb-3 px-3 py-1.5 bg-[#F7F7F5] rounded-lg border border-[#26384B]/5 inline-block">
+                                <span className="text-xs font-bold text-[#26384B]">
                                   Recommended: {item.recommended_product}
                                 </span>
                               </div>
                             )}
-                            <p className="text-sm text-[#5C7E9A] mb-4"><strong>Why:</strong> {item.why}</p>
-                            <div className="grid grid-cols-2 gap-4 text-xs text-[#5C7E9A]">
+                            <p className="text-sm text-[#4C6072] mb-4"><strong>Why:</strong> {item.why}</p>
+                            <div className="grid grid-cols-2 gap-4 text-xs text-[#4C6072]">
                               <div><strong>Instructions:</strong><br />{item.instructions}</div>
                               <div><strong>Frequency:</strong><br />{item.frequency}</div>
                             </div>
@@ -354,12 +354,12 @@ export const ResultsPage: React.FC = () => {
 
                 {/* Night Protocol */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#5C7E9A] mb-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#4C6072] mb-4">
                     Night Protocol
                   </p>
                   <div className="space-y-4">
                     {recommendation.night_routine.map((item, i) => (
-                      <div key={`pm-${i}`} className="p-6 border border-[#253A4A]/10 rounded-2xl bg-[#1a2530] text-white">
+                      <div key={`pm-${i}`} className="p-6 border border-[#26384B]/10 rounded-2xl bg-[#1a2530] text-white">
                         <div className="flex flex-col md:flex-row gap-5">
                           <div className="w-11 h-11 shrink-0 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xl">
                             🌙
@@ -401,9 +401,9 @@ export const ResultsPage: React.FC = () => {
           {/* ── Section 3b: No recommendation yet but routine flag is set ───── */}
           {showRoutine && !recommendation && (
             <StaggerItem>
-              <div className="border-t border-[#253A4A]/10 pt-12 mt-8">
-                <div className="p-6 border border-[#253A4A]/10 rounded-2xl bg-white/50 backdrop-blur-sm">
-                  <div className="flex items-center gap-4 text-[#5C7E9A]">
+              <div className="border-t border-[#26384B]/10 pt-12 mt-8">
+                <div className="p-6 border border-[#26384B]/10 rounded-2xl bg-white/50 backdrop-blur-sm">
+                  <div className="flex items-center gap-4 text-[#4C6072]">
                     <Info className="w-5 h-5" />
                     <p className="text-sm font-medium tracking-wide">No products could be mapped for this profile.</p>
                   </div>
@@ -418,13 +418,13 @@ export const ResultsPage: React.FC = () => {
               <div className="space-y-12">
                 {/* Weekly Strategy + Introduction Schedule */}
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="p-6 border border-[#253A4A]/10 rounded-2xl bg-white">
-                    <p className="font-bold text-[#253A4A] text-lg mb-4">Weekly Strategy</p>
-                    <p className="text-sm text-[#5C7E9A] leading-relaxed">{recommendation.weekly_schedule}</p>
+                  <div className="p-6 border border-[#26384B]/10 rounded-2xl bg-white">
+                    <p className="font-bold text-[#26384B] text-lg mb-4">Weekly Strategy</p>
+                    <p className="text-sm text-[#4C6072] leading-relaxed">{recommendation.weekly_schedule}</p>
                   </div>
-                  <div className="p-6 border border-[#253A4A]/10 rounded-2xl bg-white">
-                    <p className="font-bold text-[#253A4A] text-lg mb-4">Introduction Schedule</p>
-                    <p className="text-sm text-[#5C7E9A] leading-relaxed whitespace-pre-line mb-4">
+                  <div className="p-6 border border-[#26384B]/10 rounded-2xl bg-white">
+                    <p className="font-bold text-[#26384B] text-lg mb-4">Introduction Schedule</p>
+                    <p className="text-sm text-[#4C6072] leading-relaxed whitespace-pre-line mb-4">
                       {recommendation.introduction_schedule}
                     </p>
                     <p className="text-xs font-bold text-amber-600 bg-amber-50 p-3 rounded-lg">
@@ -435,16 +435,16 @@ export const ResultsPage: React.FC = () => {
 
                 {/* Timeline phases */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#5C7E9A] mb-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#4C6072] mb-4">
                     Expected Timeline
                   </p>
                   <div className="grid md:grid-cols-4 gap-4">
                     {recommendation.timeline.map((phase, i) => (
-                      <div key={i} className="p-5 border border-[#253A4A]/10 rounded-2xl bg-[#FCFBF8]">
-                        <p className="font-bold text-[#253A4A] text-base mb-3">{phase.phase}</p>
-                        <p className="text-xs text-[#5C7E9A] mb-3">{phase.expected_results}</p>
+                      <div key={i} className="p-5 border border-[#26384B]/10 rounded-2xl bg-[#F6F4EF]">
+                        <p className="font-bold text-[#26384B] text-base mb-3">{phase.phase}</p>
+                        <p className="text-xs text-[#4C6072] mb-3">{phase.expected_results}</p>
                         {phase.adjustments && (
-                          <p className="text-[10px] font-bold text-[#253A4A] bg-[#253A4A]/5 p-2 rounded">
+                          <p className="text-[10px] font-bold text-[#26384B] bg-[#26384B]/5 p-2 rounded">
                             Adapt: {phase.adjustments}
                           </p>
                         )}
@@ -459,7 +459,7 @@ export const ResultsPage: React.FC = () => {
           {/* ── Section 5: CTA (only if no routine yet) ──────────────────────── */}
           {!showRoutine && (
             <StaggerItem>
-              <div className="border-t border-[#253A4A]/10 pt-12 mt-8 text-center">
+              <div className="border-t border-[#26384B]/10 pt-12 mt-8 text-center">
                 <Fade>
                   <Link to={`/app/routine-selection/${id}`}>
                     <Button className="w-full md:w-auto rounded-full px-12 py-6 text-lg">

@@ -11,11 +11,11 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[#FCFBF8] border-[#253A4A]/[0.02] shadow-[0_40px_120px_rgba(37,58,74,0.03)]",
-        elevated: "bg-[#FCFBF8] border-transparent shadow-[0_60px_140px_rgba(37,58,74,0.04)]",
-        glass: "bg-[#F8F5F1]/90 border-[#253A4A]/[0.02] shadow-[0_30px_100px_rgba(37,58,74,0.02)] backdrop-blur-md",
+        default: "bg-[#F6F4EF] border-[#26384B]/[0.02] shadow-[0_40px_120px_rgba(37,58,74,0.03)]",
+        elevated: "bg-[#F6F4EF] border-transparent shadow-[0_60px_140px_rgba(37,58,74,0.04)]",
+        glass: "bg-[#FBFAF7]/90 border-[#26384B]/[0.02] shadow-[0_30px_100px_rgba(37,58,74,0.02)] backdrop-blur-md",
         editorial: "bg-transparent border-none shadow-none rounded-none",
-        interactive: "group bg-[#FCFBF8] border-[#253A4A]/[0.02] shadow-[0_40px_120px_rgba(37,58,74,0.03)] hover:border-[#253A4A]/5 hover:-translate-y-1 cursor-pointer",
+        interactive: "group bg-[#F6F4EF] border-[#26384B]/[0.02] shadow-[0_40px_120px_rgba(37,58,74,0.03)] hover:border-[#26384B]/5 hover:-translate-y-1 cursor-pointer",
       },
     },
     defaultVariants: {

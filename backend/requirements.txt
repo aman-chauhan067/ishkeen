@@ -11,3 +11,6 @@ Pillow>=10.0.0
 python-multipart>=0.0.9
 onnxruntime>=1.16.0
 numpy>=1.26.0
+mediapipe>=0.10.11
+opencv-python-headless>=4.9.0
+google-generativeai>=0.5.2

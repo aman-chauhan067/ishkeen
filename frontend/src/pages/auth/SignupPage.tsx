@@ -9,6 +9,7 @@ import { api } from '../../lib/api';
 import { PageTransition, BlurReveal, Fade } from '../../components/motion';
 
 import { Doodle } from '../../components/illustrations/Doodle';
+import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 
 export const SignupPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -81,18 +82,18 @@ export const SignupPage: React.FC = () => {
           {/* In-card header */}
           <div className="mb-7 relative">
             <Link to="/" className="inline-block mb-4 relative z-10">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+              <DragonflyLogo size="sm" showSubtitle={false} />
             </Link>
-            <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
               Begin your journey.
             </h2>
-            <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+            <Doodle type="stars" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
           </div>
 
           {success ? (
             <Fade className="text-center space-y-4 py-4">
               <Alert variant="success" message="Account created! Verification email sent." />
-              <Typography variant="body" className="text-sm text-[#5C7E9A]">
+              <Typography variant="body" className="text-sm text-[#4C6072]">
                 Please check your inbox and click the verification link to activate your account.
               </Typography>
               <Button onClick={() => navigate('/login', { replace: true })} variant="outline" className="mt-4 w-full rounded-full">
@@ -138,7 +139,7 @@ export const SignupPage: React.FC = () => {
                         />
                       ))}
                     </div>
-                    <p className="text-[10px] text-[#5C7E9A] uppercase tracking-wider text-right">
+                    <p className="text-[10px] text-[#4C6072] uppercase tracking-wider text-right">
                       {strength <= 2 ? 'Weak' : strength <= 4 ? 'Good' : 'Strong'}
                     </p>
                   </div>
@@ -175,9 +176,9 @@ export const SignupPage: React.FC = () => {
           {!success && (
             <>
               {/* Divider */}
-              <div className="my-5 text-center text-[#5C7E9A] text-[10px] font-bold uppercase tracking-widest relative">
+              <div className="my-5 text-center text-[#4C6072] text-[10px] font-bold uppercase tracking-widest relative">
                 <span className="bg-white px-3 relative z-10">Or continue with</span>
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#253A4A]/10" />
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#26384B]/10" />
               </div>
 
               <Button
@@ -205,7 +206,7 @@ export const SignupPage: React.FC = () => {
               <div className="mt-5 text-center">
                 <Typography variant="caption">
                   Already have an account?{' '}
-                  <Link to="/login" className="text-[#253A4A] hover:text-[#5C7E9A] font-bold transition-colors ml-1">
+                  <Link to="/login" className="text-[#26384B] hover:text-[#4C6072] font-bold transition-colors ml-1">
                     SIGN IN
                   </Link>
                 </Typography>

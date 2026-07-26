@@ -18,7 +18,7 @@ patcher2.start()
 
 from fastapi.testclient import TestClient
 from app.main import app
-from app.core.database import Base, engine
+from app.core.database import Base, engine, get_db
 
 # Ensure clean DB
 Base.metadata.drop_all(bind=engine)
@@ -33,6 +33,18 @@ def test_full_user_flow():
         resp = client.post("/api/auth/signup", json={"email": email, "password": password})
         assert resp.status_code == 201, f"Signup failed: {resp.text}"
         print("OK Registration successful")
+        
+        # 1.5 Verify Email
+        with next(get_db()) as db:
+            from app.models.user import User
+            from app.models.token import VerificationToken
+            user = db.query(User).filter_by(email=email).first()
+            token_record = db.query(VerificationToken).filter_by(user_id=user.id).first()
+            token = token_record.token
+            
+        resp = client.post("/api/auth/verify-email", json={"token": token})
+        assert resp.status_code == 200, f"Verify email failed: {resp.text}"
+        print("OK Email verified")
         
         # 2. Login
         resp = client.post("/api/auth/login", json={"email": email, "password": password})

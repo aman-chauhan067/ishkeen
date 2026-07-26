@@ -23,11 +23,11 @@ def test_readiness_endpoint_success():
     response = client.get("/api/ready")
     assert response.status_code == 200
     assert response.json() == {"status": "ready"}
-    app.dependency_overrides.clear()
+    del app.dependency_overrides[get_db]
 
 def test_readiness_endpoint_failure():
     app.dependency_overrides[get_db] = lambda: MockSessionFailure()
     response = client.get("/api/ready")
     assert response.status_code == 503
     assert response.json() == {"detail": "Database unavailable"}
-    app.dependency_overrides.clear()
+    del app.dependency_overrides[get_db]

@@ -11,6 +11,7 @@ import type { User } from '../../auth/types';
 import { PageTransition, BlurReveal, Fade } from '../../components/motion';
 
 import { Doodle } from '../../components/illustrations/Doodle';
+import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -47,12 +48,12 @@ export const LoginPage: React.FC = () => {
           {/* In-card header */}
           <div className="mb-7 relative">
             <Link to="/" className="inline-block mb-4 relative z-10">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#5C7E9A]">ISHKEEN</span>
+              <DragonflyLogo size="sm" showSubtitle={false} />
             </Link>
-            <h2 className="text-[#253A4A] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
               Welcome back.
             </h2>
-            <Doodle type="leaf" className="absolute -top-4 right-0 w-12 h-12 text-[#5C7E9A] opacity-20 z-0" delay={0.4} />
+            <Doodle type="leaf" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
@@ -85,7 +86,7 @@ export const LoginPage: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="flex justify-end mt-2">
-                <Link to="/forgot-password" className="text-[10px] font-bold text-[#5C7E9A] hover:text-[#253A4A] tracking-widest uppercase transition-colors">
+                <Link to="/forgot-password" className="text-[10px] font-bold text-[#4C6072] hover:text-[#26384B] tracking-widest uppercase transition-colors">
                   Forgot Password?
                 </Link>
               </div>
@@ -105,9 +106,9 @@ export const LoginPage: React.FC = () => {
           </form>
 
           {/* Divider */}
-          <div className="my-5 text-center text-[#5C7E9A] text-[10px] font-bold uppercase tracking-widest relative">
+          <div className="my-5 text-center text-[#4C6072] text-[10px] font-bold uppercase tracking-widest relative">
             <span className="bg-white px-3 relative z-10">Or continue with</span>
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-[#253A4A]/10" />
+            <div className="absolute top-1/2 left-0 right-0 h-px bg-[#26384B]/10" />
           </div>
 
           <Button
@@ -135,7 +136,7 @@ export const LoginPage: React.FC = () => {
           <div className="mt-5 text-center">
             <Typography variant="caption">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-[#253A4A] hover:text-[#5C7E9A] font-bold transition-colors ml-1">
+              <Link to="/signup" className="text-[#26384B] hover:text-[#4C6072] font-bold transition-colors ml-1">
                 CREATE AN ACCOUNT
               </Link>
             </Typography>

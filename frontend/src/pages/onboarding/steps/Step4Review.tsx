@@ -30,7 +30,7 @@ export const Step4Review: React.FC<Step4Props> = ({ answers, onEdit }) => {
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="stars" className="absolute -top-6 -right-6 w-12 h-12 text-[#5C7E9A] opacity-20" delay={0.2} />
+          <Doodle type="stars" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Review Consultation</QuestionTitle>
           <QuestionDescription>Please review your profile before completing the onboarding process.</QuestionDescription>
         </div>

@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext';
 import { PageTransition } from '../../components/motion';
 import { Doodle } from '../../components/illustrations/Doodle';
+import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 import {
   LayoutDashboard,
   Users,
@@ -56,29 +57,24 @@ export const AdminShell = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#F7F7F5] flex overflow-hidden selection:bg-[#253A4A] selection:text-[#FCFBF8] relative z-10">
+      <div className="min-h-screen bg-[#F7F7F5] flex overflow-hidden selection:bg-[#26384B] selection:text-[#F6F4EF] relative z-10">
         
         {/* Global Background Doodles */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-5">
-          <Doodle type="wave" className="absolute top-[20%] left-[25%] w-64 h-64 text-[#5C7E9A]" />
-          <Doodle type="arrow" className="absolute bottom-[10%] right-[30%] w-48 h-48 text-[#5C7E9A]" />
-          <Doodle type="face" className="absolute top-[5%] right-[5%] w-32 h-32 text-[#5C7E9A]" />
+          <Doodle type="wave" className="absolute top-[20%] left-[25%] w-64 h-64 text-[#4C6072]" />
+          <Doodle type="arrow" className="absolute bottom-[10%] right-[30%] w-48 h-48 text-[#4C6072]" />
+          <Doodle type="face" className="absolute top-[5%] right-[5%] w-32 h-32 text-[#4C6072]" />
         </div>
         
         {/* Editorial Side Navigation */}
         <nav 
-          className="w-64 border-r border-[#253A4A]/5 bg-[#FCFBF8] flex flex-col transition-all duration-500 ease-out z-20"
+          className="w-64 border-r border-[#26384B]/5 bg-[#F6F4EF] flex flex-col transition-all duration-500 ease-out z-20"
           
           
         >
           {/* Header */}
-          <div className="h-24 px-8 flex flex-col justify-center border-b border-[#253A4A]/5">
-            <h1 className="font-sans font-bold text-lg tracking-widest text-[#253A4A] uppercase">
-              Ishkeen
-            </h1>
-            <p className="font-serif text-[10px] uppercase tracking-widest text-[#5C7E9A] mt-1">
-              Operations Center
-            </p>
+          <div className="h-24 px-8 flex items-center border-b border-[#26384B]/5">
+            <DragonflyLogo size="sm" subtitleText="OPERATIONS // v2.4" />
           </div>
 
           {/* Nav Links */}
@@ -91,8 +87,8 @@ export const AdminShell = () => {
                 className={({ isActive }) => `
                   flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
                   ${isActive 
-                    ? 'bg-[#253A4A] text-[#FCFBF8] shadow-[0_4px_20px_-4px_rgba(37,58,74,0.3)]' 
-                    : 'text-[#5C7E9A] hover:bg-[#253A4A]/5 hover:text-[#253A4A]'}
+                    ? 'bg-[#26384B] text-[#F6F4EF] shadow-[0_4px_20px_-4px_rgba(37,58,74,0.3)]' 
+                    : 'text-[#4C6072] hover:bg-[#26384B]/5 hover:text-[#26384B]'}
                 `}
               >
                 <item.icon className="w-4 h-4" strokeWidth={1.5} />
@@ -104,10 +100,10 @@ export const AdminShell = () => {
           </div>
 
           {/* Footer actions */}
-          <div className="p-4 border-t border-[#253A4A]/5 flex flex-col gap-2">
+          <div className="p-4 border-t border-[#26384B]/5 flex flex-col gap-2">
             <button
               onClick={() => navigate('/app/dashboard')}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#5C7E9A] hover:bg-[#253A4A]/5 hover:text-[#253A4A] transition-all duration-300"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4C6072] hover:bg-[#26384B]/5 hover:text-[#26384B] transition-all duration-300"
             >
               <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
               <span className="font-sans text-xs tracking-wider font-medium">Exit Admin</span>
@@ -130,26 +126,26 @@ export const AdminShell = () => {
             <div className="flex-1 pointer-events-auto">
               <button 
                 onClick={() => setIsSearchOpen(true)}
-                className="flex items-center gap-3 px-4 py-2 bg-white/50 backdrop-blur-md border border-[#253A4A]/10 rounded-xl text-[#5C7E9A] hover:bg-white hover:text-[#253A4A] transition-colors shadow-sm"
+                className="flex items-center gap-3 px-4 py-2 bg-white/50 backdrop-blur-md border border-[#26384B]/10 rounded-xl text-[#4C6072] hover:bg-white hover:text-[#26384B] transition-colors shadow-sm"
               >
                 <Search className="w-4 h-4" />
                 <span className="font-sans text-xs">Search...</span>
                 <div className="flex items-center gap-1 ml-4 text-[10px] font-bold">
-                  <kbd className="bg-[#F7F7F5] border border-[#253A4A]/10 rounded px-1.5 py-0.5">⌘</kbd>
-                  <kbd className="bg-[#F7F7F5] border border-[#253A4A]/10 rounded px-1.5 py-0.5">K</kbd>
+                  <kbd className="bg-[#F7F7F5] border border-[#26384B]/10 rounded px-1.5 py-0.5">⌘</kbd>
+                  <kbd className="bg-[#F7F7F5] border border-[#26384B]/10 rounded px-1.5 py-0.5">K</kbd>
                 </div>
               </button>
             </div>
             <div className="flex items-center gap-6 pointer-events-auto">
               <button 
                 onClick={() => setIsNotificationsOpen(true)}
-                className="relative p-2 text-[#253A4A] hover:bg-[#253A4A]/5 rounded-full transition-colors"
+                className="relative p-2 text-[#26384B] hover:bg-[#26384B]/5 rounded-full transition-colors"
               >
                 <Bell className="w-5 h-5" strokeWidth={1.5} />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-[#FCFBF8]" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-[#F6F4EF]" />
               </button>
-              <div className="flex items-center gap-3 pl-6 border-l border-[#253A4A]/10">
-                <div className="w-8 h-8 rounded-full bg-[#253A4A] flex items-center justify-center text-[#FCFBF8] font-sans text-xs font-medium">
+              <div className="flex items-center gap-3 pl-6 border-l border-[#26384B]/10">
+                <div className="w-8 h-8 rounded-full bg-[#26384B] flex items-center justify-center text-[#F6F4EF] font-sans text-xs font-medium">
                   {user?.email?.[0]?.toUpperCase() || 'A'}
                 </div>
               </div>

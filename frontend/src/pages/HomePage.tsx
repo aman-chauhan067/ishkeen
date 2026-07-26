@@ -2,106 +2,211 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
 import { Container } from '../components/ui/Container';
-import { PageTransition, BlurReveal, Fade } from '../components/motion';
-import { Doodle } from '../components/illustrations/Doodle';
-
+import { PageTransition, Fade } from '../components/motion';
 import { useAuth } from '../auth/AuthContext';
 
-const OpticalLens = React.lazy(() => import('../components/motion/OpticalLens'));
+import {
+  Navbar,
+  StatsSection,
+  HowItWorksSection,
+  ClinicalScienceSection,
+  ComparisonSection,
+  TestimonialsSection,
+  Footer,
+  DragonflyMarquee,
+  AsciiDragonflyBackground,
+  FinalCtaSection,
+  HeroKineticTitle,
+} from '../components/landing';
 
 export const HomePage: React.FC = () => {
   const { status, user, logout } = useAuth();
-  
+
   const handleLogout = async () => {
     await logout();
   };
+
   return (
     <PageTransition>
-      {/* 
-        The background outside the lens is strictly calm Paper White.
-        Scrollbar is disabled on the body via global CSS or overflow-hidden here,
-        because ScrollControls inside OpticalLens manages the scroll experience natively.
-      */}
-      <div className="relative w-full h-screen overflow-hidden bg-[#FCFBF8] flex items-center justify-center">
-        
-        {/* The Interactive Optical Lens (Scroll driver & WebGL Engine) */}
-        <React.Suspense fallback={null}>
-          <Fade className="absolute inset-0 w-full h-full z-0 pointer-events-auto" delay={0.5} duration={2}>
-            <OpticalLens />
-          </Fade>
-        </React.Suspense>
+      <div className="min-h-screen w-full bg-[#F6F4EF] text-[#26384B] relative selection:bg-[#26384B] selection:text-[#F6F4EF] overflow-x-hidden">
+        {/* =========================================================
+            0. FIXED 3D ASCII DRAGONFLY BACKGROUND (ROTATES ON SCROLL)
+            ========================================================= */}
+        <AsciiDragonflyBackground />
 
-        {/* Floating Doodles */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-          <Doodle type="sparkles" className="absolute top-[15%] left-[10%] w-12 h-12 text-[#5C7E9A] opacity-20" delay={1} />
-          <Doodle type="leaf" className="absolute bottom-[20%] left-[5%] w-16 h-16 text-[#5C7E9A] opacity-20" delay={1.2} />
-          <Doodle type="circle" className="absolute top-[25%] right-[15%] w-24 h-24 text-[#5C7E9A] opacity-10" delay={1.4} />
-          <Doodle type="stars" className="absolute bottom-[10%] right-[10%] w-10 h-10 text-[#5C7E9A] opacity-20" delay={1.6} />
-          <Doodle type="swirl" className="absolute top-[5%] right-[40%] w-20 h-20 text-[#5C7E9A] opacity-[0.07]" delay={1.8} />
+        {/* =========================================================
+            FOUR CORNER LETTERS ON VIEWPORT (Exact Dragonfly.xyz signature)
+            ========================================================= */}
+        <div className="fixed top-24 left-8 z-20 pointer-events-none hidden md:block font-editorial text-4xl lg:text-5xl text-[#26384B]/30 select-none">
+          I
+        </div>
+        <div className="fixed top-24 right-8 z-20 pointer-events-none hidden md:block font-editorial text-4xl lg:text-5xl text-[#26384B]/30 select-none">
+          S
+        </div>
+        <div className="fixed bottom-8 left-8 z-20 pointer-events-none hidden md:block font-editorial text-4xl lg:text-5xl text-[#26384B]/30 select-none">
+          H
+        </div>
+        <div className="fixed bottom-8 right-8 z-20 pointer-events-none hidden md:block font-editorial text-4xl lg:text-5xl text-[#26384B]/30 select-none">
+          K
         </div>
 
-        <Container className="relative z-10 w-full h-full flex flex-col justify-center pointer-events-none">
-          {/* We use pointer-events-none on the container so the lens can track the mouse everywhere,
-              but we restore pointer-events-auto on the buttons specifically. */}
-          <div className="max-w-[80vw] lg:max-w-[70vw] relative z-10 drop-shadow-sm flex flex-col gap-16">
-            
-            <BlurReveal>
-              {/* Monumental Typography (180-240px) */}
-              <h1 
-                className="leading-[0.82] tracking-[-0.07em] text-[#253A4A] font-black"
-                style={{ 
-                  fontFamily: 'Helvetica, Arial, sans-serif',
-                  fontSize: 'clamp(120px, 15vw, 240px)' 
-                }}
-              >
-                ISHKEEN
-              </h1>
-            </BlurReveal>
-            
-            <Fade delay={0.5}>
-              <p className="max-w-[500px] text-[#5C7E9A] text-xl lg:text-2xl font-medium tracking-wide">
-                Professional clinical analysis, handcrafted for your unique physiology.
-              </p>
-            </Fade>
-            
-            <Fade delay={1}>
-              <div className="flex gap-6 items-center pointer-events-auto mt-8">
-                {status === 'authenticated' ? (
-                  <>
-                    <Link to={user?.role === 'admin' ? '/admin' : '/app'}>
-                      <Button variant="primary" size="lg" className="rounded-full px-12 py-6 bg-[#253A4A] text-[#FCFBF8]">
-                        GO TO DASHBOARD
-                      </Button>
-                    </Link>
-                    <Button 
-                      variant="secondary" 
-                      size="lg" 
-                      className="rounded-full px-12 py-6 border-[#253A4A] text-[#253A4A]"
-                      onClick={handleLogout}
-                    >
-                      SIGN OUT
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login">
-                      <Button variant="secondary" size="lg" className="rounded-full px-12 py-6 border-[#253A4A] text-[#253A4A]">
-                        LOGIN
-                      </Button>
-                    </Link>
-                    <Link to="/signup">
-                      <Button variant="primary" size="lg" className="rounded-full px-12 py-6 bg-[#253A4A] text-[#FCFBF8]">
-                        SIGN UP
-                      </Button>
-                    </Link>
-                  </>
-                )}
+        {/* Fixed Navigation Bar */}
+        <Navbar />
+
+        {/* =========================================================
+            1. HERO SECTION (Monumental Editorial Display Title)
+            ========================================================= */}
+        <section className="relative w-full min-h-[95vh] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden border-b border-[#26384B]/15 bg-transparent z-10">
+          {/* Corner Technical Telemetry Coordinates */}
+          <div className="absolute top-28 left-16 hidden sm:flex items-center gap-2 font-mono-tech text-[10px] text-[#4C6072]">
+            <span className="text-[#C67C5A]">+</span>
+            <span>[ LAT // 43.119° N ]</span>
+          </div>
+          <div className="absolute top-28 right-16 hidden sm:flex items-center gap-2 font-mono-tech text-[10px] text-[#4C6072]">
+            <span>[ SYS // CLINICAL_AI_v2.4 ]</span>
+            <span className="text-[#C67C5A]">+</span>
+          </div>
+
+          <Container className="relative z-10 w-full flex flex-col items-center justify-center pt-8 md:pt-12">
+            {/* Monospace System Badge */}
+            <Fade delay={0.2}>
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-none border border-[#26384B]/20 bg-[#F6F4EF]/80 backdrop-blur-sm font-mono-tech text-xs uppercase tracking-widest text-[#26384B] mb-6 shadow-sm">
+                <span className="w-2 h-2 rounded-none bg-[#C67C5A] animate-pulse" />
+                <span>[ HYBRID CLINICAL INTELLIGENCE &amp; 43-POINT FACIAL MESH ]</span>
               </div>
             </Fade>
 
-          </div>
-        </Container>
+            {/* Monumental Editorial Display Title: ISHKEEN with Avant-Garde Kinetic Typography */}
+            <Fade delay={0.4} className="w-full text-center">
+              <HeroKineticTitle />
+            </Fade>
+
+            {/* Editorial Subtitle & High-Contrast CTAs */}
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto mt-6 sm:mt-8 z-20">
+              <Fade delay={0.6}>
+                <p className="font-editorial text-2xl sm:text-3xl md:text-4xl text-[#26384B]/85 tracking-[0.025em] leading-[1.3] mb-10">
+                  Professional clinical analysis, handcrafted for your unique physiology.
+                </p>
+              </Fade>
+
+              <Fade delay={0.8}>
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6 items-center pointer-events-auto">
+                  {status === 'authenticated' ? (
+                    <>
+                      <Link to={user?.role === 'admin' ? '/admin' : '/app'}>
+                        <Button
+                          variant="primary"
+                          size="lg"
+                          className="rounded-none px-10 py-5 bg-[#26384B] text-[#F6F4EF] font-mono-tech text-xs tracking-widest shadow-md hover:bg-[#C67C5A] transition-all"
+                        >
+                          [ GO TO DASHBOARD ]
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        onClick={handleLogout}
+                        className="rounded-none px-10 py-5 border border-[#26384B]/30 text-[#26384B] font-mono-tech text-xs tracking-widest hover:bg-[#26384B]/5"
+                      >
+                        [ SIGN OUT ]
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/signup">
+                        <Button
+                          variant="primary"
+                          size="lg"
+                          className="rounded-none px-10 py-5 bg-[#26384B] text-[#F6F4EF] font-mono-tech text-xs tracking-widest shadow-md hover:bg-[#C67C5A] transition-all"
+                        >
+                          [ START CLINICAL ANALYSIS ]
+                        </Button>
+                      </Link>
+                      <a href="#science">
+                        <Button
+                          variant="secondary"
+                          size="lg"
+                          className="rounded-none px-10 py-5 border border-[#26384B]/30 bg-[#F6F4EF]/80 text-[#26384B] font-mono-tech text-xs tracking-widest hover:bg-[#26384B]/5"
+                        >
+                          [ EXPLORE SCIENCE ]
+                        </Button>
+                      </a>
+                    </>
+                  )}
+                </div>
+              </Fade>
+            </div>
+          </Container>
+        </section>
+
+        {/* =========================================================
+            2. DRAGONFLY SCROLL VELOCITY TICKER MARQUEE #1
+            ========================================================= */}
+        <div className="relative z-10">
+          <DragonflyMarquee speed={1.0} />
+        </div>
+
+        {/* =========================================================
+            3. CLINICAL STATS & BENCHMARKS SECTION
+            ========================================================= */}
+        <div className="relative z-10">
+          <StatsSection />
+        </div>
+
+        {/* =========================================================
+            4. HOW IT WORKS WORKFLOW (3-STEP PROTOCOL)
+            ========================================================= */}
+        <div className="relative z-10">
+          <HowItWorksSection />
+        </div>
+
+        {/* =========================================================
+            5. THE SCIENCE OF ISHKEEN (HYBRID AI ENGINE)
+            ========================================================= */}
+        <div className="relative z-10">
+          <ClinicalScienceSection />
+        </div>
+
+        {/* =========================================================
+            6. WHY ISHKEEN (COMPARATIVE ANALYSIS)
+            ========================================================= */}
+        <div className="relative z-10">
+          <ComparisonSection />
+        </div>
+
+        {/* =========================================================
+            7. DRAGONFLY SCROLL VELOCITY TICKER MARQUEE #2
+            ========================================================= */}
+        <div className="relative z-10">
+          <DragonflyMarquee
+            speed={1.4}
+            text=" +   99.4% // DIAGNOSTIC_REPEATABILITY   +   FDA_CLASS_I // PROTOCOL_AUDITED   +   43 // ANATOMICAL_LANDMARKS   +   DERMATOLOGIST // VALIDATED_REGIMEN   + "
+          />
+        </div>
+
+        {/* =========================================================
+            8. DERMATOLOGIST & PATIENT TESTIMONIALS
+            ========================================================= */}
+        <div className="relative z-10">
+          <TestimonialsSection />
+        </div>
+
+        {/* =========================================================
+            9. HIGH-IMPACT FINAL CTA COMMAND CENTER
+            ========================================================= */}
+        <div className="relative z-10">
+          <FinalCtaSection />
+        </div>
+
+        {/* =========================================================
+            10. FOOTER
+            ========================================================= */}
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </div>
     </PageTransition>
   );
 };
+
+export default HomePage;

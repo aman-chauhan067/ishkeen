@@ -6,8 +6,8 @@ import { Doodle } from '../../../../components/illustrations/Doodle';
 export const UploadHero: React.FC = () => {
   return (
     <div className="text-center mb-16 relative">
-      <Doodle type="face" className="absolute -top-12 left-[15%] w-16 h-16 text-[#5C7E9A] opacity-20" delay={0.2} />
-      <Doodle type="sparkles" className="absolute top-[20%] right-[15%] w-10 h-10 text-[#5C7E9A] opacity-20" delay={0.4} />
+      <Doodle type="face" className="absolute -top-12 left-[15%] w-16 h-16 text-[#4C6072] opacity-20" delay={0.2} />
+      <Doodle type="sparkles" className="absolute top-[20%] right-[15%] w-10 h-10 text-[#4C6072] opacity-20" delay={0.4} />
       
       <Stagger amount={1}>
         <StaggerItem>

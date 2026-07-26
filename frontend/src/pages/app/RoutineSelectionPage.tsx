@@ -51,7 +51,7 @@ export const RoutineSelectionPage: React.FC = () => {
       <Container className="pt-32 pb-32 max-w-3xl">
         <Stagger amount={0.1}>
           <StaggerItem>
-            <Typography variant="h2" className="text-[#253A4A] mb-4">AI Consultation</Typography>
+            <Typography variant="h2" className="text-[#26384B] mb-4">AI Consultation</Typography>
             <Typography variant="body" className="opacity-70 mb-12">
               Before we map your clinical findings to a routine, tell us a bit about your lifestyle and preferences.
             </Typography>
@@ -65,7 +65,7 @@ export const RoutineSelectionPage: React.FC = () => {
 
           <div className="space-y-12">
             <StaggerItem>
-              <Typography variant="h4" className="text-[#253A4A] mb-6">Budget Priority</Typography>
+              <Typography variant="h4" className="text-[#26384B] mb-6">Budget Priority</Typography>
               <SelectGroup 
                 name="budget"
                 selectedValues={budget}
@@ -79,7 +79,7 @@ export const RoutineSelectionPage: React.FC = () => {
             </StaggerItem>
 
             <StaggerItem>
-              <Typography variant="h4" className="text-[#253A4A] mb-6">Routine Complexity</Typography>
+              <Typography variant="h4" className="text-[#26384B] mb-6">Routine Complexity</Typography>
               <SelectGroup 
                 name="routine_preference"
                 selectedValues={routinePreference}
@@ -93,7 +93,7 @@ export const RoutineSelectionPage: React.FC = () => {
             </StaggerItem>
             
             <StaggerItem>
-              <Typography variant="h4" className="text-[#253A4A] mb-6">Skin Sensitivity</Typography>
+              <Typography variant="h4" className="text-[#26384B] mb-6">Skin Sensitivity</Typography>
               <SelectGroup 
                 name="skin_sensitivity"
                 selectedValues={skinSensitivity}

@@ -40,7 +40,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="sparkles" className="absolute -top-6 -right-6 w-12 h-12 text-[#5C7E9A] opacity-20" delay={0.2} />
+          <Doodle type="sparkles" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Let's understand your skin</QuestionTitle>
           <QuestionDescription>We'll use this to build your personalized profile and track changes over time.</QuestionDescription>
         </div>
@@ -53,7 +53,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">How does your skin usually feel?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">How does your skin usually feel?</p>
           </div>
           <QuestionGroup
             name="skin_type"
@@ -68,7 +68,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
 
         <div>
           <div className="flex justify-between items-baseline mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">Which of these are you currently experiencing?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">Which of these are you currently experiencing?</p>
             <QuestionHint>Up to 3</QuestionHint>
           </div>
           <QuestionGroup
@@ -86,7 +86,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">What is your primary goal?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">What is your primary goal?</p>
           </div>
           <QuestionGroup
             name="primary_goal"
@@ -101,7 +101,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
 
         <div>
           <div className="mb-4">
-            <p className="text-lg font-bold text-[#253A4A] mb-1">How sensitive is your skin to new products?</p>
+            <p className="text-lg font-bold text-[#26384B] mb-1">How sensitive is your skin to new products?</p>
           </div>
           <QuestionGroup
             name="sensitivity_tendency"

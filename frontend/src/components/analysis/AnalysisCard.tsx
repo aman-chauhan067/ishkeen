@@ -33,7 +33,7 @@ export const AnalysisCard: React.FC<AnalysisCardProps> = ({ analysis }) => {
       className="flex items-center gap-10"
       aria-label={`Analysis from ${dateStr}, status: ${label}`}
     >
-      <div className="flex-shrink-0 rounded-[20px] overflow-hidden border border-[#253A4A]/5 w-32 h-32 sm:w-40 sm:h-40">
+      <div className="flex-shrink-0 rounded-[20px] overflow-hidden border border-[#26384B]/5 w-32 h-32 sm:w-40 sm:h-40">
         <AnalysisImage
           analysisId={analysis.id}
           alt={`Skin photo uploaded on ${dateStr}`}

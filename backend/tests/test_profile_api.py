@@ -11,14 +11,20 @@ client = TestClient(app)
 
 from app.core.database import get_db
 from unittest.mock import MagicMock
-app.dependency_overrides[get_db] = lambda: MagicMock()
+import pytest
+
+@pytest.fixture(autouse=True)
+def setup_overrides():
+    app.dependency_overrides[get_db] = lambda: MagicMock()
+    yield
 
 def get_mock_user():
     return User(
         id=uuid.uuid4(),
         email="test@example.com",
         role=UserRole.user,
-        is_active=True
+        is_active=True,
+        is_email_verified=True
     )
 
 def get_mock_profile(user_id):

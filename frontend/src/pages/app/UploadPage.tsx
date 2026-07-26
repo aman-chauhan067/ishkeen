@@ -171,7 +171,7 @@ export const UploadPage: React.FC = () => {
                   type="button"
                   onClick={triggerFileInput}
                   disabled={isUploading}
-                  className="w-full text-left group relative z-10 block bg-[#FCFBF8] border border-[#253A4A]/5 rounded-[40px] p-12 transition-all duration-[600ms] ease-[var(--luxury-ease)] hover:border-[#253A4A]/10 hover:-translate-y-1 focus:outline-none"
+                  className="w-full text-left group relative z-10 block bg-[#F6F4EF] border border-[#26384B]/5 rounded-[40px] p-12 transition-all duration-[600ms] ease-[var(--luxury-ease)] hover:border-[#26384B]/10 hover:-translate-y-1 focus:outline-none"
                 >
                   <AmbientGlow blur="blur-[100px]" />
                   <UploadTips tips={GUIDANCE_TIPS} />

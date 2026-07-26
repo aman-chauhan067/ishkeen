@@ -55,7 +55,7 @@ export const AdminLogs = () => {
   if (loading && logs.length === 0) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#253A4A]/20 border-t-[#253A4A] rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
       </div>
     );
   }
@@ -65,23 +65,23 @@ export const AdminLogs = () => {
       <BlurReveal>
         <div className="flex justify-between items-start mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#253A4A] tracking-tight mb-4 flex items-center gap-4">
-              <Terminal className="w-8 h-8 text-[#5C7E9A]" />
+            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4 flex items-center gap-4">
+              <Terminal className="w-8 h-8 text-[#4C6072]" />
               System Logs
             </h1>
-            <p className="font-sans text-[#5C7E9A] leading-relaxed">
+            <p className="font-sans text-[#4C6072] leading-relaxed">
               Real-time server telemetry, API access logs, and exception tracking.
             </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="relative">
-              <Search className="w-4 h-4 text-[#5C7E9A] absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#4C6072] absolute left-3 top-1/2 -translate-y-1/2" />
               <input 
                 type="text" 
                 placeholder="Search endpoints..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-9 pr-4 py-2 rounded-full border border-[#253A4A]/10 text-sm focus:outline-none focus:border-[#253A4A]/30 w-64"
+                className="pl-9 pr-4 py-2 rounded-full border border-[#26384B]/10 text-sm focus:outline-none focus:border-[#26384B]/30 w-64"
               />
             </div>
             <Button variant="outline" className="text-red-600 border-red-200 hover:bg-red-50" onClick={clearLogs}>
@@ -92,11 +92,11 @@ export const AdminLogs = () => {
         </div>
       </BlurReveal>
 
-      <Fade delay={0.1} className="flex-1 bg-[#1A2A36] rounded-2xl border border-[#253A4A]/10 overflow-hidden flex flex-col">
+      <Fade delay={0.1} className="flex-1 bg-[#1A2A36] rounded-2xl border border-[#26384B]/10 overflow-hidden flex flex-col">
         <div className="flex-1 overflow-y-auto p-4 font-mono text-xs">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="text-[#5C7E9A] border-b border-white/5">
+              <tr className="text-[#4C6072] border-b border-white/5">
                 <th className="py-2 px-4 font-normal w-32">Timestamp</th>
                 <th className="py-2 px-4 font-normal w-24">Level</th>
                 <th className="py-2 px-4 font-normal w-20">Method</th>

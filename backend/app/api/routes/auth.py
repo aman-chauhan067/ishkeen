@@ -34,8 +34,8 @@ def set_auth_cookie(response: Response, raw_token: str):
         value=raw_token,
         max_age=settings.SESSION_EXPIRE_MINUTES * 60,
         httponly=True,
-        secure=settings.SESSION_COOKIE_SECURE,
-        samesite="lax",
+        secure=True,
+        samesite="none",
         path="/"
     )
 
@@ -139,9 +139,9 @@ def logout(
     response.delete_cookie(
         key=settings.SESSION_COOKIE_NAME,
         path="/",
-        secure=settings.SESSION_COOKIE_SECURE,
+        secure=True,
         httponly=True,
-        samesite="lax"
+        samesite="none"
     )
     return {"message": "Successfully logged out"}
 
@@ -404,8 +404,8 @@ def get_google_url(request: Request, response: Response):
         value=state,
         max_age=300, # 5 minutes
         httponly=True,
-        secure=settings.SESSION_COOKIE_SECURE,
-        samesite="lax",
+        secure=True,
+        samesite="none",
         path="/"
     )
     
@@ -444,7 +444,7 @@ def google_login(request: Request, payload: GoogleLoginRequest, response: Respon
         raise HTTPException(status_code=400, detail="Invalid state parameter. Please try again.")
 
     # Clear state cookie
-    response.delete_cookie("oauth_state", path="/")
+    response.delete_cookie("oauth_state", path="/", secure=True, samesite="none")
 
     auth_service = AuthService(db)
     try:

@@ -25,8 +25,8 @@ class Settings(BaseSettings):
     
     @property
     def SESSION_COOKIE_SECURE(self) -> bool:
-        # Secure=True in production, False for local HTTP dev
-        return self.ENVIRONMENT != "development"
+        # Secure=True is required by browsers for SameSite=None across cross-site domains
+        return True
 
     # Storage
     UPLOAD_DIR: str = "private_uploads"

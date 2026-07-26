@@ -43,8 +43,9 @@ export const GoogleCallbackPage: React.FC = () => {
         });
         login(user);
         
-        // Handle First Login Experience (redirect to Questionnaire if incomplete)
-        if (!user.name) {
+        if (user.role === 'admin') {
+          navigate('/admin', { replace: true });
+        } else if (!user.name) {
           navigate('/onboarding', { replace: true });
         } else {
           navigate('/app', { replace: true });

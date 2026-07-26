@@ -29,7 +29,11 @@ export const LoginPage: React.FC = () => {
     try {
       const user = await api.post<User>('/auth/login', { email, password });
       login(user);
-      navigate('/app', { replace: true });
+      if (user.role === 'admin') {
+        navigate('/admin', { replace: true });
+      } else {
+        navigate('/app', { replace: true });
+      }
     } catch (err: any) {
       if (err instanceof Error) {
         setError(err.message);

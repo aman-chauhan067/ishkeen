@@ -3,12 +3,16 @@ import numpy as np
 import io
 from PIL import Image
 import mediapipe as mp
+try:
+    import mediapipe.solutions as mp_solutions
+    mp_face_mesh = mp_solutions.face_mesh
+except (ImportError, AttributeError):
+    mp_face_mesh = getattr(mp, 'solutions', None)
+    if mp_face_mesh is not None:
+        mp_face_mesh = getattr(mp_face_mesh, 'face_mesh', None)
 import logging
 
 logger = logging.getLogger(__name__)
-
-# Initialize MediaPipe Face Mesh
-mp_face_mesh = mp.solutions.face_mesh
 
 class CVMetrics:
     def __init__(self):

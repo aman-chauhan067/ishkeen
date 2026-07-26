@@ -110,6 +110,7 @@ def login(request: Request, payload: LoginRequest, response: Response, db: Sessi
     
     raw_token = session_service.create_session(user.id, user_agent)
     set_auth_cookie(response, raw_token)
+    user.token = raw_token
     
     NotificationService.dispatch(
         db=db,
@@ -132,6 +133,12 @@ def logout(
     Revoke the current session and clear the cookie.
     """
     raw_token = request.cookies.get(settings.SESSION_COOKIE_NAME)
+    if not raw_token:
+        auth_header = request.headers.get("authorization")
+        if auth_header and auth_header.lower().startswith("bearer "):
+            raw_token = auth_header.split(" ", 1)[1].strip()
+        else:
+            raw_token = request.headers.get("x-session-token")
     if raw_token:
         session_service = SessionService(db)
         session_service.revoke_session(raw_token)
@@ -146,10 +153,16 @@ def logout(
     return {"message": "Successfully logged out"}
 
 @router.get("/me", response_model=UserResponse, status_code=status.HTTP_200_OK)
-def read_users_me(current_user = Depends(get_current_user)):
+def read_users_me(request: Request, current_user = Depends(get_current_user)):
     """
     Get current authenticated user details.
     """
+    raw_token = request.cookies.get(settings.SESSION_COOKIE_NAME)
+    if not raw_token:
+        auth_header = request.headers.get("authorization")
+        if auth_header and auth_header.lower().startswith("bearer "):
+            raw_token = auth_header.split(" ", 1)[1].strip()
+    current_user.token = raw_token
     return current_user
 
 from app.schemas.user import UserUpdate
@@ -466,4 +479,5 @@ def google_login(request: Request, payload: GoogleLoginRequest, response: Respon
     )
     
     set_auth_cookie(response, raw_token)
+    user.token = raw_token
     return user

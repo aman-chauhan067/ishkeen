@@ -54,14 +54,23 @@ async function handleResponse<T>(res: Response): Promise<T> {
   throw new ApiError(errorMessage, res.status);
 }
 
+function getAuthHeaders(custom: Record<string, string> = {}): Record<string, string> {
+  const headers: Record<string, string> = { ...custom };
+  const token = localStorage.getItem('ishkeen_token');
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+  return headers;
+}
+
 export const api = {
   get: async <T>(path: string): Promise<T> => {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'GET',
-        headers: {
+        headers: getAuthHeaders({
           'Content-Type': 'application/json',
-        },
+        }),
         credentials: 'include',
       });
       return handleResponse<T>(res);
@@ -75,9 +84,9 @@ export const api = {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'POST',
-        headers: {
+        headers: getAuthHeaders({
           'Content-Type': 'application/json',
-        },
+        }),
         body: body ? JSON.stringify(body) : undefined,
         credentials: 'include',
       });
@@ -92,9 +101,9 @@ export const api = {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'PUT',
-        headers: {
+        headers: getAuthHeaders({
           'Content-Type': 'application/json',
-        },
+        }),
         body: body ? JSON.stringify(body) : undefined,
         credentials: 'include',
       });
@@ -109,9 +118,9 @@ export const api = {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'PATCH',
-        headers: {
+        headers: getAuthHeaders({
           'Content-Type': 'application/json',
-        },
+        }),
         credentials: 'include',
         body: body ? JSON.stringify(body) : undefined,
       });
@@ -126,9 +135,9 @@ export const api = {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'DELETE',
-        headers: {
+        headers: getAuthHeaders({
           'Content-Type': 'application/json',
-        },
+        }),
         credentials: 'include',
       });
       return handleResponse<T>(res);
@@ -146,6 +155,7 @@ export const api = {
     try {
       const res = await fetch(`${BASE_URL}${path}`, {
         method: 'POST',
+        headers: getAuthHeaders(),
         credentials: 'include',
         body: formData,
         // No Content-Type header: browser sets multipart/form-data with correct boundary
@@ -166,6 +176,7 @@ export const api = {
     try {
       res = await fetch(`${BASE_URL}${path}`, {
         method: 'GET',
+        headers: getAuthHeaders(),
         credentials: 'include',
       });
     } catch {

@@ -23,6 +23,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         const user = await api.get<User>('/auth/me');
         if (mounted) {
+          if (user.token) {
+            localStorage.setItem('ishkeen_token', user.token);
+          }
           setState({ status: 'authenticated', user });
         }
       } catch {
@@ -43,10 +46,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = (user: User) => {
+    if (user.token) {
+      localStorage.setItem('ishkeen_token', user.token);
+    }
     setState({ status: 'authenticated', user });
   };
 
   const logout = async () => {
+    localStorage.removeItem('ishkeen_token');
     try {
       await api.post('/auth/logout');
     } catch (error) {
@@ -60,6 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const setUnauthenticated = () => {
+    localStorage.removeItem('ishkeen_token');
     setState({ status: 'unauthenticated', user: null });
   };
 

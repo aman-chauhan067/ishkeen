@@ -12,6 +12,7 @@ class UserResponse(BaseModel):
     name: Optional[str] = None
     avatar_url: Optional[str] = None
     created_at: datetime
+    token: Optional[str] = None
     
     model_config = ConfigDict(from_attributes=True)
 

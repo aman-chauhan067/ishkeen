@@ -6,6 +6,7 @@ export interface User {
   name?: string;
   avatar_url?: string;
   created_at: string;
+  token?: string;
 }
 
 export type AuthStatus = 'loading' | 'authenticated' | 'unauthenticated';

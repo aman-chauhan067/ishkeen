@@ -9,7 +9,7 @@ import {
   HardDrive,
   AlertTriangle
 } from 'lucide-react';
-import { api } from '../../lib/api';
+import { api, BASE_URL } from '../../lib/api';
 
 interface OverviewStats {
   total_users: number;
@@ -90,7 +90,7 @@ export const AdminOverview = () => {
           <button
             onClick={async () => {
               try {
-                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api'}/admin/export/v2`, {
+                const response = await fetch(`${BASE_URL}/admin/export/v2`, {
                   credentials: 'include'
                 });
                 if (!response.ok) throw new Error("Export failed");

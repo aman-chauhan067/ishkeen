@@ -1,5 +1,19 @@
 // VITE_API_BASE_URL should contain the trailing `/api`
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+const getDefaultBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  if (typeof window !== 'undefined' && (
+    window.location.hostname.endsWith('.pages.dev') ||
+    window.location.hostname.endsWith('.workers.dev') ||
+    window.location.hostname.includes('ishkeen')
+  )) {
+    return 'https://ishkeen.onrender.com/api';
+  }
+  return 'http://localhost:8000/api';
+};
+
+const BASE_URL = getDefaultBaseUrl();
 
 export { BASE_URL };
 

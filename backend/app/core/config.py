@@ -17,7 +17,7 @@ class Settings(BaseSettings):
         return "sqlite:///./dev.db"
 
     # CORS
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:5174"]
+    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:5174", "https://ishkeen.pages.dev"]
     
     # Auth & Sessions
     SESSION_COOKIE_NAME: str = "ishkeen_session"

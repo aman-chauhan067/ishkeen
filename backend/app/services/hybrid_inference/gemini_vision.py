@@ -24,7 +24,7 @@ class GeminiVisionService:
         if self.is_configured:
             # We use gemini-1.5-flash for fast vision analysis
             self.model = genai.GenerativeModel(
-                model_name="gemini-3.6-flash",
+                model_name="gemini-1.5-flash",
                 generation_config={
                     "temperature": 0.0,
                     "response_mime_type": "application/json",

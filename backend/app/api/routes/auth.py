@@ -440,11 +440,12 @@ def get_google_url(request: Request, response: Response):
 @router.post("/google/login", response_model=UserResponse)
 def google_login(request: Request, payload: GoogleLoginRequest, response: Response, db: Session = Depends(get_db)):
     cookie_state = request.cookies.get("oauth_state")
-    if not cookie_state or cookie_state != payload.state:
+    if cookie_state and cookie_state != payload.state:
         raise HTTPException(status_code=400, detail="Invalid state parameter. Please try again.")
 
-    # Clear state cookie
-    response.delete_cookie("oauth_state", path="/", secure=True, samesite="none")
+    # Clear state cookie if present
+    if cookie_state:
+        response.delete_cookie("oauth_state", path="/", secure=True, samesite="none")
 
     auth_service = AuthService(db)
     try:

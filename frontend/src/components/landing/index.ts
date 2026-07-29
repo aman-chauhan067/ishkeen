@@ -7,6 +7,6 @@ export { TestimonialsSection } from './TestimonialsSection';
 export { Footer } from './Footer';
 export { DragonflyMarquee } from './DragonflyMarquee';
 export { DragonflySectionHeader } from './DragonflySectionHeader';
-export { AsciiDragonflyBackground } from './AsciiDragonflyBackground';
+// AsciiDragonflyBackground removed — performance bottleneck (3,800-point rAF canvas, 3 array allocs/frame)
 export { FinalCtaSection } from './FinalCtaSection';
 export { HeroKineticTitle } from './HeroKineticTitle';

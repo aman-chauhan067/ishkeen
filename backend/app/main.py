@@ -17,12 +17,12 @@ from app.core.security import get_password_hash
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app_instance: FastAPI):
     """
     Application lifespan manager.
     Loads the ONNX inference session once at startup, stores in app.state.
     """
-    app.state.inference_service = InferenceService()
+    app_instance.state.inference_service = InferenceService()
     
     # Ensure database tables exist
     try:
@@ -62,7 +62,7 @@ async def lifespan(app: FastAPI):
             
     yield
     # Cleanup (onnxruntime sessions are released by GC)
-    app.state.inference_service = None
+    app_instance.state.inference_service = None
 
 
 app = FastAPI(

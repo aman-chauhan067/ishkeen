@@ -45,9 +45,13 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-accent/30 min-h-screen relative z-0;
+    /* bg-background intentionally removed — AmbientBackground canvas (z-index:-1) provides the
+       page background. Adding an opaque bg here would paint over the canvas and hide it.
+       Individual page shells (HomePage, AppShell, etc.) own their surface backgrounds. */
+    @apply font-sans antialiased text-foreground selection:bg-accent/30 min-h-screen relative z-0;
     font-family: var(--font-body);
   }
+
 
   /* Editorial Headings (Massive, Tight, Bold) */
   h1, h2, h3, h4, h5, h6, .heading-display {

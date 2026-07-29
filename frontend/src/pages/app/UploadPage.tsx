@@ -6,7 +6,7 @@ import { Fade, PageTransition, BlurReveal } from '../../components/motion';
 import { useAuthenticatedApi } from '../../hooks/useAuthenticatedApi';
 import { ApiError } from '../../lib/api';
 import type { SkinAnalysisResponse } from '../../types/analysis';
-import { UploadHero, UploadTips, UploadActions, UploadPreview, UploadStatus } from './components/upload';
+import { UploadHero, UploadTips, UploadActions, UploadPreview, UploadStatus, CameraModal } from './components/upload';
 import { AmbientGlow } from '../../components/motion/AmbientGlow';
 
 const ACCEPTED_TYPES = ['image/jpeg', 'image/png', 'image/webp'] as const;
@@ -67,6 +67,8 @@ export const UploadPage: React.FC = () => {
     createdId: null,
   });
 
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+
   const revokePreview = useCallback((url: string | null) => {
     if (url) URL.revokeObjectURL(url);
   }, []);
@@ -104,6 +106,14 @@ export const UploadPage: React.FC = () => {
 
     const previewUrl = URL.createObjectURL(file);
     setState({ phase: 'selected', file, previewUrl, errorMessage: null, createdId: null });
+  }, [revokePreview]);
+
+  const handleCameraCapture = useCallback((file: File) => {
+    setState(current => {
+      revokePreview(current.previewUrl);
+      const previewUrl = URL.createObjectURL(file);
+      return { phase: 'selected', file, previewUrl, errorMessage: null, createdId: null };
+    });
   }, [revokePreview]);
 
   const handleClear = useCallback(() => {
@@ -195,10 +205,17 @@ export const UploadPage: React.FC = () => {
               hasFile={!!previewUrl}
               isUploading={isUploading}
               onSelectClick={triggerFileInput}
+              onCameraClick={() => setIsCameraOpen(true)}
               onUploadClick={handleUpload}
             />
           </Fade>
         )}
+
+        <CameraModal
+          isOpen={isCameraOpen}
+          onClose={() => setIsCameraOpen(false)}
+          onCapture={handleCameraCapture}
+        />
       </Container>
     </PageTransition>
   );

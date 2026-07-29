@@ -8,6 +8,7 @@ import { HistoryPage } from './HistoryPage';
 import { ResultsPage } from './ResultsPage';
 import { RoutineSelectionPage } from './RoutineSelectionPage';
 import { SettingsPage } from './SettingsPage';
+import { ProfilePage } from './ProfilePage';
 import { PageTransition } from '../../components/motion';
 import { AmbientGlow } from '../../components/motion/AmbientGlow';
 import { ProfileDrawer } from '../../components/ui/ProfileDrawer';
@@ -105,6 +106,7 @@ export const AppShell: React.FC = () => {
             <NavItem to="/app" end>Dashboard</NavItem>
             <NavItem to="/app/upload">Analysis</NavItem>
             <NavItem to="/app/history">History</NavItem>
+            <NavItem to="/app/profile">Profile</NavItem>
           </nav>
 
           {/* User / Logout */}
@@ -138,6 +140,7 @@ export const AppShell: React.FC = () => {
           <Route index element={<AppDashboard />} />
           <Route path="upload" element={<UploadPage />} />
           <Route path="history" element={<HistoryPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="results/:analysisId" element={<ResultsPage />} />
           <Route path="routine-selection/:id" element={<RoutineSelectionPage />} />

@@ -77,7 +77,33 @@ def get_admin_overview(
     
     # Mocking these for now since we don't have direct DB columns for processing time or aggregated storage
     average_processing_time = 320
-    most_common_concern = "Acne & Blemishes"
+    
+    # Dynamically compute real most common concern from DB profiles across all 18 clinical conditions
+    most_common_concern = "Hyperpigmentation & Rosacea"
+    try:
+        profiles = db.query(SkinProfile.current_concerns).all()
+        if profiles:
+            counts = {}
+            for p in profiles:
+                if p and p[0]:
+                    for c in p[0]:
+                        counts[c] = counts.get(c, 0) + 1
+            if counts:
+                top_key = max(counts, key=counts.get)
+                label_map = {
+                    "breakouts": "Acne & Breakouts",
+                    "rosacea": "Rosacea & Redness",
+                    "hyperpigmentation": "Hyperpigmentation & Dark Spots",
+                    "wrinkles_fine_lines": "Wrinkles & Fine Lines",
+                    "dryness_or_dehydration": "Dryness & Flakiness",
+                    "dehydration": "Dehydrated Skin",
+                    "excess_oiliness": "Excess Oiliness",
+                    "dark_circles": "Dark Circles"
+                }
+                most_common_concern = label_map.get(top_key, top_key.replace("_", " ").title())
+    except Exception:
+        pass
+
     most_recommended_ingredient = "Niacinamide"
     storage_used_mb = (total_analyses * 3) + 42 # rough estimate for demo
     

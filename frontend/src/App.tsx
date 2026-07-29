@@ -27,7 +27,7 @@ import { AdminHealth } from './pages/admin/AdminHealth';
 import { AdminLogs } from './pages/admin/AdminLogs';
 import { AdminSettings } from './pages/admin/AdminSettings';
 import { OnboardingPage } from './pages/onboarding/OnboardingPage';
-import { BackgroundManager } from './components/background';
+import { BackgroundManager, AmbientBackground } from './components/background';
 import { CursorFollow } from './components/motion';
 
 import { Doodle } from './components/illustrations/Doodle';
@@ -124,16 +124,19 @@ function AppContent() {
 
 function App() {
   return (
-    <AuthProvider>
-      <ProfileProvider>
-        <BrowserRouter>
-          <BackgroundManager>
-            <CursorFollow />
-            <AppContent />
-          </BackgroundManager>
-        </BrowserRouter>
-      </ProfileProvider>
-    </AuthProvider>
+    <>
+      <AmbientBackground />
+      <AuthProvider>
+        <ProfileProvider>
+          <BrowserRouter>
+            <BackgroundManager>
+              <CursorFollow />
+              <AppContent />
+            </BackgroundManager>
+          </BrowserRouter>
+        </ProfileProvider>
+      </AuthProvider>
+    </>
   );
 }
 

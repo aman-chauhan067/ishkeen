@@ -62,48 +62,48 @@ describe('Upload Interactions', () => {
     setupAuth();
     render(<Wrapper />);
     await waitFor(() => {
-      expect(screen.getByText('Photo tips')).toBeInTheDocument();
-      expect(screen.getByText('Face centered and looking straight ahead')).toBeInTheDocument();
+      expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument();
+      expect(screen.getByText('Position your face centrally, looking directly at the lens')).toBeInTheDocument();
     });
   });
 
   it('valid JPEG file shows preview image', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.jpg', 'image/jpeg', 1024 * 1024);
     selectFile(file);
 
     await waitFor(() => {
-      expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument();
+      expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument();
     });
   });
 
   it('valid PNG file shows preview image', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.png', 'image/png', 1024 * 1024);
     selectFile(file);
 
     await waitFor(() => {
-      expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument();
+      expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument();
     });
   });
 
   it('invalid file type shows error, no preview created', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.pdf', 'application/pdf', 1024 * 1024);
     selectFile(file);
 
     await waitFor(() => {
       expect(screen.getByText(/Only JPEG, PNG, and WebP images are supported/i)).toBeInTheDocument();
-      expect(screen.queryByAltText('Preview of selected skin photo')).not.toBeInTheDocument();
+      expect(screen.queryByAltText('Selected skin photo')).not.toBeInTheDocument();
       expect(URL.createObjectURL).not.toHaveBeenCalled();
     });
   });
@@ -111,27 +111,27 @@ describe('Upload Interactions', () => {
   it('file over 10MB shows error, no preview', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('large.jpg', 'image/jpeg', 11 * 1024 * 1024);
     selectFile(file);
 
     await waitFor(() => {
       expect(screen.getByText(/too large/i)).toBeInTheDocument();
-      expect(screen.queryByAltText('Preview of selected skin photo')).not.toBeInTheDocument();
+      expect(screen.queryByAltText('Selected skin photo')).not.toBeInTheDocument();
     });
   });
 
   it('clearing selected image revokes object URL and shows guidance', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.jpg', 'image/jpeg', 1024 * 1024);
     selectFile(file);
 
     await waitFor(() => {
-      expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument();
+      expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument();
     });
 
     const clearBtn = document.getElementById('upload-clear-btn') as HTMLButtonElement;
@@ -139,21 +139,21 @@ describe('Upload Interactions', () => {
 
     await waitFor(() => {
       expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:test-url');
-      expect(screen.queryByAltText('Preview of selected skin photo')).not.toBeInTheDocument();
-      expect(screen.getByText('Photo tips')).toBeInTheDocument();
+      expect(screen.queryByAltText('Selected skin photo')).not.toBeInTheDocument();
+      expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument();
     });
   });
 
   it('replacing image: selecting second file revokes first URL', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file1 = createFile('test1.jpg', 'image/jpeg', 1024 * 1024);
     selectFile(file1);
 
     await waitFor(() => {
-      expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument();
+      expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument();
     });
 
     // Replace
@@ -168,16 +168,16 @@ describe('Upload Interactions', () => {
   it('duplicate submit prevented: upload button disabled while uploading', async () => {
     setupAuth();
     render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.jpg', 'image/jpeg', 1024 * 1024);
     selectFile(file);
 
-    await waitFor(() => expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument());
 
     vi.mocked(api.postForm).mockImplementationOnce(() => new Promise(() => {}));
     
-    const uploadBtn = screen.getByRole('button', { name: /Upload for Analysis/i });
+    const uploadBtn = screen.getByRole('button', { name: /Commence Analysis/i });
     fireEvent.click(uploadBtn);
 
     await waitFor(() => {
@@ -189,12 +189,12 @@ describe('Upload Interactions', () => {
   it('unmount revokes active URL', async () => {
     setupAuth();
     const { unmount } = render(<Wrapper />);
-    await waitFor(() => expect(screen.getByText('Photo tips')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Guidelines for Optimal Analysis')).toBeInTheDocument());
 
     const file = createFile('test.jpg', 'image/jpeg', 1024 * 1024);
     selectFile(file);
 
-    await waitFor(() => expect(screen.getByAltText('Preview of selected skin photo')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByAltText('Selected skin photo')).toBeInTheDocument());
 
     unmount();
 

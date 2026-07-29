@@ -7,7 +7,7 @@ export const TestimonialsSection: React.FC = () => {
     {
       code: '01 // DERM_ADVISORY',
       quote:
-        'Ishkeen is the first clinical diagnostic tool that accurately captures erythema and lesion distribution without requiring an in-person dermatoscope session.',
+        'Ishkeen is the first clinical diagnostic tool that accurately captures erythema, rosacea vascularity, and lesion distribution across 18 skin conditions without requiring an in-person dermatoscope session.',
       author: 'Dr. Elena Rostova, MD',
       role: 'Clinical Dermatologist & Cosmetic Research Lead',
       badge: 'CLINICAL ADVISOR',
@@ -25,9 +25,9 @@ export const TestimonialsSection: React.FC = () => {
     {
       code: '03 // CLINICAL_COHORT',
       quote:
-        'The morning and evening regimen breakdown gave me exact active concentrations that cleared my cystic breakouts in 6 weeks without barrier burn.',
+        'The morning and evening regimen breakdown gave me exact active concentrations that resolved my rosacea flushing, cystic breakouts, and dehydration in 6 weeks without barrier burn.',
       author: 'Aria S., Patient Cohort #14',
-      role: 'Fitzpatrick Type IV • Acne Prone Profile',
+      role: 'Fitzpatrick Type IV • Rosacea & Acne Prone Profile',
       badge: 'PATIENT RESULT',
       coord: '[COHORT // 14-B]',
     },

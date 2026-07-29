@@ -6,6 +6,7 @@ interface UploadActionsProps {
   hasFile: boolean;
   isUploading: boolean;
   onSelectClick: () => void;
+  onCameraClick?: () => void;
   onUploadClick: () => void;
 }
 
@@ -13,6 +14,7 @@ export const UploadActions: React.FC<UploadActionsProps> = ({
   hasFile,
   isUploading,
   onSelectClick,
+  onCameraClick,
   onUploadClick
 }) => {
   return (
@@ -29,6 +31,21 @@ export const UploadActions: React.FC<UploadActionsProps> = ({
           {hasFile ? 'Change Image' : 'Select Image'}
         </Button>
       </HoverLift>
+
+      {onCameraClick && (
+        <HoverLift y={-2} className="flex-1">
+          <Button
+            id="upload-camera-btn"
+            type="button"
+            variant="outline"
+            onClick={onCameraClick}
+            disabled={isUploading}
+            className="w-full rounded-full flex items-center justify-center gap-2"
+          >
+            <span>📷</span> Capture from Camera
+          </Button>
+        </HoverLift>
+      )}
 
       {hasFile && (
         <HoverLift y={-2} className="flex-1">

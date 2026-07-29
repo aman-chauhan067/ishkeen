@@ -20,7 +20,7 @@ export const HowItWorksSection: React.FC = () => {
       title: 'HYBRID CLINICAL INFERENCE',
       subtitle: '// MULTI-SPECTRAL AI REASONING',
       description:
-        'OpenCV isolates skin tone, erythema, and lipid balance while our deep Gemini clinical vision model evaluates Fitzpatrick phototype, acne severity, and sensitivity.',
+        'OpenCV isolates skin tone, erythema, and lipid balance while our deep Gemini clinical vision model evaluates 18 full-spectrum skin conditions including rosacea, melasma, dehydration, fine lines, and acne severity.',
       icon: Cpu,
       tag: 'HYBRID_AI_v2.4',
       coord: '[SYS // NEURAL_OP]',

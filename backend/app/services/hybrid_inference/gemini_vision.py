@@ -61,7 +61,12 @@ Expected schema:
   "redness": "none" | "mild" | "moderate" | "severe",
   "oiliness": "none" | "mild" | "moderate" | "severe",
   "dryness": "none" | "mild" | "moderate" | "severe",
-  "texture": "smooth" | "uneven" | "rough"
+  "texture": "smooth" | "uneven" | "rough",
+  "rosacea_tendency": "none" | "mild" | "moderate" | "severe",
+  "wrinkles_fine_lines": "none" | "mild" | "moderate" | "severe",
+  "dark_circles": "none" | "mild" | "moderate" | "severe",
+  "dehydration": "none" | "mild" | "moderate" | "severe",
+  "pores": "normal" | "enlarged" | "congested"
 }}
 
 Output ONLY the JSON object.

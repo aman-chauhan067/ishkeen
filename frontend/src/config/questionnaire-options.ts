@@ -14,26 +14,36 @@ export interface OptionConfig<T = string> {
 }
 
 export const SKIN_TYPE_OPTIONS: OptionConfig<SkinType>[] = [
-  { value: 'oily', label: 'Oily' },
-  { value: 'dry', label: 'Dry' },
-  { value: 'combination', label: 'Combination' },
-  { value: 'balanced_normal', label: 'Balanced / Normal' },
-  { value: 'unsure', label: 'Unsure' },
+  { value: 'oily', label: 'Oily', description: 'Excess shine across entire face' },
+  { value: 'dry', label: 'Dry', description: 'Tight, flaky, or lacking oil/sebum' },
+  { value: 'combination', label: 'Combination (Oily / Dry)', description: 'Oily T-zone with dry or dehydrated cheeks' },
+  { value: 'balanced_normal', label: 'Balanced / Normal', description: 'Neither overly oily nor dry' },
+  { value: 'unsure', label: 'Unsure', description: 'Need AI clinical analysis to determine' },
 ];
 
 export const CURRENT_CONCERNS_OPTIONS: OptionConfig[] = [
-  { value: 'breakouts', label: 'Breakouts' },
-  { value: 'post_acne_marks', label: 'Post-acne marks' },
-  { value: 'uneven_tone', label: 'Uneven tone' },
-  { value: 'visible_pigmentation', label: 'Visible pigmentation' },
-  { value: 'redness', label: 'Redness' },
-  { value: 'sensitivity', label: 'Sensitivity' },
-  { value: 'dryness_or_dehydration', label: 'Dryness or dehydration' },
-  { value: 'excess_oiliness', label: 'Excess oiliness' },
-  { value: 'visible_texture', label: 'Visible texture' },
-  { value: 'clogged_pores', label: 'Clogged pores' },
-  { value: 'fine_lines', label: 'Fine lines' },
-  { value: 'dullness', label: 'Dullness' },
+  { value: 'breakouts', label: 'Acne & Breakouts', description: 'Active blemishes, pustules, or acne vulgaris' },
+  { value: 'rosacea', label: 'Rosacea / Chronic Redness', description: 'Persistent facial flushing, erythema, or vascular reactivity' },
+  { value: 'dryness_or_dehydration', label: 'Dryness / Flakiness', description: 'Tightness, rough texture, or lipid deficiency' },
+  { value: 'dehydration', label: 'Dehydrated Skin', description: 'Water depletion, tightness despite oil production' },
+  { value: 'excess_oiliness', label: 'Excess Oiliness & Shine', description: 'Overactive sebum production across face' },
+  { value: 'hyperpigmentation', label: 'Hyperpigmentation & Dark Spots', description: 'Sun spots, post-inflammatory pigmentation, or age spots' },
+  { value: 'melasma', label: 'Melasma / Hormonal Pigmentation', description: 'Symmetrical brownish or grayish facial patches' },
+  { value: 'post_acne_marks', label: 'Post-Acne Marks (PIE / PIH)', description: 'Red or brown lingering marks after blemishes heal' },
+  { value: 'wrinkles_fine_lines', label: 'Wrinkles & Fine Lines', description: 'Visible expression lines, crow’s feet, or loss of elasticity' },
+  { value: 'fine_lines', label: 'Early Fine Lines', description: 'Subtle surface expression lines' },
+  { value: 'irritated_skin', label: 'Irritated / Compromised Barrier', description: 'Stinging, burning, peeling, or damaged moisture barrier' },
+  { value: 'eczema_prone', label: 'Eczema / Dermatitis-Prone', description: 'Dry, itchy, or reactive patches' },
+  { value: 'sensitivity', label: 'Sensitivity & Reactivity', description: 'Easily flushed or reactive to skincare products' },
+  { value: 'enlarged_pores', label: 'Enlarged or Clogged Pores', description: 'Visible pore texture, blackheads, or sebaceous filaments' },
+  { value: 'clogged_pores', label: 'Clogged Pores & Comedones', description: 'Congested follicles or sebaceous filaments' },
+  { value: 'sun_damage', label: 'Sun Damage / Photoaging', description: 'UV-induced texture changes and solar lentigines' },
+  { value: 'uneven_tone', label: 'Uneven Skin Tone', description: 'Blotchy or irregular facial complexion' },
+  { value: 'visible_texture', label: 'Rough / Uneven Texture', description: 'Bumpy skin surface or keratin buildup' },
+  { value: 'dullness', label: 'Dullness / Lack of Radiance', description: 'Lacking natural luminosity or cellular turnover' },
+  { value: 'dark_circles', label: 'Dark Circles & Under-Eye Puffiness', description: 'Periorbital pigmentation or fluid retention' },
+  { value: 'redness', label: 'Localized Redness', description: 'Patchy erythema or flushing' },
+  { value: 'visible_pigmentation', label: 'Visible Pigmentation', description: 'Discoloration or melanin patches' },
 ];
 
 export const PRIMARY_GOAL_OPTIONS: OptionConfig<PrimaryGoal>[] = [

@@ -8,15 +8,15 @@ export const ClinicalScienceSection: React.FC = () => {
 
   const features = [
     {
-      id: 'acne',
-      code: '01 // LESION_GRADING',
+      id: 'full_spectrum',
+      code: '01 // CLINICAL_CONCERNS_18',
       icon: Activity,
-      title: 'Acne & Lesion Severity Grading',
-      subtitle: '// CLINICAL LESION STRATIFICATION',
+      title: '18-Concern Full-Spectrum Clinical Grading',
+      subtitle: '// ACNE, ROSACEA, MELASMA, WRINKLES & BARRIER STRATIFICATION',
       description:
-        'Our hybrid computer vision pipeline classifies breakouts into inflammatory papules, pustules, and comedones. By measuring localized erythema and lesion density across 43 anatomical zones, we compute an objective clinical severity index.',
+        'Our hybrid computer vision and neural vision pipeline classifies 18 distinct dermatological conditions—including acne lesions, rosacea flushing, melasma pigmentation, fine lines, and moisture barrier integrity across 43 anatomical facial zones.',
       stats: [
-        { label: 'ACCURACY', value: '98.2%' },
+        { label: 'CONCERNS_MAPPED', value: '18_CONDITIONS' },
         { label: 'ZONES_MAPPED', value: '43_PTS' },
       ],
       badge: 'FDA_CLASS_I // COMPLIANT',
@@ -36,13 +36,13 @@ export const ClinicalScienceSection: React.FC = () => {
       badge: 'CLINICAL_DERM // VALIDATED',
     },
     {
-      id: 'sebum',
-      code: '03 // SEBUM_TOPOGRAPHY',
+      id: 'sebum_tewl',
+      code: '03 // LIPID_TEWL_PROFILING',
       icon: Droplets,
-      title: 'Sebum & Hydration Topography',
-      subtitle: '// T-ZONE VS U-ZONE LIPID GRADIENT',
+      title: 'Lipid Mantle & Dehydration Profiling',
+      subtitle: '// SEBUM vs. TRANS-EPIDERMAL WATER LOSS (TEWL)',
       description:
-        'By analyzing specular highlights and micro-texture variance across cheeks and forehead, Ishkeen quantifies regional lipid secretion to differentiate true oily skin from dehydrated barrier compensation.',
+        'By analyzing specular highlights and colorimetric shifts across cheeks and forehead, Ishkeen quantifies regional lipid secretion to differentiate true oily skin from dehydrated barrier compensation and rosacea vascularity.',
       stats: [
         { label: 'SPECULAR_MAP', value: 'SUB_MM' },
         { label: 'BARRIER_INDEX', value: '0.01_PRECISION' },

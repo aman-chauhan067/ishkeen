@@ -28,8 +28,8 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
   const [localError, setLocalError] = useState<string | null>(null);
 
   const handleConcernsChange = (values: string[]) => {
-    if (values.length > 3) {
-      setLocalError("Maximum 3 selections allowed");
+    if (values.length > 5) {
+      setLocalError("Maximum 5 selections allowed");
     } else {
       setLocalError(null);
       onChange('current_concerns', values);
@@ -69,7 +69,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
         <div>
           <div className="flex justify-between items-baseline mb-4">
             <p className="text-lg font-bold text-[#26384B] mb-1">Which of these are you currently experiencing?</p>
-            <QuestionHint>Up to 3</QuestionHint>
+            <QuestionHint>Up to 5</QuestionHint>
           </div>
           <QuestionGroup
             name="current_concerns"
@@ -77,7 +77,7 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
             options={CURRENT_CONCERNS_OPTIONS}
             selectedValues={answers.current_concerns || []}
             onChange={handleConcernsChange}
-            maxSelections={3}
+            maxSelections={5}
             error={localError || undefined}
           />
         </div>

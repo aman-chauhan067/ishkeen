@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 font-mono-tech text-xs text-[#F6F4EF]/80">
               <li><a href="#science" className="hover:text-[#C67C5A] transition-colors"><ScrambleText text="/MEDIAPIPE_MESH" duration={750} /></a></li>
               <li><a href="#science" className="hover:text-[#C67C5A] transition-colors"><ScrambleText text="/FITZPATRICK_SCALE" duration={800} /></a></li>
-              <li><a href="#science" className="hover:text-[#C67C5A] transition-colors"><ScrambleText text="/ACNE_GRADING_API" duration={850} /></a></li>
+              <li><a href="#science" className="hover:text-[#C67C5A] transition-colors"><ScrambleText text="/18_CONCERN_GRADING_API" duration={850} /></a></li>
               <li><a href="#science" className="hover:text-[#C67C5A] transition-colors"><ScrambleText text="/PHARMACOVIGILANCE" duration={850} /></a></li>
             </ul>
           </div>

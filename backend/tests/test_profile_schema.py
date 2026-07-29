@@ -32,12 +32,12 @@ def test_zero_concerns_rejected():
         SubmissionCreate(**payload)
     assert "List should have at least 1 item" in str(exc.value)
 
-def test_more_than_3_concerns_rejected():
+def test_more_than_5_concerns_rejected():
     payload = valid_payload()
-    payload["current_concerns"] = ["breakouts", "redness", "sensitivity", "dullness"]
+    payload["current_concerns"] = ["breakouts", "redness", "sensitivity", "dullness", "rosacea", "melasma"]
     with pytest.raises(ValidationError) as exc:
         SubmissionCreate(**payload)
-    assert "List should have at most 3 items" in str(exc.value)
+    assert "List should have at most 5 items" in str(exc.value)
 
 def test_duplicate_concerns_rejected():
     payload = valid_payload()

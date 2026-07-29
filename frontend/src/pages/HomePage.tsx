@@ -14,7 +14,6 @@ import {
   TestimonialsSection,
   Footer,
   DragonflyMarquee,
-  AsciiDragonflyBackground,
   FinalCtaSection,
   HeroKineticTitle,
 } from '../components/landing';
@@ -28,11 +27,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen w-full bg-[#F6F4EF] text-[#26384B] relative selection:bg-[#26384B] selection:text-[#F6F4EF] overflow-x-hidden">
-        {/* =========================================================
-            0. FIXED 3D ASCII DRAGONFLY BACKGROUND (ROTATES ON SCROLL)
-            ========================================================= */}
-        <AsciiDragonflyBackground />
+      <div className="min-h-screen w-full text-[#26384B] relative selection:bg-[#26384B] selection:text-[#F6F4EF] overflow-x-hidden">
 
         {/* =========================================================
             FOUR CORNER LETTERS ON VIEWPORT (Exact Dragonfly.xyz signature)

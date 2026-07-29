@@ -45,7 +45,9 @@ class InferenceService:
 
     @property
     def is_available(self) -> bool:
-        return self.cv_analyzer is not None
+        if self.cv_analyzer is None or self.gemini_vision is None:
+            return False
+        return getattr(self.gemini_vision, "is_configured", False)
 
     @property
     def model_version(self) -> str:
@@ -58,6 +60,19 @@ class InferenceService:
         If Gemini Vision API is configured and reachable, fuses both CV metrics and Gemini semantics.
         If Gemini Vision API is unavailable, synthesizes clinical evidence directly from the CV metrics.
         """
+        if not self.is_available:
+            return {
+                "status": "model_not_loaded",
+                "acne_detected": False,
+                "acne_confidence": 0.0,
+                "model_version": self._model_version,
+                "concerns": [],
+                "observations": [],
+                "morning_routine": [],
+                "evening_routine": [],
+                "safety_flags": [],
+            }
+
         if self.cv_analyzer is None:
             raise ValueError("CVAnalyzer is not initialized.")
 

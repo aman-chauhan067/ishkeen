@@ -73,7 +73,7 @@ def adapt(ml_results: Optional[Dict[str, Any]], policy: ConfidencePolicy) -> MLE
         )
 
     # Extract confidence
-    confidence = ml_results.get("acne_confidence")
+    confidence = ml_results.get("acne_confidence", ml_results.get("overall_confidence"))
     if confidence is None or not isinstance(confidence, (int, float)):
         return MLEvidenceResult(
             additional_concerns=[],
@@ -85,15 +85,29 @@ def adapt(ml_results: Optional[Dict[str, Any]], policy: ConfidencePolicy) -> MLE
 
     # Map ML concern names to canonical knowledge base concerns
     name_to_canonical = {
-        "Acne": "acne_breakouts",
+        "Acne": "breakouts",
+        "Acne & Breakouts": "breakouts",
         "Post Acne Marks": "post_acne_marks",
-        "Uneven Texture": "uneven_texture",
-        "Oily Skin": "oily_skin",
+        "Uneven Texture": "visible_texture",
+        "Surface Texture & Follicular Tone": "visible_texture",
+        "Oily Skin": "excess_oiliness",
+        "Sebum & Barrier Regulation": "excess_oiliness",
         "Dehydration": "dehydration",
-        "Dryness": "dryness",
+        "Epidermal Dehydration": "dehydration",
+        "Dryness": "dryness_or_dehydration",
+        "Dryness & Flakiness": "dryness_or_dehydration",
+        "Dryness & Lipid Deficiency": "dryness_or_dehydration",
         "Pigmentation": "hyperpigmentation",
-        "Large Pores": "large_pores",
-        "Redness": "redness"
+        "Hyperpigmentation & Dark Spots": "hyperpigmentation",
+        "Large Pores": "enlarged_pores",
+        "Redness": "redness",
+        "Erythema & Vascularity": "rosacea",
+        "Rosacea": "rosacea",
+        "Rosacea & Vascular Reactivity": "rosacea",
+        "Wrinkles": "wrinkles_fine_lines",
+        "Wrinkles & Fine Lines": "wrinkles_fine_lines",
+        "Dark Circles": "dark_circles",
+        "Dark Circles & Under-Eye Puffiness": "dark_circles"
     }
 
     additional_concerns = []

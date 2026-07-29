@@ -30,7 +30,15 @@ def check_none_exclusivity(v: List[str]) -> List[str]:
 ALLOWED_ROUTINE_CATEGORIES = {"cleanser", "moisturizer", "sunscreen", "serum_or_treatment", "none"}
 ALLOWED_ACTIVE_CATEGORIES = {"retinoid_type", "bha_salicylic_acid", "aha_glycolic_lactic_acid", "benzoyl_peroxide", "azelaic_acid", "vitamin_c", "niacinamide", "pigment_targeting_active", "unknown_active", "none"}
 ALLOWED_REACTION_CATEGORIES = {"fragrance", "essential_oils", "retinoid_type", "bha_salicylic_acid", "aha_acids", "benzoyl_peroxide", "vitamin_c", "niacinamide", "other_known", "none"}
-ALLOWED_CONCERNS = {"breakouts", "post_acne_marks", "uneven_tone", "visible_pigmentation", "redness", "sensitivity", "dryness_or_dehydration", "excess_oiliness", "visible_texture", "clogged_pores", "fine_lines", "dullness"}
+ALLOWED_CONCERNS = {
+    "breakouts", "acne_breakouts",
+    "post_acne_marks", "uneven_tone", "visible_pigmentation", "redness",
+    "sensitivity", "dryness_or_dehydration", "excess_oiliness", "visible_texture",
+    "clogged_pores", "enlarged_pores",
+    "fine_lines", "wrinkles_fine_lines", "wrinkles",
+    "dullness", "rosacea", "dehydration", "hyperpigmentation", "melasma",
+    "irritated_skin", "damaged_barrier", "eczema_prone", "sun_damage", "dark_circles"
+}
 
 def validate_vocabulary(v: List[str], allowed: set) -> List[str]:
     if v is None:
@@ -43,7 +51,7 @@ def validate_vocabulary(v: List[str], allowed: set) -> List[str]:
 class SubmissionCreate(BaseModel):
     # Step 1
     skin_type: SkinType
-    current_concerns: List[str] = Field(..., min_length=1, max_length=3)
+    current_concerns: List[str] = Field(..., min_length=1, max_length=5)
     primary_goal: PrimaryGoal
     sensitivity_tendency: SensitivityTendency
     
@@ -116,7 +124,7 @@ class SubmissionCreate(BaseModel):
 
 class SkinProfileUpdate(BaseModel):
     skin_type: Optional[SkinType] = None
-    current_concerns: Optional[List[str]] = Field(None, min_length=1, max_length=3)
+    current_concerns: Optional[List[str]] = Field(None, min_length=1, max_length=5)
     primary_goal: Optional[PrimaryGoal] = None
     sensitivity_tendency: Optional[SensitivityTendency] = None
     

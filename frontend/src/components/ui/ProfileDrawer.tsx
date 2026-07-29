@@ -145,7 +145,7 @@ export const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose })
 
               <div className="flex flex-col flex-1">
                 <DrawerItem label="Profile" onClick={() => setIsEditingName(true)} />
-                <DrawerItem label="Skin Profile" onClick={() => { onClose(); window.location.href = '/app/history'; }} />
+                <DrawerItem label="Skin Profile" onClick={() => { onClose(); window.location.href = '/app/profile'; }} />
                 <DrawerItem label="Settings" onClick={() => { onClose(); window.location.href = '/app/settings'; }} />
               </div>
             </motion.div>

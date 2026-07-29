@@ -12,10 +12,10 @@ export const ComparisonSection: React.FC = () => {
       others: 'Subjective 5-minute self-reported quiz',
     },
     {
-      code: '02 // LESIONS',
-      feature: 'Acne Severity Grading',
-      ishkeen: 'Objective Lesion Density & Erythema Quantification',
-      others: 'User guesses ("mild, moderate, or severe")',
+      code: '02 // 18_CONCERNS',
+      feature: 'Clinical Concern Coverage',
+      ishkeen: '18 Full-Spectrum Conditions (Acne, Rosacea, Melasma, Wrinkles)',
+      others: 'Generic acne-only or subjective self-assessment',
     },
     {
       code: '03 // PHOTOTYPING',

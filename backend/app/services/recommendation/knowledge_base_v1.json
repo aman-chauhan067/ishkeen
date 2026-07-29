@@ -48,6 +48,58 @@
     {
       "concern": "dullness",
       "candidate_categories": ["aha_glycolic_lactic_acid", "vitamin_c"]
+    },
+    {
+      "concern": "acne_breakouts",
+      "candidate_categories": ["bha_salicylic_acid", "benzoyl_peroxide", "retinoid_type", "azelaic_acid"]
+    },
+    {
+      "concern": "rosacea",
+      "candidate_categories": ["azelaic_acid", "niacinamide"]
+    },
+    {
+      "concern": "hyperpigmentation",
+      "candidate_categories": ["pigment_targeting_active", "vitamin_c", "retinoid_type", "azelaic_acid", "aha_glycolic_lactic_acid"]
+    },
+    {
+      "concern": "wrinkles_fine_lines",
+      "candidate_categories": ["retinoid_type", "vitamin_c", "aha_glycolic_lactic_acid"]
+    },
+    {
+      "concern": "wrinkles",
+      "candidate_categories": ["retinoid_type", "vitamin_c", "aha_glycolic_lactic_acid"]
+    },
+    {
+      "concern": "dehydration",
+      "candidate_categories": ["niacinamide"]
+    },
+    {
+      "concern": "irritated_skin",
+      "candidate_categories": ["azelaic_acid", "niacinamide"]
+    },
+    {
+      "concern": "damaged_barrier",
+      "candidate_categories": ["niacinamide"]
+    },
+    {
+      "concern": "eczema_prone",
+      "candidate_categories": ["niacinamide"]
+    },
+    {
+      "concern": "enlarged_pores",
+      "candidate_categories": ["bha_salicylic_acid", "niacinamide", "retinoid_type"]
+    },
+    {
+      "concern": "sun_damage",
+      "candidate_categories": ["retinoid_type", "vitamin_c", "pigment_targeting_active", "aha_glycolic_lactic_acid"]
+    },
+    {
+      "concern": "melasma",
+      "candidate_categories": ["pigment_targeting_active", "azelaic_acid", "vitamin_c"]
+    },
+    {
+      "concern": "dark_circles",
+      "candidate_categories": ["vitamin_c", "retinoid_type", "niacinamide"]
     }
   ],
   "category_metadata": {

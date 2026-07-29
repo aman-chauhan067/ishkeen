@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProfile } from '../../contexts/ProfileContext';
-import { useAuthenticatedApi } from '../../lib/api';
+import { useAuthenticatedApi } from '../../hooks/useAuthenticatedApi';
 import { Container } from '../../components/ui/Container';
 import { Glass } from '../../components/ui/Glass';
 import { Button } from '../../components/ui/Button';
 import { Alert } from '../../components/ui/Alert';
-import { PageTransition, Fade, HoverLift, AmbientGlow } from '../../components/motion';
+import { PageTransition, Fade, HoverLift } from '../../components/motion';
 import {
   SKIN_TYPE_OPTIONS,
   CURRENT_CONCERNS_OPTIONS,
   PRIMARY_GOAL_OPTIONS,
-  SENSITIVITY_OPTIONS,
+  SENSITIVITY_TENDENCY_OPTIONS,
   SUNSCREEN_FREQUENCY_OPTIONS,
   ROUTINE_EXPERIENCE_OPTIONS,
   CLIMATE_OPTIONS,
-  KNOWN_REACTION_OPTIONS,
-  PREFERENCE_AVOID_OPTIONS,
-  ROUTINE_PRODUCT_OPTIONS,
-  ACTIVE_INGREDIENT_OPTIONS,
+  KNOWN_REACTION_CATEGORIES_OPTIONS,
+  PREFERENCE_AVOID_CATEGORIES_OPTIONS,
+  ROUTINE_PRODUCT_CATEGORIES_OPTIONS,
+  ACTIVE_INGREDIENT_CATEGORIES_OPTIONS,
 } from '../../config/questionnaire-options';
-import type { SkinProfile, SkinProfileUpdate } from '../../types/profile';
+import type { SkinProfile } from '../../types/profile';
 
 export const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ export const ProfilePage: React.FC = () => {
     setErrorMsg(null);
     setSuccessMsg(null);
 
-    const updatePayload: SkinProfileUpdate = {
+    const updatePayload = {
       skin_type: editForm.skin_type,
       current_concerns: editForm.current_concerns,
       primary_goal: editForm.primary_goal,
@@ -283,7 +283,7 @@ export const ProfilePage: React.FC = () => {
                     onChange={e => setEditForm(prev => ({ ...prev, sensitivity_tendency: e.target.value as any }))}
                     className="w-full p-3.5 rounded-2xl border border-[#26384B]/20 bg-white/80 text-[#26384B] font-medium focus:outline-none"
                   >
-                    {SENSITIVITY_OPTIONS.map(opt => (
+                    {SENSITIVITY_TENDENCY_OPTIONS.map(opt => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
                     ))}
                   </select>
@@ -386,7 +386,7 @@ export const ProfilePage: React.FC = () => {
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-[#4C6072] mb-1">Sensitivity Tendency</span>
                   <p className="text-lg font-bold text-[#26384B] capitalize">
-                    {getLabel(profile.sensitivity_tendency, SENSITIVITY_OPTIONS)}
+                    {getLabel(profile.sensitivity_tendency, SENSITIVITY_TENDENCY_OPTIONS)}
                   </p>
                 </div>
               </div>
@@ -430,7 +430,7 @@ export const ProfilePage: React.FC = () => {
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-[#4C6072] mb-2">Product Categories in Routine</span>
                   <div className="flex flex-wrap gap-2">
-                    {getMultiLabels(profile.routine_product_categories, ROUTINE_PRODUCT_OPTIONS).map((label, idx) => (
+                    {getMultiLabels(profile.routine_product_categories, ROUTINE_PRODUCT_CATEGORIES_OPTIONS).map((label, idx) => (
                       <span key={idx} className="px-3 py-1 bg-white/70 border border-[#26384B]/15 text-[#26384B] rounded-lg text-xs font-medium">
                         {label}
                       </span>
@@ -440,7 +440,7 @@ export const ProfilePage: React.FC = () => {
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-[#4C6072] mb-2">Active Ingredients Used</span>
                   <div className="flex flex-wrap gap-2">
-                    {getMultiLabels(profile.active_ingredient_categories, ACTIVE_INGREDIENT_OPTIONS).map((label, idx) => (
+                    {getMultiLabels(profile.active_ingredient_categories, ACTIVE_INGREDIENT_CATEGORIES_OPTIONS).map((label, idx) => (
                       <span key={idx} className="px-3 py-1 bg-white/70 border border-[#26384B]/15 text-[#26384B] rounded-lg text-xs font-medium">
                         {label}
                       </span>
@@ -465,7 +465,7 @@ export const ProfilePage: React.FC = () => {
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-[#4C6072] mb-1">Known Reactions</span>
                   <p className="text-base font-bold text-[#26384B]">
-                    {getMultiLabels(profile.known_reaction_categories, KNOWN_REACTION_OPTIONS).join(', ')}
+                    {getMultiLabels(profile.known_reaction_categories, KNOWN_REACTION_CATEGORIES_OPTIONS).join(', ')}
                   </p>
                   {profile.known_reaction_other_note && (
                     <p className="text-xs text-[#4C6072] mt-1 italic">Note: "{profile.known_reaction_other_note}"</p>
@@ -474,7 +474,7 @@ export const ProfilePage: React.FC = () => {
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-[#4C6072] mb-1">Avoid Preferences</span>
                   <p className="text-base font-bold text-[#26384B]">
-                    {getMultiLabels(profile.preference_avoid_categories, PREFERENCE_AVOID_OPTIONS).join(', ')}
+                    {getMultiLabels(profile.preference_avoid_categories, PREFERENCE_AVOID_CATEGORIES_OPTIONS).join(', ')}
                   </p>
                 </div>
               </div>

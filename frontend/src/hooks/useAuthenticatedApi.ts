@@ -34,6 +34,14 @@ export function useAuthenticatedApi() {
     }
   }, [handleApiError]);
 
+  const patch = useCallback(async <T>(path: string, body?: unknown): Promise<T> => {
+    try {
+      return await api.patch<T>(path, body);
+    } catch (error) {
+      return handleApiError(error);
+    }
+  }, [handleApiError]);
+
   const postForm = useCallback(async <T>(path: string, formData: FormData): Promise<T> => {
     try {
       return await api.postForm<T>(path, formData);
@@ -50,5 +58,5 @@ export function useAuthenticatedApi() {
     }
   }, [handleApiError]);
 
-  return useMemo(() => ({ get, post, postForm, getBlob }), [get, post, postForm, getBlob]);
+  return useMemo(() => ({ get, post, patch, postForm, getBlob }), [get, post, patch, postForm, getBlob]);
 }

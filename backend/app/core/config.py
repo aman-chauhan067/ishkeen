@@ -12,8 +12,21 @@ class Settings(BaseSettings):
     POSTGRES_DB: str = "ishkeen"
     POSTGRES_PORT: str = "5432"
 
+    # Production database override — set this on Render with your Neon connection string
+    DATABASE_URL: str | None = None
+
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
+        # Production: use DATABASE_URL env var (Neon, Supabase, etc.)
+        if self.DATABASE_URL:
+            # psycopg3 driver prefix fix for SQLAlchemy
+            url = self.DATABASE_URL
+            if url.startswith("postgres://"):
+                url = url.replace("postgres://", "postgresql+psycopg://", 1)
+            elif url.startswith("postgresql://"):
+                url = url.replace("postgresql://", "postgresql+psycopg://", 1)
+            return url
+        # Local development: SQLite
         return "sqlite:///./dev.db"
 
     # CORS

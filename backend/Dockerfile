@@ -46,4 +46,4 @@ HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:$PORT/health || exit 1
 
 EXPOSE $PORT
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'"]
+CMD ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'"]

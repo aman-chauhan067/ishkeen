@@ -119,12 +119,13 @@ export const AdminSettings = () => {
   };
 
   return (
-    <div className="space-y-8 sm:space-y-12 pb-24 max-w-4xl mx-auto">
+    <div className="space-y-12 sm:space-y-16 pb-32 max-w-4xl mx-auto">
       <BlurReveal>
-        <div className="mb-6 sm:mb-8 px-4 sm:px-0">
-          <h1 className="font-serif text-3xl sm:text-4xl text-[#26384B] tracking-tight mb-4 flex items-center gap-3">
-            <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-[#4C6072]" />
-            Platform Settings
+        <div className="mb-10 sm:mb-14 px-4 sm:px-0">
+          <h1 className="text-left text-[#26384B] mb-6 flex flex-wrap items-baseline gap-4 sm:gap-6">
+            <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-[#4C6072] self-center" />
+            <span className="text-2xl sm:text-4xl font-semibold tracking-normal">Platform</span>
+            <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Settings</span>
           </h1>
           <p className="font-sans text-sm sm:text-base text-[#4C6072] leading-relaxed max-w-2xl">
             Global configuration for Ishkeen. Changes apply immediately to all active users.
@@ -134,12 +135,12 @@ export const AdminSettings = () => {
 
       {/* Critical Controls */}
       <Fade delay={0.1}>
-        <div className="bg-white/60 backdrop-blur-[24px] rounded-2xl sm:rounded-3xl border border-white/40 shadow-[0_8px_30px_rgba(37,58,74,0.04)] overflow-hidden mx-4 sm:mx-0">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] overflow-hidden mx-4 sm:mx-0">
           <div className="p-6 sm:p-8 border-b border-[#26384B]/5 flex items-center gap-3 text-[#26384B] bg-white/40">
             <Shield className="w-5 h-5 text-red-500" />
             <h2 className="font-sans font-bold uppercase tracking-widest text-xs sm:text-sm">Critical Controls</h2>
           </div>
-          <div className="p-6 sm:p-8 space-y-8">
+          <div className="p-6 sm:p-10 space-y-10">
             <ToggleRow
               field="maintenance_mode"
               label="Maintenance Mode"
@@ -157,12 +158,12 @@ export const AdminSettings = () => {
 
       {/* Features & Limits */}
       <Fade delay={0.2}>
-        <div className="bg-white/60 backdrop-blur-[24px] rounded-2xl sm:rounded-3xl border border-white/40 shadow-[0_8px_30px_rgba(37,58,74,0.04)] overflow-hidden mx-4 sm:mx-0">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] overflow-hidden mx-4 sm:mx-0">
           <div className="p-6 sm:p-8 border-b border-[#26384B]/5 flex items-center gap-3 text-[#26384B] bg-white/40">
             <Database className="w-5 h-5 text-[#4C6072]" />
             <h2 className="font-sans font-bold uppercase tracking-widest text-xs sm:text-sm">Features &amp; Limits</h2>
           </div>
-          <div className="p-6 sm:p-8 space-y-8">
+          <div className="p-6 sm:p-10 space-y-10">
             {/* Daily limit */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex-1 min-w-0">
@@ -208,7 +209,7 @@ export const AdminSettings = () => {
 
       {/* Database Actions */}
       <Fade delay={0.3}>
-        <div className="bg-white/60 backdrop-blur-[24px] rounded-2xl sm:rounded-3xl border border-white/40 shadow-[0_8px_30px_rgba(37,58,74,0.04)] overflow-hidden mx-4 sm:mx-0">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] overflow-hidden mx-4 sm:mx-0">
           <div className="p-6 sm:p-8 border-b border-[#26384B]/5 flex items-center gap-3 text-[#26384B] bg-white/40">
             <Download className="w-5 h-5 text-[#4C6072]" />
             <h2 className="font-sans font-bold uppercase tracking-widest text-xs sm:text-sm">Database Actions</h2>

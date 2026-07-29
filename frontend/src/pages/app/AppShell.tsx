@@ -12,28 +12,25 @@ import { ProfilePage } from './ProfilePage';
 import { PageTransition } from '../../components/motion';
 import { AmbientGlow } from '../../components/motion/AmbientGlow';
 import { ProfileDrawer } from '../../components/ui/ProfileDrawer';
-import { Doodle } from '../../components/illustrations/Doodle';
 import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
+import { LayoutDashboard, ScanFace, History, User } from 'lucide-react';
 
-const NavItem = ({ to, children, end = false }: { to: string, children: React.ReactNode, end?: boolean }) => (
+const NavItem = ({ to, children, icon: Icon, end = false }: { to: string, children: React.ReactNode, icon: any, end?: boolean }) => (
   <NavLink
     to={to}
     end={end}
     className={({ isActive }) =>
-      `group relative flex items-center justify-center px-4 py-2 text-sm font-bold tracking-widest uppercase transition-colors duration-[600ms] ease-[var(--luxury-ease)] focus:outline-none ${
-        isActive ? 'text-[#26384B]' : 'text-[#4C6072] hover:text-[#26384B]'
+      `group relative flex items-center justify-center px-4 py-2 text-sm font-bold tracking-widest uppercase transition-colors duration-[600ms] ease-[var(--luxury-ease)] focus:outline-none rounded-full ${
+        isActive ? 'bg-[#26384B] text-white shadow-md' : 'text-[#4C6072] hover:text-[#26384B] hover:bg-black/5'
       }`
     }
   >
     {({ isActive }) => (
       <>
-        <span className="relative z-10">{children}</span>
-        <AmbientGlow
-          trigger={isActive ? 'always' : 'group-hover'}
-          blur="blur-[40px]"
-          opacity={isActive ? 'opacity-[0.15]' : 'opacity-0 group-hover:opacity-[0.12]'}
-          className="rounded-[ellipse]"
-        />
+        <span className="relative z-10 flex items-center gap-2">
+           <Icon size={16} strokeWidth={isActive ? 2.5 : 2} />
+           {children}
+        </span>
       </>
     )}
   </NavLink>
@@ -80,10 +77,6 @@ export const AppShell: React.FC = () => {
       )}
       {/* Global Background Doodles */}
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-5">
-        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#4C6072]" />
-        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#4C6072]" />
-        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#4C6072]" />
-        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#4C6072]" />
       </div>
 
       {/* Floating Header / Nav */}
@@ -102,11 +95,11 @@ export const AppShell: React.FC = () => {
           </div>
 
           {/* Navigation links */}
-          <nav className="hidden md:flex items-center gap-12 absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
-            <NavItem to="/app" end>Dashboard</NavItem>
-            <NavItem to="/app/upload">Analysis</NavItem>
-            <NavItem to="/app/history">History</NavItem>
-            <NavItem to="/app/profile">Profile</NavItem>
+          <nav className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
+            <NavItem to="/app" icon={LayoutDashboard} end>Dashboard</NavItem>
+            <NavItem to="/app/upload" icon={ScanFace}>Analysis</NavItem>
+            <NavItem to="/app/history" icon={History}>History</NavItem>
+            <NavItem to="/app/profile" icon={User}>Profile</NavItem>
           </nav>
 
           {/* User / Logout */}

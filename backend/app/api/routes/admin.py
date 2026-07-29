@@ -12,6 +12,7 @@ from app.models.analysis import SkinAnalysis
 from app.models.profile import SkinProfile, QuestionnaireSubmission
 from app.models.recommendation import RecommendationRun
 from app.models.notification import Notification, NotificationType
+from app.models.product import Product
 from pydantic import BaseModel, UUID4
 
 router = APIRouter()
@@ -582,7 +583,7 @@ def get_logs(
     logs = db.query(SystemLog).order_by(desc(SystemLog.timestamp)).offset(skip).limit(limit).all()
     return [{
         "id": str(log.id),
-        "timestamp": log.timestamp.isoformat(),
+        "timestamp": log.timestamp.isoformat() if hasattr(log.timestamp, 'isoformat') else str(log.timestamp),
         "level": log.level,
         "user_id": str(log.user_id) if log.user_id else None,
         "ip_address": log.ip_address,
@@ -646,3 +647,104 @@ def export_v2(
     }
     
     return JSONResponse(content=export_data)
+
+# ---------------------------------------------------------
+# Product Management
+# ---------------------------------------------------------
+
+class ProductRequest(BaseModel):
+    name: str
+    brand: Optional[str] = None
+    category: str
+    is_starred: bool = False
+    ingredients: Optional[str] = None
+    usage_instructions: Optional[str] = None
+    suitable_for: Optional[List[str]] = None
+    warnings: Optional[str] = None
+
+@router.get("/products")
+def get_products(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_admin_user),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, ge=1, le=500),
+    search: Optional[str] = None,
+    category: Optional[str] = None
+):
+    query = db.query(Product)
+    if search:
+        query = query.filter(Product.name.ilike(f"%{search}%"))
+    if category:
+        query = query.filter(Product.category == category)
+        
+    products = query.order_by(desc(Product.created_at)).offset(skip).limit(limit).all()
+    return products
+
+@router.post("/products")
+def create_product(
+    product: ProductRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_admin_user)
+):
+    new_product = Product(
+        name=product.name,
+        brand=product.brand,
+        category=product.category,
+        is_starred=product.is_starred,
+        ingredients=product.ingredients,
+        usage_instructions=product.usage_instructions,
+        suitable_for=product.suitable_for,
+        warnings=product.warnings
+    )
+    db.add(new_product)
+    db.commit()
+    db.refresh(new_product)
+    return new_product
+
+@router.put("/products/{product_id}")
+def update_product(
+    product_id: str,
+    product: ProductRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_admin_user)
+):
+    try:
+        product_uuid = __import__('uuid').UUID(product_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    db_product = db.query(Product).filter(Product.id == product_uuid).first()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    db_product.name = product.name
+    db_product.brand = product.brand
+    db_product.category = product.category
+    db_product.is_starred = product.is_starred
+    db_product.ingredients = product.ingredients
+    db_product.usage_instructions = product.usage_instructions
+    db_product.suitable_for = product.suitable_for
+    db_product.warnings = product.warnings
+    
+    db.commit()
+    db.refresh(db_product)
+    return db_product
+
+@router.delete("/products/{product_id}")
+def delete_product(
+    product_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_admin_user)
+):
+    try:
+        product_uuid = __import__('uuid').UUID(product_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    db_product = db.query(Product).filter(Product.id == product_uuid).first()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Product not found")
+        
+    db.delete(db_product)
+    db.commit()
+    return {"status": "success", "message": "Product deleted"}

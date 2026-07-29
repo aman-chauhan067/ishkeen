@@ -4,6 +4,7 @@ import { api } from '../../lib/api';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { useAuth } from '../../auth/AuthContext';
+import { LogOut } from 'lucide-react';
 
 interface SessionInfo {
   id: string;
@@ -13,7 +14,6 @@ interface SessionInfo {
   is_current: boolean;
 }
 
-import { Doodle } from '../../components/illustrations/Doodle';
 
 export const SettingsPage: React.FC = () => {
   const { user, logout } = useAuth();
@@ -85,12 +85,12 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <PageTransition className="pt-36 pb-24 px-8 sm:px-12 max-w-4xl relative">
-      <Doodle type="circle" className="absolute top-28 right-24 w-24 h-24 text-[#4C6072] opacity-10" delay={0.2} />
-      <p className="font-editorial text-4xl text-[#26384B] mb-10 font-black relative z-10" style={{ letterSpacing: '-0.04em' }}>
-        Account Settings
-      </p>
+      <h1 className="max-w-[90%] text-left text-[#26384B] mb-10 relative z-10 flex items-baseline gap-3 sm:gap-4">
+        <span>Account</span>
+        <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Settings</span>
+      </h1>
 
-      <div className="bg-[#F6F4EF] border border-[#26384B]/5 rounded-3xl p-8 max-w-3xl mb-8">
+      <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] p-8 max-w-3xl mb-8">
         <h2 className="font-sans text-xs font-bold uppercase tracking-widest text-[#26384B] mb-6">Profile Settings</h2>
         <form onSubmit={handleEmailChange} className="max-w-md space-y-4">
           <div>
@@ -111,7 +111,7 @@ export const SettingsPage: React.FC = () => {
         </form>
       </div>
 
-      <div className="bg-[#F6F4EF] border border-[#26384B]/5 rounded-3xl p-8 max-w-3xl mb-8">
+      <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] p-8 max-w-3xl mb-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-sans text-xs font-bold uppercase tracking-widest text-[#26384B]">Active Sessions</h2>
           <Button variant="outline" onClick={revokeOtherSessions} className="text-xs">Revoke All Other Sessions</Button>
@@ -148,12 +148,13 @@ export const SettingsPage: React.FC = () => {
         )}
       </div>
 
-      <div className="bg-[#F6F4EF] border border-[#26384B]/5 rounded-3xl p-8 max-w-3xl mb-8">
+      <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] p-8 max-w-3xl mb-8">
         <div className="flex flex-col gap-2">
           <h2 className="font-sans text-xs font-bold uppercase tracking-widest text-red-500 mb-2">Account</h2>
-          <p className="text-[#4C6072] text-sm mb-4">Sign out of your account on this device. This will end your current session and return you to the login screen.</p>
-          <Button variant="danger" onClick={handleLogout} isLoading={isLoggingOut} className="w-full sm:w-auto self-start gap-2">
-            <span className="text-lg leading-none" aria-hidden="true">🚪</span> Sign Out
+          <p className="text-[#4C6072] text-[13px] mb-6">Sign out of your account on this device. This will end your current session and return you to the login screen.</p>
+          <Button variant="danger" onClick={handleLogout} isLoading={isLoggingOut} className="w-full sm:w-auto self-start gap-2 h-12 px-8 rounded-full shadow-sm hover:shadow transition-all group">
+            <LogOut className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="font-bold tracking-wide">Sign Out</span>
           </Button>
         </div>
       </div>

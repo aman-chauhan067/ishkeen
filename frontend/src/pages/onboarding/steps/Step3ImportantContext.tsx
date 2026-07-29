@@ -22,7 +22,6 @@ interface Step3Props {
   error?: string;
 }
 
-import { Doodle } from '../../../components/illustrations/Doodle';
 
 export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange, error }) => {
   const handleReactionsChange = (values: string[]) => {
@@ -62,7 +61,6 @@ export const Step3ImportantContext: React.FC<Step3Props> = ({ answers, onChange,
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="arrow" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Important context</QuestionTitle>
           <QuestionDescription>Final details to ensure our guidance is perfectly tailored and safe for you.</QuestionDescription>
         </div>

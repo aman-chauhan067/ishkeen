@@ -15,7 +15,7 @@ interface SystemHealthResponse {
 }
 
 const ResourceGauge = ({ label, percentage, icon: Icon }: any) => (
-  <div className="bg-[#F6F4EF] p-6 rounded-2xl border border-[#26384B]/5">
+  <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 p-6 rounded-[24px]">
     <div className="flex justify-between items-center mb-6">
       <div className="flex items-center gap-2 text-[#4C6072]">
         <Icon className="w-4 h-4" />
@@ -38,7 +38,7 @@ const ServiceStatus = ({ label, status, icon: Icon }: any) => {
   const isHealthy = status.toLowerCase() === 'healthy' || status.toLowerCase() === 'connected';
   
   return (
-    <div className="flex items-center justify-between p-4 bg-[#F6F4EF] rounded-xl border border-[#26384B]/5 hover:border-[#26384B]/20 transition-colors">
+    <div className="flex items-center justify-between p-4 bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-sm rounded-xl hover:shadow-md hover:bg-white/50 transition-all">
       <div className="flex items-center gap-4">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isHealthy ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
           <Icon className="w-5 h-5" />
@@ -89,7 +89,10 @@ export const AdminHealth = () => {
       <BlurReveal>
         <div className="flex justify-between items-end mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">System Health</h1>
+            <h1 className="text-left text-[#26384B] mb-4 flex flex-wrap items-baseline gap-3 sm:gap-4">
+              <span className="text-2xl sm:text-4xl font-semibold tracking-normal">System</span>
+              <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Health</span>
+            </h1>
             <p className="font-sans text-[#4C6072] leading-relaxed">
               Real-time infrastructure monitoring. Tracks service availability, resource utilization, and active sessions.
             </p>
@@ -116,7 +119,7 @@ export const AdminHealth = () => {
             <ResourceGauge label="Disk Storage" percentage={data.disk_usage_percent} icon={HardDrive} />
           </Fade>
           <Fade delay={0.4}>
-            <div className="bg-[#F6F4EF] p-6 rounded-2xl border border-[#26384B]/5">
+            <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 p-6 rounded-[24px]">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-2 text-[#4C6072]">
                   <Activity className="w-4 h-4" />

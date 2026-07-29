@@ -22,7 +22,6 @@ interface Step1Props {
   error?: string;
 }
 
-import { Doodle } from '../../../components/illustrations/Doodle';
 
 export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, error }) => {
   const [localError, setLocalError] = useState<string | null>(null);
@@ -40,7 +39,6 @@ export const Step1SkinPriorities: React.FC<Step1Props> = ({ answers, onChange, e
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="sparkles" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Let's understand your skin</QuestionTitle>
           <QuestionDescription>We'll use this to build your personalized profile and track changes over time.</QuestionDescription>
         </div>

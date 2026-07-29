@@ -10,6 +10,7 @@ from app.services.recommendation.schema import (
 )
 from app.services.recommendation.trace import TraceBuilder
 from app.models.profile import QuestionnaireSubmission
+from sqlalchemy.orm import Session
 
 ENGINE_VERSION = "1.0.0"
 
@@ -40,6 +41,7 @@ class RecommendationEngine:
     def generate(
         self,
         submission: QuestionnaireSubmission,
+        db: Session,
         additional_concerns: Optional[List[str]] = None,
         consultation_payload: Optional[dict] = None,
         provenance_analysis_id: Optional[UUID] = None,
@@ -93,7 +95,7 @@ class RecommendationEngine:
         candidates, deferred = policy.apply_policies(raw_candidates)
         
         # 5. Build Advanced Routine
-        routine_data = self._build_advanced_routine(ctx, candidates, consultation_payload, trace_builder)
+        routine_data = self._build_advanced_routine(ctx, candidates, db, consultation_payload, trace_builder)
         
         # 6. Format Guidance
         ingredient_guidance = [IngredientGuidance(category=c) for c in candidates]
@@ -125,7 +127,7 @@ class RecommendationEngine:
         self._trace(trace_builder, "add_event", "engine", "EXECUTION_COMPLETED", "info", "SUCCESS", 1)
         return result
 
-    def _build_advanced_routine(self, ctx: RecommendationContext, candidates: List[str], consultation: Optional[dict], tb: Optional[TraceBuilder]) -> dict:
+    def _build_advanced_routine(self, ctx: RecommendationContext, candidates: List[str], db: Session, consultation: Optional[dict], tb: Optional[TraceBuilder]) -> dict:
         from .products import get_product
         consultation = consultation or {}
         budget = consultation.get("budget", "mid_range")
@@ -136,7 +138,7 @@ class RecommendationEngine:
         night = []
         
         def _add_step(routine_list, step_name, category, product_type, ingredient, why, instructions, frequency, warnings=None):
-            product = get_product(category, budget)
+            product = get_product(db, category, budget)
             rec_product_str = f"{product.brand} {product.name}" if product else "Generic Option"
             routine_list.append(RoutineStep(
                 step_name=step_name, category=category, product_type=product_type,

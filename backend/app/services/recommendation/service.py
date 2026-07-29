@@ -68,6 +68,7 @@ class RecommendationService:
         try:
             result = engine.generate(
                 submission,
+                db=self.db,
                 additional_concerns=ml_evidence.additional_concerns,
                 consultation_payload=consultation_payload,
                 provenance_analysis_id=analysis.id if analysis else None,

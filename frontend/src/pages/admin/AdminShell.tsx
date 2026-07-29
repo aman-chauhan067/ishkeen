@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext';
 import { PageTransition } from '../../components/motion';
-import { Doodle } from '../../components/illustrations/Doodle';
 import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 import {
   LayoutDashboard,
@@ -12,6 +11,7 @@ import {
   Brain,
   Activity,
   ScrollText,
+  Package,
   Bell,
   LogOut,
   ChevronLeft,
@@ -25,6 +25,7 @@ const ADMIN_NAVIGATION = [
   { name: 'Overview', to: '/admin', icon: LayoutDashboard, exact: true },
   { name: 'Users', to: '/admin/users', icon: Users },
   { name: 'Analyses', to: '/admin/analyses', icon: Microscope },
+  { name: 'Products', to: '/admin/products', icon: Package },
   { name: 'Dataset', to: '/admin/dataset', icon: Database },
   { name: 'Models', to: '/admin/models', icon: Brain },
   { name: 'Health', to: '/admin/health', icon: Activity },
@@ -61,14 +62,11 @@ export const AdminShell = () => {
         
         {/* Global Background Doodles */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-5">
-          <Doodle type="wave" className="absolute top-[20%] left-[25%] w-64 h-64 text-[#4C6072]" />
-          <Doodle type="arrow" className="absolute bottom-[10%] right-[30%] w-48 h-48 text-[#4C6072]" />
-          <Doodle type="face" className="absolute top-[5%] right-[5%] w-32 h-32 text-[#4C6072]" />
         </div>
         
         {/* Editorial Side Navigation */}
         <nav 
-          className="w-64 border-r border-[#26384B]/5 bg-[#F6F4EF] flex flex-col transition-all duration-500 ease-out z-20"
+          className="w-64 border-r border-white/60 bg-white/40 backdrop-blur-[40px] shadow-[1px_0_50px_rgba(59,130,246,0.05)] flex flex-col transition-all duration-500 ease-out z-20"
           
           
         >
@@ -88,7 +86,7 @@ export const AdminShell = () => {
                   flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
                   ${isActive 
                     ? 'bg-[#26384B] text-[#F6F4EF] shadow-[0_4px_20px_-4px_rgba(37,58,74,0.3)]' 
-                    : 'text-[#4C6072] hover:bg-[#26384B]/5 hover:text-[#26384B]'}
+                    : 'text-[#4C6072] hover:bg-white/50 hover:text-[#26384B]'}
                 `}
               >
                 <item.icon className="w-4 h-4" strokeWidth={1.5} />
@@ -103,14 +101,14 @@ export const AdminShell = () => {
           <div className="p-4 border-t border-[#26384B]/5 flex flex-col gap-2">
             <button
               onClick={() => navigate('/app/dashboard')}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4C6072] hover:bg-[#26384B]/5 hover:text-[#26384B] transition-all duration-300"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4C6072] hover:bg-white/50 hover:text-[#26384B] transition-all duration-300"
             >
               <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
               <span className="font-sans text-xs tracking-wider font-medium">Exit Admin</span>
             </button>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500/80 hover:bg-red-50 hover:text-red-600 transition-all duration-300"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500/80 hover:bg-red-500/10 hover:text-red-600 transition-all duration-300"
             >
               <LogOut className="w-4 h-4" strokeWidth={1.5} />
               <span className="font-sans text-xs tracking-wider font-medium">Sign Out</span>

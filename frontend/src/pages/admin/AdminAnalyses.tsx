@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BlurReveal, Fade } from '../../components/motion';
 import { api } from '../../lib/api';
 import { ChevronRight, Microscope, Clock, AlertCircle } from 'lucide-react';
@@ -16,6 +17,7 @@ interface AnalysisAdminResponse {
 export const AdminAnalyses = () => {
   const [analyses, setAnalyses] = useState<AnalysisAdminResponse[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAnalyses = async () => {
@@ -36,7 +38,10 @@ export const AdminAnalyses = () => {
     <div className="space-y-8">
       <BlurReveal>
         <div className="max-w-2xl">
-          <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">Global Analyses</h1>
+          <h1 className="text-left text-[#26384B] mb-4 flex flex-wrap items-baseline gap-3 sm:gap-4">
+            <span className="text-2xl sm:text-4xl font-semibold tracking-normal">Global</span>
+            <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Analyses</span>
+          </h1>
           <p className="font-sans text-[#4C6072] leading-relaxed">
             Monitor real-time AI inference operations, review failed pipelines, and track processing times.
           </p>
@@ -44,7 +49,7 @@ export const AdminAnalyses = () => {
       </BlurReveal>
 
       <Fade delay={0.1}>
-        <div className="flex justify-between items-center bg-[#F6F4EF] p-4 rounded-2xl border border-[#26384B]/5">
+        <div className="flex justify-between items-center bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-sm p-4 rounded-[24px]">
           <div className="text-[#4C6072] font-sans text-xs font-medium tracking-widest uppercase ml-4">
             {analyses.length} Recent Scans
           </div>
@@ -52,7 +57,7 @@ export const AdminAnalyses = () => {
       </Fade>
 
       <Fade delay={0.2}>
-        <div className="bg-[#F6F4EF] rounded-2xl border border-[#26384B]/5 overflow-hidden">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] overflow-hidden">
           {loading ? (
             <div className="h-64 flex items-center justify-center">
               <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
@@ -61,7 +66,7 @@ export const AdminAnalyses = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left font-sans">
                 <thead>
-                  <tr className="border-b border-[#26384B]/5 text-[#4C6072] text-[10px] uppercase tracking-widest bg-[#F7F7F5]/50">
+                  <tr className="border-b border-[#26384B]/5 text-[#4C6072] text-[10px] uppercase tracking-widest bg-white/30">
                     <th className="px-6 py-4 font-medium">Pipeline ID</th>
                     <th className="px-6 py-4 font-medium">User</th>
                     <th className="px-6 py-4 font-medium">Status</th>
@@ -74,7 +79,8 @@ export const AdminAnalyses = () => {
                   {analyses.map((analysis) => (
                     <tr 
                       key={analysis.id} 
-                      className="group hover:bg-[#F7F7F5] transition-colors cursor-pointer"
+                      onClick={() => navigate(`/admin/analyses/${analysis.id}`)}
+                      className="group hover:bg-white/50 transition-colors cursor-pointer"
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">

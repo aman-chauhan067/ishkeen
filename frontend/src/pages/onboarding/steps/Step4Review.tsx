@@ -23,14 +23,12 @@ const getLabel = (options: any[], value: any) => {
   return options.find(o => String(o.value) === String(value))?.label || value;
 };
 
-import { Doodle } from '../../../components/illustrations/Doodle';
 
 export const Step4Review: React.FC<Step4Props> = ({ answers, onEdit }) => {
   return (
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="stars" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Review Consultation</QuestionTitle>
           <QuestionDescription>Please review your profile before completing the onboarding process.</QuestionDescription>
         </div>

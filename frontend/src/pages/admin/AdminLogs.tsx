@@ -65,9 +65,10 @@ export const AdminLogs = () => {
       <BlurReveal>
         <div className="flex justify-between items-start mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4 flex items-center gap-4">
-              <Terminal className="w-8 h-8 text-[#4C6072]" />
-              System Logs
+            <h1 className="text-left text-[#26384B] mb-4 flex flex-wrap items-baseline gap-3 sm:gap-4">
+              <Terminal className="w-8 h-8 text-[#4C6072] self-center" />
+              <span className="text-2xl sm:text-4xl font-semibold tracking-normal">System</span>
+              <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Logs</span>
             </h1>
             <p className="font-sans text-[#4C6072] leading-relaxed">
               Real-time server telemetry, API access logs, and exception tracking.
@@ -92,7 +93,7 @@ export const AdminLogs = () => {
         </div>
       </BlurReveal>
 
-      <Fade delay={0.1} className="flex-1 bg-[#1A2A36] rounded-2xl border border-[#26384B]/10 overflow-hidden flex flex-col">
+      <Fade delay={0.1} className="flex-1 bg-[#1A2A36]/90 backdrop-blur-[40px] shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/10 rounded-[32px] overflow-hidden flex flex-col mt-4">
         <div className="flex-1 overflow-y-auto p-4 font-mono text-xs">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -106,10 +107,13 @@ export const AdminLogs = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 text-gray-300">
-              {filteredLogs.map((log) => (
+              {filteredLogs.map((log) => {
+                const date = new Date(log.timestamp);
+                const isValidDate = !isNaN(date.getTime());
+                return (
                 <tr key={log.id} className="hover:bg-white/5 transition-colors">
                   <td className="py-3 px-4 whitespace-nowrap text-gray-500">
-                    {format(new Date(log.timestamp), 'HH:mm:ss')}
+                    {isValidDate ? format(date, 'HH:mm:ss') : String(log.timestamp).split(' ')[1]?.split('.')[0] || '-'}
                   </td>
                   <td className="py-3 px-4">
                     <span className={`px-2 py-0.5 rounded ${
@@ -136,7 +140,8 @@ export const AdminLogs = () => {
                     </div>
                   </td>
                 </tr>
-              ))}
+                );
+              })}
               {filteredLogs.length === 0 && (
                 <tr>
                   <td colSpan={6} className="py-12 text-center text-gray-500 font-sans text-sm">No system logs found.</td>

@@ -68,9 +68,9 @@ export const GoogleCallbackPage: React.FC = () => {
       <BlurReveal duration={0.8} className="w-full max-w-[460px]">
         <Glass variant="deep" className="py-10 px-8 sm:px-10 rounded-[32px] text-center">
           <div className="mb-7">
-            <h2 className="text-[#26384B] leading-tight font-black text-2xl mb-4">
+            <h1 className="app-heading-3 text-[#26384B] font-black leading-tight mb-4">
               {error ? 'Authentication Failed' : 'Authenticating...'}
-            </h2>
+            </h1>
             {error ? (
               <Fade>
                 <Alert variant="error" message={error} />

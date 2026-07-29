@@ -7,7 +7,6 @@ import { Alert } from '../../components/ui/Alert';
 import { Glass } from '../../components/ui/Glass';
 import { BlurReveal, PageTransition, Fade } from '../../components/motion';
 
-import { Doodle } from '../../components/illustrations/Doodle';
 
 export const ForgotPasswordPage: React.FC = () => {
   const navigate = useNavigate();
@@ -35,10 +34,9 @@ export const ForgotPasswordPage: React.FC = () => {
             <Link to="/" className="inline-block mb-4 relative z-10">
               <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#4C6072]">ISHKEEN</span>
             </Link>
-            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h1 className="app-heading-2 text-[#26384B] font-black leading-tight relative z-10">
               Reset Password.
-            </h2>
-            <Doodle type="arrow" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
+            </h1>
           </div>
 
           {status === 'success' ? (

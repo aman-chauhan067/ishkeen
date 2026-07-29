@@ -22,6 +22,7 @@ import { AdminUserDetails } from './pages/admin/AdminUserDetails';
 import { AdminAnalyses } from './pages/admin/AdminAnalyses';
 import { AdminAnalysisDetails } from './pages/admin/AdminAnalysisDetails';
 import { AdminDataset } from './pages/admin/AdminDataset';
+import { AdminProducts } from './pages/admin/AdminProducts';
 import { AdminMLStatus } from './pages/admin/AdminMLStatus';
 import { AdminHealth } from './pages/admin/AdminHealth';
 import { AdminLogs } from './pages/admin/AdminLogs';
@@ -30,7 +31,6 @@ import { OnboardingPage } from './pages/onboarding/OnboardingPage';
 import { BackgroundManager, AmbientBackground } from './components/background';
 import { CursorFollow } from './components/motion';
 
-import { Doodle } from './components/illustrations/Doodle';
 
 function AppContent() {
   const location = useLocation();
@@ -38,11 +38,6 @@ function AppContent() {
   return (
     <>
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-[0.03]">
-        <Doodle type="circle" className="absolute top-[10%] left-[5%] w-32 h-32 text-[#26384B]" />
-        <Doodle type="leaf" className="absolute bottom-[20%] right-[10%] w-48 h-48 text-[#26384B]" />
-        <Doodle type="swirl" className="absolute top-[40%] right-[5%] w-24 h-24 text-[#26384B]" />
-        <Doodle type="blob" className="absolute bottom-[10%] left-[15%] w-64 h-64 text-[#26384B]" />
-        <Doodle type="face" className="absolute top-[5%] right-[25%] w-20 h-20 text-[#26384B]" />
       </div>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -110,6 +105,7 @@ function AppContent() {
           <Route path="users/:userId" element={<AdminUserDetails />} />
           <Route path="analyses" element={<AdminAnalyses />} />
           <Route path="analyses/:analysisId" element={<AdminAnalysisDetails />} />
+          <Route path="products" element={<AdminProducts />} />
           <Route path="dataset" element={<AdminDataset />} />
           <Route path="models" element={<AdminMLStatus />} />
           <Route path="health" element={<AdminHealth />} />

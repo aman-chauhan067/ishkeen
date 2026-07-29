@@ -9,7 +9,6 @@ import { Section } from '../../components/ui/Section';
 import { PageTransition, Stagger, StaggerItem, Fade, BlurReveal } from '../../components/motion';
 import { useAnalyses } from '../../hooks/useAnalyses';
 import { Plus } from 'lucide-react';
-import { Doodle } from '../../components/illustrations/Doodle';
 
 export const HistoryPage: React.FC = () => {
   const { state, load, loadMore, hasMore } = useAnalyses();
@@ -59,8 +58,11 @@ export const HistoryPage: React.FC = () => {
           <Section className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-16 border-b border-[#26384B]/10 pb-12">
             <StaggerItem>
               <BlurReveal>
-                <h2 className="text-left text-[#26384B]">Your Skin Journey.</h2>
-                <Typography variant="caption" className="opacity-80 mt-6 tracking-wide text-[#4C6072]">
+                <h1 className="text-left text-[#26384B] flex flex-col items-start gap-1 sm:gap-2">
+                  <span className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-none whitespace-nowrap">Your Skin</span>
+                  <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Journey.</span>
+                </h1>
+                <Typography variant="caption" className="opacity-80 mt-2 tracking-wide text-[#4C6072] font-bold block">
                   {total === 0 ? 'No journey records found.' : `${total} journey milestone${total === 1 ? '' : 's'}`}
                 </Typography>
               </BlurReveal>
@@ -79,16 +81,13 @@ export const HistoryPage: React.FC = () => {
           <Section>
             {items.length === 0 ? (
               <StaggerItem>
-                <Fade className="py-32 text-center flex flex-col items-center gap-8 relative overflow-hidden rounded-[32px] bg-white/50 border border-[#26384B]/5">
+                <Fade className="py-32 text-center flex flex-col items-center gap-8 relative overflow-hidden bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px]">
                   <div className="absolute inset-0 z-0">
-                    <Doodle type="blob" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 text-[#4C6072] opacity-5" delay={0.2} />
-                    <Doodle type="sparkles" className="absolute top-[20%] right-[30%] w-10 h-10 text-[#4C6072] opacity-20" delay={0.4} />
-                    <Doodle type="stars" className="absolute bottom-[20%] left-[30%] w-8 h-8 text-[#4C6072] opacity-20" delay={0.6} />
                   </div>
                   <div className="relative z-10 flex flex-col items-center">
-                    <Typography variant="h3" className="text-[#26384B] mb-4">
+                    <h3 className="app-heading-3 text-[#26384B] mb-4 font-black">
                       No Clinical Records Found
-                    </Typography>
+                    </h3>
                     <Typography variant="body" className="opacity-80 max-w-md">
                       You haven't provided any imagery for evaluation. Begin your consultation to establish a clinical baseline.
                     </Typography>

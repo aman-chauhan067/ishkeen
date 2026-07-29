@@ -10,7 +10,6 @@ import { api } from '../../lib/api';
 import type { User } from '../../auth/types';
 import { PageTransition, BlurReveal, Fade } from '../../components/motion';
 
-import { Doodle } from '../../components/illustrations/Doodle';
 import { DragonflyLogo } from '../../components/ui/DragonflyLogo';
 
 export const LoginPage: React.FC = () => {
@@ -54,10 +53,9 @@ export const LoginPage: React.FC = () => {
             <Link to="/" className="inline-block mb-4 relative z-10">
               <DragonflyLogo size="sm" showSubtitle={false} />
             </Link>
-            <h2 className="text-[#26384B] leading-tight relative z-10" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.04em', fontWeight: 900 }}>
+            <h1 className="app-heading-2 text-[#26384B] font-black leading-tight relative z-10">
               Welcome back.
-            </h2>
-            <Doodle type="leaf" className="absolute -top-4 right-0 w-12 h-12 text-[#4C6072] opacity-20 z-0" delay={0.4} />
+            </h1>
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>

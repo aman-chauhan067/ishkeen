@@ -10,7 +10,6 @@ interface UploadStatusProps {
   onUploadAnother: () => void;
 }
 
-import { Doodle } from '../../../../components/illustrations/Doodle';
 
 export const UploadStatus: React.FC<UploadStatusProps> = ({
   createdId,
@@ -20,8 +19,6 @@ export const UploadStatus: React.FC<UploadStatusProps> = ({
   return (
     <Fade className="space-y-6 text-center">
       <div className="bg-success/10 border border-success/20 rounded-2xl p-8 backdrop-blur-sm relative overflow-hidden">
-        <Doodle type="sparkles" className="absolute top-4 right-4 w-12 h-12 text-success opacity-20" delay={0.2} />
-        <Doodle type="stars" className="absolute bottom-4 left-4 w-10 h-10 text-success opacity-20" delay={0.4} />
         
         <CheckCircle2 className="w-12 h-12 text-success mx-auto mb-4 relative z-10" strokeWidth={1.5} />
         <Typography variant="h3" className="mb-2 relative z-10">Analysis Complete</Typography>

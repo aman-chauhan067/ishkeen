@@ -21,7 +21,6 @@ interface Step2Props {
   error?: string;
 }
 
-import { Doodle } from '../../../components/illustrations/Doodle';
 
 export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, error }) => {
   const handleProductsChange = (values: string[]) => {
@@ -54,7 +53,6 @@ export const Step2CurrentRoutine: React.FC<Step2Props> = ({ answers, onChange, e
     <QuestionTransition>
       <QuestionSection>
         <div className="relative">
-          <Doodle type="leaf" className="absolute -top-6 -right-6 w-12 h-12 text-[#4C6072] opacity-20" delay={0.2} />
           <QuestionTitle>Your current routine</QuestionTitle>
           <QuestionDescription>Tell us what you're using today to help us understand your starting point.</QuestionDescription>
         </div>

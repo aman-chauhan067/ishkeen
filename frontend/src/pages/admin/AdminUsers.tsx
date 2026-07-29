@@ -46,7 +46,10 @@ export const AdminUsers = () => {
     <div className="space-y-8">
       <BlurReveal>
         <div className="max-w-2xl">
-          <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">User Management</h1>
+          <h1 className="text-left text-[#26384B] mb-4 flex flex-wrap items-baseline gap-3 sm:gap-4">
+            <span className="text-2xl sm:text-4xl font-semibold tracking-normal">User</span>
+            <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Management</span>
+          </h1>
           <p className="font-sans text-[#4C6072] leading-relaxed">
             Monitor and manage Ishkeen user accounts, onboarding progress, and activity.
           </p>
@@ -54,7 +57,7 @@ export const AdminUsers = () => {
       </BlurReveal>
 
       <Fade delay={0.1}>
-        <div className="flex justify-between items-center bg-[#F6F4EF] p-4 rounded-2xl border border-[#26384B]/5">
+        <div className="flex justify-between items-center bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 p-4 rounded-[24px]">
           <div className="w-96 relative">
             <Search className="w-4 h-4 text-[#4C6072] absolute left-4 top-1/2 -translate-y-1/2" />
             <input 
@@ -62,7 +65,7 @@ export const AdminUsers = () => {
               placeholder="Search by email..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-[#F7F7F5] border-none rounded-xl font-sans text-sm text-[#26384B] placeholder:text-[#4C6072]/50 focus:outline-none focus:ring-1 focus:ring-[#26384B]/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 bg-white/50 border border-white/60 shadow-sm rounded-xl font-sans text-sm text-[#26384B] placeholder:text-[#4C6072]/50 focus:outline-none focus:ring-2 focus:ring-[#26384B]/20 transition-all"
             />
           </div>
           <div className="text-[#4C6072] font-sans text-xs font-medium tracking-widest uppercase">
@@ -72,7 +75,7 @@ export const AdminUsers = () => {
       </Fade>
 
       <Fade delay={0.2}>
-        <div className="bg-[#F6F4EF] rounded-2xl border border-[#26384B]/5 overflow-hidden">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] overflow-hidden">
           {loading ? (
             <div className="h-64 flex items-center justify-center">
               <div className="w-6 h-6 border-2 border-[#26384B]/20 border-t-[#26384B] rounded-full animate-spin" />
@@ -81,7 +84,7 @@ export const AdminUsers = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left font-sans">
                 <thead>
-                  <tr className="border-b border-[#26384B]/5 text-[#4C6072] text-[10px] uppercase tracking-widest bg-[#F7F7F5]/50">
+                  <tr className="border-b border-[#26384B]/5 text-[#4C6072] text-[10px] uppercase tracking-widest bg-white/30">
                     <th className="px-6 py-4 font-medium">User</th>
                     <th className="px-6 py-4 font-medium">Status</th>
                     <th className="px-6 py-4 font-medium">Analyses</th>
@@ -95,7 +98,7 @@ export const AdminUsers = () => {
                     <tr 
                       key={user.id} 
                       onClick={() => navigate(`/admin/users/${user.id}`)}
-                      className="group hover:bg-[#F7F7F5] transition-colors cursor-pointer"
+                      className="group hover:bg-white/50 transition-colors cursor-pointer"
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">

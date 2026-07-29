@@ -6,12 +6,12 @@ import type { ComponentStatus } from "./types"
 export const status: ComponentStatus = 'Stable'
 
 const glassVariants = cva(
-  "relative overflow-hidden rounded-3xl border border-[#26384B]/5 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
+  "relative overflow-hidden rounded-[32px] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
   {
     variants: {
       variant: {
-        subtle: "bg-[#FBFAF7]/95 shadow-[0_8px_30px_rgba(37,58,74,0.04)]",
-        deep: "bg-[#F6F4EF]/95 shadow-[0_20px_60px_rgba(37,58,74,0.06)]",
+        subtle: "bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50",
+        deep: "bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_60px_rgba(59,130,246,0.25)] ring-1 ring-inset ring-white/50",
       },
     },
     defaultVariants: {

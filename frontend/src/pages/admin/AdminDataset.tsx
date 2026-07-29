@@ -16,8 +16,8 @@ interface DatasetResponse {
 }
 
 const StatBox = ({ label, value, icon: Icon, colorClass = "text-[#26384B]" }: any) => (
-  <div className="bg-[#F7F7F5] p-5 rounded-xl border border-[#26384B]/5 flex items-center gap-4">
-    <div className={`p-3 bg-white rounded-lg shadow-sm ${colorClass}`}>
+  <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 p-5 rounded-[24px] flex items-center gap-4">
+    <div className={`p-3 bg-white/50 border border-white/60 shadow-sm rounded-lg ${colorClass}`}>
       <Icon className="w-5 h-5" />
     </div>
     <div>
@@ -60,7 +60,10 @@ export const AdminDataset = () => {
       <BlurReveal>
         <div className="flex justify-between items-end mb-4">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl text-[#26384B] tracking-tight mb-4">Dataset Explorer</h1>
+            <h1 className="text-left text-[#26384B] mb-4 flex flex-wrap items-baseline gap-3 sm:gap-4">
+              <span className="text-2xl sm:text-4xl font-semibold tracking-normal">Dataset</span>
+              <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Explorer</span>
+            </h1>
             <p className="font-sans text-[#4C6072] leading-relaxed">
               Manage the master computer vision dataset. Review splits, annotation coverage, and export readiness.
             </p>
@@ -116,7 +119,7 @@ export const AdminDataset = () => {
       </div>
 
       <Fade delay={0.5}>
-        <div className="bg-[#F6F4EF] p-8 rounded-3xl border border-[#26384B]/5 mt-8">
+        <div className="bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 p-8 rounded-[32px] mt-8">
           <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-[#26384B] mb-8">Current Active Version</h3>
           
           <div className="flex items-center gap-8 border-b border-[#26384B]/5 pb-8 mb-8">

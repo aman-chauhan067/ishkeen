@@ -7,7 +7,7 @@ import { useAuthenticatedApi } from '../../hooks/useAuthenticatedApi';
 import { ApiError } from '../../lib/api';
 import type { SkinAnalysisResponse } from '../../types/analysis';
 import { UploadHero, UploadTips, UploadActions, UploadPreview, UploadStatus, CameraModal } from './components/upload';
-import { AmbientGlow } from '../../components/motion/AmbientGlow';
+import { UploadCloud } from 'lucide-react';
 
 const ACCEPTED_TYPES = ['image/jpeg', 'image/png', 'image/webp'] as const;
 const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
@@ -181,9 +181,14 @@ export const UploadPage: React.FC = () => {
                   type="button"
                   onClick={triggerFileInput}
                   disabled={isUploading}
-                  className="w-full text-left group relative z-10 block bg-[#F6F4EF] border border-[#26384B]/5 rounded-[40px] p-12 transition-all duration-[600ms] ease-[var(--luxury-ease)] hover:border-[#26384B]/10 hover:-translate-y-1 focus:outline-none"
+                  className="w-full text-left group relative z-10 block p-12 transition-all duration-500 ease-[var(--luxury-ease)] focus:outline-none bg-white/40 backdrop-blur-[40px] border border-white/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] ring-1 ring-inset ring-white/50 rounded-[32px] hover:shadow-[0_0_60px_rgba(59,130,246,0.25)] hover:border-blue-300 hover:-translate-y-1"
                 >
-                  <AmbientGlow blur="blur-[100px]" />
+                  <div className="flex flex-col items-center justify-center mb-8">
+                    <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4 text-blue-600 shadow-sm border border-blue-200 transition-transform duration-700 group-hover:scale-110">
+                      <UploadCloud size={32} strokeWidth={1.5} />
+                    </div>
+                    <span className="font-bold text-[#26384B] text-lg">Tap to upload a photo</span>
+                  </div>
                   <UploadTips tips={GUIDANCE_TIPS} />
                 </button>
               </BlurReveal>

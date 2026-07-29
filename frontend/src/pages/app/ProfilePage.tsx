@@ -156,10 +156,11 @@ export const ProfilePage: React.FC = () => {
       <Container className="max-w-4xl pt-16 pb-24">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-4xl font-editorial text-[#26384B] font-bold tracking-tight">
-              Clinical Skin Profile
+            <h1 className="text-left text-[#26384B] mb-2 flex flex-col items-start gap-1 sm:gap-2">
+              <span className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-none -translate-x-[3px]">Clinical</span>
+              <span className="text-5xl sm:text-7xl text-[#4C6072] font-medium tracking-normal opacity-80">Skin Profile</span>
             </h1>
-            <p className="text-[#4C6072] text-sm mt-1">
+            <p className="text-[#4C6072] text-sm mt-2 font-medium">
               Your personalized dermatological baseline and diagnostic preferences.
             </p>
           </div>
@@ -188,7 +189,7 @@ export const ProfilePage: React.FC = () => {
           <Glass variant="deep" className="p-8 sm:p-12 rounded-[32px] space-y-8">
             <form onSubmit={handleSave} className="space-y-10">
               <div className="flex items-center justify-between border-b border-[#26384B]/10 pb-4">
-                <h2 className="text-2xl font-editorial text-[#26384B] font-bold">Edit Skin Identity</h2>
+                <h2 className="text-2xl font-sans text-[#26384B] font-bold tracking-tight">Edit Skin Identity</h2>
                 <button type="button" onClick={cancelEditing} className="text-sm font-bold uppercase tracking-wider text-[#4C6072] hover:text-[#26384B]">
                   Cancel
                 </button>
@@ -365,7 +366,7 @@ export const ProfilePage: React.FC = () => {
             {/* Skin Identity Card */}
             <Glass variant="deep" className="p-8 sm:p-10 rounded-[32px]">
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#26384B]/10">
-                <h3 className="text-xl font-editorial font-bold text-[#26384B]">Skin Identity & Goals</h3>
+                <h3 className="text-xl font-sans font-bold tracking-tight text-[#26384B]">Skin Identity & Goals</h3>
                 <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-[#26384B]/5 text-[#26384B] rounded-full">
                   Verified Baseline
                 </span>
@@ -394,7 +395,7 @@ export const ProfilePage: React.FC = () => {
 
             {/* Concerns Card */}
             <Glass variant="deep" className="p-8 sm:p-10 rounded-[32px]">
-              <h3 className="text-xl font-editorial font-bold text-[#26384B] mb-4">Active Skin Concerns</h3>
+              <h3 className="text-xl font-sans font-bold tracking-tight text-[#26384B] mb-4">Active Skin Concerns</h3>
               <div className="flex flex-wrap gap-2.5">
                 {getMultiLabels(profile.current_concerns, CURRENT_CONCERNS_OPTIONS).map((label, idx) => (
                   <span
@@ -409,7 +410,7 @@ export const ProfilePage: React.FC = () => {
 
             {/* Routine & Experience Card */}
             <Glass variant="deep" className="p-8 sm:p-10 rounded-[32px]">
-              <h3 className="text-xl font-editorial font-bold text-[#26384B] mb-6 pb-4 border-b border-[#26384B]/10">
+              <h3 className="text-xl font-sans font-bold tracking-tight text-[#26384B] mb-6 pb-4 border-b border-[#26384B]/10">
                 Skincare Routine & Habits
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -452,7 +453,7 @@ export const ProfilePage: React.FC = () => {
 
             {/* Reactions & Clinical Care */}
             <Glass variant="deep" className="p-8 sm:p-10 rounded-[32px]">
-              <h3 className="text-xl font-editorial font-bold text-[#26384B] mb-6 pb-4 border-b border-[#26384B]/10">
+              <h3 className="text-xl font-sans font-bold tracking-tight text-[#26384B] mb-6 pb-4 border-b border-[#26384B]/10">
                 Safety & Clinical Profile
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
